@@ -1,0 +1,1736 @@
+{
+  "224517": {
+    "name": "Brass: Birmingham",
+    "year": 2018.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 120.0,
+    "weight": 3.8578,
+    "rating": 8.55714,
+    "best": [
+      "3",
+      "4"
+    ],
+    "categories": [
+      "Age of Reason",
+      "Economic",
+      "Industry / Manufacturing",
+      "Post-Napoleonic",
+      "Trains",
+      "Transportation"
+    ],
+    "mechanics": [
+      "Action Points",
+      "Chaining",
+      "End Game Bonuses",
+      "Hand Management",
+      "Income",
+      "Loans",
+      "Market",
+      "Multi-Use Cards",
+      "Network and Route Building",
+      "Ownership",
+      "Tags",
+      "Tech Trees / Tech Tracks",
+      "Tile Placement",
+      "Turn Order: Stat-Based",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/x3zxjr-Vw5iU4yDPg70Jgw__small/img/o18rjEemoWaVru9Y2TyPwuIaRfE=/fit-in/200x150/filters:strip_icc()/pic3490053.jpg",
+    "image": "https://cf.geekdo-images.com/x3zxjr-Vw5iU4yDPg70Jgw__original/img/FpyxH41Y6_ROoePAilPNEhXnzO8=/0x0/filters:format(jpeg)/pic3490053.jpg"
+  },
+  "342942": {
+    "name": "Ark Nova",
+    "year": 2021.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 150.0,
+    "weight": 3.7992,
+    "rating": 8.53828,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Animals",
+      "Environmental"
+    ],
+    "mechanics": [
+      "Auction: Dutch",
+      "Contracts",
+      "End Game Bonuses",
+      "Events",
+      "Expiring Actions",
+      "Grid Coverage",
+      "Hand Management",
+      "Hexagon Grid",
+      "Income",
+      "Increase Value of Unchosen Resources",
+      "Open Drafting",
+      "Set Collection",
+      "Solo / Solitaire Game",
+      "Tags",
+      "Tile Placement",
+      "Track Movement",
+      "Variable Player Powers",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/SoU8p28Sk1s8MSvoM4N8pQ__small/img/4KuHNTWSMPf8vTNDKSRMMI3oOv8=/fit-in/200x150/filters:strip_icc()/pic6293412.jpg",
+    "image": "https://cf.geekdo-images.com/SoU8p28Sk1s8MSvoM4N8pQ__original/img/g4S18szTdrXCdIwVKzMKrZrYAcM=/0x0/filters:format(jpeg)/pic6293412.jpg"
+  },
+  "161936": {
+    "name": "Pandemic Legacy: Season 1",
+    "year": 2015.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 60.0,
+    "weight": 2.8281,
+    "rating": 8.49892,
+    "best": [
+      "4"
+    ],
+    "categories": [
+      "Environmental",
+      "Medical"
+    ],
+    "mechanics": [
+      "Action Points",
+      "Cooperative Game",
+      "Hand Management",
+      "Legacy Game",
+      "Multi-Use Cards",
+      "Point to Point Movement",
+      "Scenario / Mission / Campaign Game",
+      "Set Collection",
+      "Tags",
+      "Trading",
+      "Variable Player Powers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/-Qer2BBPG7qGGDu6KcVDIw__small/img/NQQcjS31TO0DE246N9rpt0hd9eo=/fit-in/200x150/filters:strip_icc()/pic2452831.png",
+    "image": "https://cf.geekdo-images.com/-Qer2BBPG7qGGDu6KcVDIw__original/img/PlzAH7swN1nsFxOXbfUvE3TkE5w=/0x0/filters:format(png)/pic2452831.png"
+  },
+  "174430": {
+    "name": "Gloomhaven",
+    "year": 2017.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 120.0,
+    "weight": 3.9209,
+    "rating": 8.52808,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "Adventure",
+      "Exploration",
+      "Fantasy",
+      "Fighting",
+      "Miniatures"
+    ],
+    "mechanics": [
+      "Action Queue",
+      "Action Retrieval",
+      "Campaign / Battle Card Driven",
+      "Card Play Conflict Resolution",
+      "Communication Limits",
+      "Cooperative Game",
+      "Critical Hits and Failures",
+      "Deck Construction",
+      "Grid Movement",
+      "Hand Management",
+      "Hexagon Grid",
+      "Legacy Game",
+      "Line of Sight",
+      "Modular Board",
+      "Movement Points",
+      "Multi-Use Cards",
+      "Multiple Maps",
+      "Narrative Choice / Paragraph",
+      "Once-Per-Game Abilities",
+      "Player Elimination",
+      "Role Playing",
+      "Scenario / Mission / Campaign Game",
+      "Simultaneous Action Selection",
+      "Solo / Solitaire Game",
+      "Storytelling",
+      "Tags",
+      "Variable Player Powers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/sZYp_3BTDGjh2unaZfZmuA__small/img/veqFeP4d_3zNhFc3GNBkV95rBEQ=/fit-in/200x150/filters:strip_icc()/pic2437871.jpg",
+    "image": "https://cf.geekdo-images.com/sZYp_3BTDGjh2unaZfZmuA__original/img/7d-lj5Gd1e8PFnD97LYFah2c45M=/0x0/filters:format(jpeg)/pic2437871.jpg"
+  },
+  "397598": {
+    "name": "Dune: Imperium – Uprising",
+    "year": 2023.0,
+    "minplayers": 1.0,
+    "maxplayers": 6.0,
+    "playingtime": 120.0,
+    "weight": 3.5336,
+    "rating": 8.70124,
+    "best": [
+      "4"
+    ],
+    "categories": [
+      "Movies / TV / Radio theme",
+      "Novel-based",
+      "Science Fiction"
+    ],
+    "mechanics": [
+      "Automatic Resource Growth",
+      "Card Play Conflict Resolution",
+      "Contracts",
+      "Deck, Bag, and Pool Building",
+      "Delayed Purchase",
+      "Force Commitment",
+      "Increase Value of Unchosen Resources",
+      "Multi-Use Cards",
+      "Open Drafting",
+      "Solo / Solitaire Game",
+      "Tags",
+      "Team-Based Game",
+      "Turn Order: Progressive",
+      "Variable Player Powers",
+      "Worker Placement"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/UVUkjMV_Q2paVUIUP30Vvw__small/img/H6qmxJrRFjtOAPZOfDoZ480-46I=/fit-in/200x150/filters:strip_icc()/pic7664424.jpg",
+    "image": "https://cf.geekdo-images.com/UVUkjMV_Q2paVUIUP30Vvw__original/img/BoUtCkd1NRO0bR1R5EwL51xIuXA=/0x0/filters:format(jpeg)/pic7664424.jpg"
+  },
+  "316554": {
+    "name": "Dune: Imperium",
+    "year": 2020.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 120.0,
+    "weight": 3.0818,
+    "rating": 8.40519,
+    "best": [
+      "3",
+      "4"
+    ],
+    "categories": [
+      "Movies / TV / Radio theme",
+      "Novel-based",
+      "Political",
+      "Science Fiction"
+    ],
+    "mechanics": [
+      "Card Play Conflict Resolution",
+      "Deck, Bag, and Pool Building",
+      "Delayed Purchase",
+      "Force Commitment",
+      "Increase Value of Unchosen Resources",
+      "Multi-Use Cards",
+      "Open Drafting",
+      "Ownership",
+      "Race",
+      "Solo / Solitaire Game",
+      "Tags",
+      "Take That",
+      "Turn Order: Progressive",
+      "Variable Player Powers",
+      "Worker Placement"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/PhjygpWSo-0labGrPBMyyg__small/img/JGgY-nBmkyB8WRp8vcoBLlNMQ5U=/fit-in/200x150/filters:strip_icc()/pic5666597.jpg",
+    "image": "https://cf.geekdo-images.com/PhjygpWSo-0labGrPBMyyg__original/img/mZzaBAEEJpMlHWWmC0R6Su0OibQ=/0x0/filters:format(jpeg)/pic5666597.jpg"
+  },
+  "233078": {
+    "name": "Twilight Imperium: Fourth Edition",
+    "year": 2017.0,
+    "minplayers": 3.0,
+    "maxplayers": 6.0,
+    "playingtime": 480.0,
+    "weight": 4.3687,
+    "rating": 8.55658,
+    "best": [
+      "6"
+    ],
+    "categories": [
+      "Civilization",
+      "Economic",
+      "Exploration",
+      "Negotiation",
+      "Political",
+      "Science Fiction",
+      "Space Exploration",
+      "Territory Building",
+      "Wargame"
+    ],
+    "mechanics": [
+      "Action Drafting",
+      "Area-Impulse",
+      "Dice Rolling",
+      "Follow",
+      "Grid Movement",
+      "Hexagon Grid",
+      "Increase Value of Unchosen Resources",
+      "King of the Hill",
+      "Modular Board",
+      "Movement Points",
+      "Player Elimination",
+      "Race",
+      "Tech Trees / Tech Tracks",
+      "Trading",
+      "Variable Phase Order",
+      "Variable Player Powers",
+      "Variable Set-up",
+      "Voting"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/_Ppn5lssO5OaildSE-FgFA__small/img/lfEukJE0JsoZZObaF9K9YnFp62E=/fit-in/200x150/filters:strip_icc()/pic3727516.jpg",
+    "image": "https://cf.geekdo-images.com/_Ppn5lssO5OaildSE-FgFA__original/img/kVpZ0Maa_LeQGWxOqsYKP3N4KUY=/0x0/filters:format(jpeg)/pic3727516.jpg"
+  },
+  "115746": {
+    "name": "War of the Ring: Second Edition",
+    "year": 2011.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 240.0,
+    "weight": 4.2317,
+    "rating": 8.55327,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Fantasy",
+      "Novel-based",
+      "Territory Building",
+      "Wargame"
+    ],
+    "mechanics": [
+      "Area Majority / Influence",
+      "Area Movement",
+      "Campaign / Battle Card Driven",
+      "Card Play Conflict Resolution",
+      "Dice Rolling",
+      "Events",
+      "Hand Management",
+      "Movement Points",
+      "Team-Based Game",
+      "Variable Player Powers",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/ImPgGag98W6gpV1KV812aA__small/img/X-lBBdG4uO6LT0y1vXxCN4jdR4M=/fit-in/200x150/filters:strip_icc()/pic1215633.jpg",
+    "image": "https://cf.geekdo-images.com/ImPgGag98W6gpV1KV812aA__original/img/38jB7fN07DwlrGKYAf-J0vsNdgs=/0x0/filters:format(jpeg)/pic1215633.jpg"
+  },
+  "167791": {
+    "name": "Terraforming Mars",
+    "year": 2016.0,
+    "minplayers": 1.0,
+    "maxplayers": 5.0,
+    "playingtime": 120.0,
+    "weight": 3.2737,
+    "rating": 8.32845,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "Civilization",
+      "Economic",
+      "Environmental",
+      "Industry / Manufacturing",
+      "Science Fiction",
+      "Space Exploration",
+      "Territory Building"
+    ],
+    "mechanics": [
+      "Closed Drafting",
+      "Contracts",
+      "End Game Bonuses",
+      "Hand Management",
+      "Hexagon Grid",
+      "Income",
+      "Solo / Solitaire Game",
+      "Tags",
+      "Take That",
+      "Tile Placement",
+      "Turn Order: Progressive",
+      "Variable Player Powers",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/wg9oOLcsKvDesSUdZQ4rxw__small/img/BTxqxgYay5tHJfVoJ2NF5g43_gA=/fit-in/200x150/filters:strip_icc()/pic3536616.jpg",
+    "image": "https://cf.geekdo-images.com/wg9oOLcsKvDesSUdZQ4rxw__original/img/thIqWDnH9utKuoKVEUqveDixprI=/0x0/filters:format(jpeg)/pic3536616.jpg"
+  },
+  "187645": {
+    "name": "Star Wars: Rebellion",
+    "year": 2016.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 240.0,
+    "weight": 3.755,
+    "rating": 8.42147,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Civil War",
+      "Movies / TV / Radio theme",
+      "Science Fiction",
+      "Space Exploration",
+      "Wargame"
+    ],
+    "mechanics": [
+      "Area Majority / Influence",
+      "Area Movement",
+      "Card Play Conflict Resolution",
+      "Contracts",
+      "Delayed Purchase",
+      "Dice Rolling",
+      "Die Icon Resolution",
+      "Events",
+      "Hand Management",
+      "Hidden Movement",
+      "Income",
+      "Once-Per-Game Abilities",
+      "Tags",
+      "Take That",
+      "Team-Based Game",
+      "Variable Player Powers",
+      "Variable Set-up",
+      "Worker Placement, Different Worker Types"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/7SrPNGBKg9IIsP4UQpOi8g__small/img/gAxzddRVQiRdjZHYFUZ2xc5Jlbw=/fit-in/200x150/filters:strip_icc()/pic4325841.jpg",
+    "image": "https://cf.geekdo-images.com/7SrPNGBKg9IIsP4UQpOi8g__original/img/GKueTbkCk2Ramf6ai8mDj-BP6cI=/0x0/filters:format(jpeg)/pic4325841.jpg"
+  },
+  "162886": {
+    "name": "Spirit Island",
+    "year": 2017.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 120.0,
+    "weight": 4.0783,
+    "rating": 8.33834,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Environmental",
+      "Fantasy",
+      "Mythology",
+      "Territory Building"
+    ],
+    "mechanics": [
+      "Action Retrieval",
+      "Area Majority / Influence",
+      "Automatic Resource Growth",
+      "Campaign / Battle Card Driven",
+      "Cooperative Game",
+      "Deck, Bag, and Pool Building",
+      "Hand Management",
+      "Modular Board",
+      "Solo / Solitaire Game",
+      "Tags",
+      "Variable Player Powers",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/kjCm4ZvPjIZxS-mYgSPy1g__small/img/aUlIih2_R7P8IYKeyNl2heLQbu8=/fit-in/200x150/filters:strip_icc()/pic7013651.jpg",
+    "image": "https://cf.geekdo-images.com/kjCm4ZvPjIZxS-mYgSPy1g__original/img/9uLd9C3XAvInLCLhAoXqKVk56zs=/0x0/filters:format(jpeg)/pic7013651.jpg"
+  },
+  "291457": {
+    "name": "Gloomhaven: Jaws of the Lion",
+    "year": 2020.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 120.0,
+    "weight": 3.6444,
+    "rating": 8.34444,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Adventure",
+      "Exploration",
+      "Fantasy",
+      "Fighting",
+      "Miniatures"
+    ],
+    "mechanics": [
+      "Action Queue",
+      "Action Retrieval",
+      "Campaign / Battle Card Driven",
+      "Communication Limits",
+      "Cooperative Game",
+      "Critical Hits and Failures",
+      "Deck Construction",
+      "Grid Movement",
+      "Hand Management",
+      "Hexagon Grid",
+      "Legacy Game",
+      "Line of Sight",
+      "Movement Points",
+      "Multi-Use Cards",
+      "Multiple Maps",
+      "Narrative Choice / Paragraph",
+      "Once-Per-Game Abilities",
+      "Player Elimination",
+      "Role Playing",
+      "Scenario / Mission / Campaign Game",
+      "Simultaneous Action Selection",
+      "Solo / Solitaire Game",
+      "Variable Player Powers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/_HhIdavYW-hid20Iq3hhmg__small/img/OMkN_E5eyWrkID_cHCnQEbIixGM=/fit-in/200x150/filters:strip_icc()/pic5055631.jpg",
+    "image": "https://cf.geekdo-images.com/_HhIdavYW-hid20Iq3hhmg__original/img/PBzsLRqNKQKJxGnzpb7o3qLWPQM=/0x0/filters:format(jpeg)/pic5055631.jpg"
+  },
+  "220308": {
+    "name": "Gaia Project",
+    "year": 2017.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 150.0,
+    "weight": 4.4025,
+    "rating": 8.3455,
+    "best": [
+      "3",
+      "4"
+    ],
+    "categories": [
+      "Civilization",
+      "Economic",
+      "Science Fiction",
+      "Space Exploration",
+      "Territory Building"
+    ],
+    "mechanics": [
+      "End Game Bonuses",
+      "Hexagon Grid",
+      "Income",
+      "Modular Board",
+      "Network and Route Building",
+      "Solo / Solitaire Game",
+      "Tags",
+      "Tech Trees / Tech Tracks",
+      "Turn Order: Pass Order",
+      "Variable Player Powers",
+      "Variable Set-up",
+      "Victory Points as a Resource"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/hGWFm3hbMlCDsfCsauOQ4g__small/img/NNG7Ijyx4evp5gcVReis9i0koas=/fit-in/200x150/filters:strip_icc()/pic5375625.png",
+    "image": "https://cf.geekdo-images.com/hGWFm3hbMlCDsfCsauOQ4g__original/img/tjlflQtUPFiTpLpwk1NCVCS29Ic=/0x0/filters:format(png)/pic5375625.png"
+  },
+  "418059": {
+    "name": "SETI: Search for Extraterrestrial Intelligence",
+    "year": 2024.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 160.0,
+    "weight": 3.8446,
+    "rating": 8.41076,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "Science Fiction",
+      "Space Exploration"
+    ],
+    "mechanics": [
+      "Area Majority / Influence",
+      "End Game Bonuses",
+      "Income",
+      "Multi-Use Cards",
+      "Resource to Move",
+      "Solo / Solitaire Game",
+      "Turn Order: Progressive",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/_BUXOVRDU9g_eRwgpR5ZZw__small/img/icamIZ4nP3HHH3vczZqTr1hQgKY=/fit-in/200x150/filters:strip_icc()/pic8160466.jpg",
+    "image": "https://cf.geekdo-images.com/_BUXOVRDU9g_eRwgpR5ZZw__original/img/28ob2JiASW8iX8XoVzp5Y25-h24=/0x0/filters:format(jpeg)/pic8160466.jpg"
+  },
+  "338960": {
+    "name": "Slay the Spire: The Board Game",
+    "year": 2024.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 150.0,
+    "weight": 2.9015,
+    "rating": 8.60859,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Adventure",
+      "Card Game",
+      "Fantasy",
+      "Fighting",
+      "Video Game Theme"
+    ],
+    "mechanics": [
+      "Cooperative Game",
+      "Deck, Bag, and Pool Building",
+      "Dice Rolling",
+      "Hand Management",
+      "Scenario / Mission / Campaign Game",
+      "Simultaneous Action Selection",
+      "Solo / Solitaire Game",
+      "Variable Player Powers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/PQzVclEoOQ_wr4e1V86kxA__small/img/cpmsSDagE5RvQ1ERXl-fMJIaUUg=/fit-in/200x150/filters:strip_icc()/pic8157856.png",
+    "image": "https://cf.geekdo-images.com/PQzVclEoOQ_wr4e1V86kxA__original/img/KXOf1hP1cIJQLabKhZulWP-e9wI=/0x0/filters:format(png)/pic8157856.png"
+  },
+  "12333": {
+    "name": "Twilight Struggle",
+    "year": 2005.0,
+    "minplayers": 2.0,
+    "maxplayers": 2.0,
+    "playingtime": 180.0,
+    "weight": 3.6147,
+    "rating": 8.2243,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Modern Warfare",
+      "Political",
+      "Wargame"
+    ],
+    "mechanics": [
+      "Action / Event",
+      "Advantage Token",
+      "Area Majority / Influence",
+      "Campaign / Battle Card Driven",
+      "Dice Rolling",
+      "Events",
+      "Hand Management",
+      "Simulation",
+      "Simultaneous Action Selection",
+      "Stat Check Resolution",
+      "Sudden Death Ending",
+      "Tug of War",
+      "Variable Player Powers",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/pNCiUUphnoeWOYfsWq0kng__small/img/p7alNkNy8Avm8UISmhYHCiMz5bE=/fit-in/200x150/filters:strip_icc()/pic3530661.jpg",
+    "image": "https://cf.geekdo-images.com/pNCiUUphnoeWOYfsWq0kng__original/img/Iae47UtAd_RXVd5tJ3YzbDHOv4E=/0x0/filters:format(jpeg)/pic3530661.jpg"
+  },
+  "84876": {
+    "name": "The Castles of Burgundy",
+    "year": 2011.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 90.0,
+    "weight": 2.9688,
+    "rating": 8.164,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Animals",
+      "Medieval",
+      "Territory Building"
+    ],
+    "mechanics": [
+      "Delayed Purchase",
+      "Dice Rolling",
+      "End Game Bonuses",
+      "Grid Coverage",
+      "Hexagon Grid",
+      "Open Drafting",
+      "Pattern Building",
+      "Tile Placement",
+      "Turn Order: Stat-Based",
+      "Variable Set-up",
+      "Worker Placement with Dice Workers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/sH2YTQ10dHj1ibfS-KKtGA__small/img/f5zFXdTcH9RNY0iMNBppd8D-_r0=/fit-in/200x150/filters:strip_icc()/pic8745814.jpg",
+    "image": "https://cf.geekdo-images.com/sH2YTQ10dHj1ibfS-KKtGA__original/img/L_gsMsuhbAe0kyq1QLAmyeKOeSs=/0x0/filters:format(jpeg)/pic8745814.jpg"
+  },
+  "421006": {
+    "name": "The Lord of the Rings: Duel for Middle-earth",
+    "year": 2024.0,
+    "minplayers": 2.0,
+    "maxplayers": 2.0,
+    "playingtime": 30.0,
+    "weight": 2.0701,
+    "rating": 8.35071,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Card Game",
+      "Fantasy",
+      "Novel-based"
+    ],
+    "mechanics": [
+      "Area Majority / Influence",
+      "Hand Management",
+      "Income",
+      "Layering",
+      "Market",
+      "Modular Board",
+      "Multi-Use Cards",
+      "Once-Per-Game Abilities",
+      "Open Drafting",
+      "Point to Point Movement",
+      "Race",
+      "Relative Movement",
+      "Set Collection",
+      "Sudden Death Ending",
+      "Tags",
+      "Take That",
+      "Tech Trees / Tech Tracks",
+      "Variable Player Powers",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/EybxJlUc9rz7F7HVFLqsdw__small/img/rojFW0-h-bteedVG4aJXG1x7V0o=/fit-in/200x150/filters:strip_icc()/pic8378939.jpg",
+    "image": "https://cf.geekdo-images.com/EybxJlUc9rz7F7HVFLqsdw__original/img/Ts4M5eOW38r2oTvJmkx0uwNodv4=/0x0/filters:format(jpeg)/pic8378939.jpg"
+  },
+  "182028": {
+    "name": "Through the Ages: A New Story of Civilization",
+    "year": 2015.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 120.0,
+    "weight": 4.444,
+    "rating": 8.23758,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "Civilization",
+      "Economic"
+    ],
+    "mechanics": [
+      "Action Points",
+      "Auction / Bidding",
+      "Auction: Dutch",
+      "Events",
+      "Income",
+      "Open Drafting",
+      "Player Elimination",
+      "Tags",
+      "Take That"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/fVwPntkJKgaEo0rIC0RwpA__small/img/31usGlzlBReEFf60bcgbvDTjwCg=/fit-in/200x150/filters:strip_icc()/pic2663291.jpg",
+    "image": "https://cf.geekdo-images.com/fVwPntkJKgaEo0rIC0RwpA__original/img/1jawNpljTXwnT4km_2CjGwoUPR8=/0x0/filters:format(jpeg)/pic2663291.jpg"
+  },
+  "295770": {
+    "name": "Frosthaven",
+    "year": 2022.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 180.0,
+    "weight": 4.404,
+    "rating": 8.713,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "Adventure",
+      "Exploration",
+      "Fantasy",
+      "Fighting",
+      "Miniatures"
+    ],
+    "mechanics": [
+      "Campaign / Battle Card Driven",
+      "Communication Limits",
+      "Cooperative Game",
+      "Deck Construction",
+      "Grid Movement",
+      "Hand Management",
+      "Hexagon Grid",
+      "Legacy Game",
+      "Modular Board",
+      "Multi-Use Cards",
+      "Narrative Choice / Paragraph",
+      "Once-Per-Game Abilities",
+      "Scenario / Mission / Campaign Game",
+      "Simultaneous Action Selection",
+      "Solo / Solitaire Game",
+      "Variable Player Powers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/cwUgf-f-qwri8UHBUnifuQ__small/img/3o2Hc_N5mmfpOt8s9kP0ap8Jti8=/fit-in/200x150/filters:strip_icc()/pic5092291.png",
+    "image": "https://cf.geekdo-images.com/cwUgf-f-qwri8UHBUnifuQ__original/img/Tk7wFDJuaU8RPjNkmyC3AWYOPpU=/0x0/filters:format(png)/pic5092291.png"
+  },
+  "193738": {
+    "name": "Great Western Trail",
+    "year": 2016.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 150.0,
+    "weight": 3.695,
+    "rating": 8.13892,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "American West",
+      "Animals"
+    ],
+    "mechanics": [
+      "Contracts",
+      "Deck, Bag, and Pool Building",
+      "Hand Management",
+      "Income",
+      "Ownership",
+      "Rondel",
+      "Set Collection",
+      "Track Movement",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/u1l0gH7sb_vnvDvoO_QHqA__small/img/9lxFidyDb8j6D1vobx4e3UwZ-FI=/fit-in/200x150/filters:strip_icc()/pic4887376.jpg",
+    "image": "https://cf.geekdo-images.com/u1l0gH7sb_vnvDvoO_QHqA__original/img/2zv_XMQoPFWk9Dn0oS4JY1IeFzw=/0x0/filters:format(jpeg)/pic4887376.jpg"
+  },
+  "28720": {
+    "name": "Brass: Lancashire",
+    "year": 2007.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 120.0,
+    "weight": 3.839,
+    "rating": 8.19909,
+    "best": [
+      "4"
+    ],
+    "categories": [
+      "Age of Reason",
+      "Economic",
+      "Educational",
+      "Industry / Manufacturing",
+      "Post-Napoleonic",
+      "Transportation"
+    ],
+    "mechanics": [
+      "Chaining",
+      "End Game Bonuses",
+      "Hand Management",
+      "Income",
+      "Loans",
+      "Market",
+      "Multi-Use Cards",
+      "Network and Route Building",
+      "Ownership",
+      "Tags",
+      "Tech Trees / Tech Tracks",
+      "Tile Placement",
+      "Turn Order: Stat-Based",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/tHVtPzu82mBpeQbbZkV6EA__small/img/AghH1bAEhqzvyRcP3cy5G-rz0So=/fit-in/200x150/filters:strip_icc()/pic3469216.jpg",
+    "image": "https://cf.geekdo-images.com/tHVtPzu82mBpeQbbZkV6EA__original/img/3ffdJj5Pz6HQrg09Kh8ecTen-TY=/0x0/filters:format(jpeg)/pic3469216.jpg"
+  },
+  "246900": {
+    "name": "Eclipse: Second Dawn for the Galaxy",
+    "year": 2020.0,
+    "minplayers": 2.0,
+    "maxplayers": 6.0,
+    "playingtime": 200.0,
+    "weight": 3.6677,
+    "rating": 8.37751,
+    "best": [
+      "4",
+      "6"
+    ],
+    "categories": [
+      "Civilization",
+      "Exploration",
+      "Science Fiction",
+      "Space Exploration",
+      "Territory Building",
+      "Wargame"
+    ],
+    "mechanics": [
+      "Alliances",
+      "Area Majority / Influence",
+      "Area-Impulse",
+      "Dice Rolling",
+      "Grid Movement",
+      "Hexagon Grid",
+      "Hidden Victory Points",
+      "Hot Potato",
+      "Income",
+      "Map Addition",
+      "Modular Board",
+      "Tech Trees / Tech Tracks",
+      "Turn Order: Pass Order",
+      "Variable Player Powers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/Oh3kHw6lweg6ru71Q16h2Q__small/img/e9XZdQe1ZcPpaq4Gy31OoWBB_V0=/fit-in/200x150/filters:strip_icc()/pic5235277.jpg",
+    "image": "https://cf.geekdo-images.com/Oh3kHw6lweg6ru71Q16h2Q__original/img/yW7d4RNfU1ndISCaPlfGYUyxnRU=/0x0/filters:format(jpeg)/pic5235277.jpg"
+  },
+  "173346": {
+    "name": "7 Wonders Duel",
+    "year": 2015.0,
+    "minplayers": 2.0,
+    "maxplayers": 2.0,
+    "playingtime": 30.0,
+    "weight": 2.2265,
+    "rating": 8.07262,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Ancient",
+      "Card Game",
+      "City Building",
+      "Civilization",
+      "Economic"
+    ],
+    "mechanics": [
+      "End Game Bonuses",
+      "Income",
+      "Melding and Splaying",
+      "Modular Board",
+      "Multi-Use Cards",
+      "Once-Per-Game Abilities",
+      "Open Drafting",
+      "Score-and-Reset Game",
+      "Set Collection",
+      "Sudden Death Ending",
+      "Tags",
+      "Tech Trees / Tech Tracks",
+      "Track Movement",
+      "Tug of War",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/zdagMskTF7wJBPjX74XsRw__small/img/gV1-ckZSIC-dCxxpq1Y7GmPITzQ=/fit-in/200x150/filters:strip_icc()/pic2576399.jpg",
+    "image": "https://cf.geekdo-images.com/zdagMskTF7wJBPjX74XsRw__original/img/Ju836WNSaW7Mab9Vjq2TJ_FqhWQ=/0x0/filters:format(jpeg)/pic2576399.jpg"
+  },
+  "167355": {
+    "name": "Nemesis",
+    "year": 2018.0,
+    "minplayers": 1.0,
+    "maxplayers": 5.0,
+    "playingtime": 180.0,
+    "weight": 3.4939,
+    "rating": 8.24042,
+    "best": [
+      "4",
+      "5"
+    ],
+    "categories": [
+      "Adventure",
+      "Horror",
+      "Miniatures",
+      "Science Fiction"
+    ],
+    "mechanics": [
+      "Action Points",
+      "Campaign / Battle Card Driven",
+      "Cooperative Game",
+      "Dice Rolling",
+      "Hand Management",
+      "Hidden Roles",
+      "Interrupts",
+      "Modular Board",
+      "Player Elimination",
+      "Scenario / Mission / Campaign Game",
+      "Semi-Cooperative Game",
+      "Solo / Solitaire Game",
+      "Team-Based Game",
+      "Traitor Game",
+      "Variable Player Powers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/4KSmlm59w0GwLIlgDnJDAQ__small/img/P20AxSqNHOEM5qT_doqeeE7JAHQ=/fit-in/200x150/filters:strip_icc()/pic8211747.png",
+    "image": "https://cf.geekdo-images.com/4KSmlm59w0GwLIlgDnJDAQ__original/img/f0VmAKrPrMRQOUcOJHekRvuysDE=/0x0/filters:format(png)/pic8211747.png"
+  },
+  "177736": {
+    "name": "A Feast for Odin",
+    "year": 2016.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 120.0,
+    "weight": 3.8671,
+    "rating": 8.16028,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "Animals",
+      "Farming",
+      "Industry / Manufacturing",
+      "Medieval",
+      "Puzzle"
+    ],
+    "mechanics": [
+      "Action Points",
+      "Automatic Resource Growth",
+      "Dice Rolling",
+      "Enclosure",
+      "Grid Coverage",
+      "Hand Management",
+      "Income",
+      "Layering",
+      "Pattern Recognition",
+      "Push Your Luck",
+      "Solo / Solitaire Game",
+      "Square Grid",
+      "Tile Placement",
+      "Turn Order: Pass Order",
+      "Worker Placement"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/s9oGMCo1fcfV4Dk3EnqLZw__small/img/AKxMMz2DTbBrEynhDROla8fdjJ4=/fit-in/200x150/filters:strip_icc()/pic3146943.png",
+    "image": "https://cf.geekdo-images.com/s9oGMCo1fcfV4Dk3EnqLZw__original/img/N1X-0JB1GapFVhl98nP4tNFXMcM=/0x0/filters:format(png)/pic3146943.png"
+  },
+  "169786": {
+    "name": "Scythe",
+    "year": 2016.0,
+    "minplayers": 1.0,
+    "maxplayers": 5.0,
+    "playingtime": 115.0,
+    "weight": 3.4506,
+    "rating": 8.09142,
+    "best": [
+      "4"
+    ],
+    "categories": [
+      "Economic",
+      "Fighting",
+      "Science Fiction",
+      "Territory Building"
+    ],
+    "mechanics": [
+      "Area Majority / Influence",
+      "Card Play Conflict Resolution",
+      "Contracts",
+      "End Game Bonuses",
+      "Force Commitment",
+      "Grid Movement",
+      "Hexagon Grid",
+      "King of the Hill",
+      "Movement Points",
+      "Narrative Choice / Paragraph",
+      "Solo / Solitaire Game",
+      "Take That",
+      "Tech Trees / Tech Tracks",
+      "Variable Player Powers",
+      "Variable Set-up",
+      "Victory Points as a Resource",
+      "Zone of Control"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/7k_nOxpO9OGIjhLq2BUZdA__small/img/eQ69OEDdjYjfKg6q5Navee87skU=/fit-in/200x150/filters:strip_icc()/pic3163924.jpg",
+    "image": "https://cf.geekdo-images.com/7k_nOxpO9OGIjhLq2BUZdA__original/img/HlDb9F365w0tSP8uD1vf1pfniQE=/0x0/filters:format(jpeg)/pic3163924.jpg"
+  },
+  "266507": {
+    "name": "Clank! Legacy: Acquisitions Incorporated",
+    "year": 2019.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 120.0,
+    "weight": 2.7386,
+    "rating": 8.48413,
+    "best": [
+      "4"
+    ],
+    "categories": [
+      "Adventure",
+      "Fantasy"
+    ],
+    "mechanics": [
+      "Deck, Bag, and Pool Building",
+      "Delayed Purchase",
+      "End Game Bonuses",
+      "Events",
+      "Legacy Game",
+      "Map Addition",
+      "Movement Points",
+      "Narrative Choice / Paragraph",
+      "Once-Per-Game Abilities",
+      "Open Drafting",
+      "Pick-up and Deliver",
+      "Player Elimination",
+      "Point to Point Movement",
+      "Push Your Luck",
+      "Scenario / Mission / Campaign Game",
+      "Set Collection",
+      "Variable Player Powers",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/hc2NDafu5c24iLJh_IZmyg__small/img/8TA1Gn7jERN4yhtXD-xBCGk-QfM=/fit-in/200x150/filters:strip_icc()/pic4885780.png",
+    "image": "https://cf.geekdo-images.com/hc2NDafu5c24iLJh_IZmyg__original/img/1Fpyz7j7rTvMPRiDdPjn0Vf0m2k=/0x0/filters:format(png)/pic4885780.png"
+  },
+  "312484": {
+    "name": "Lost Ruins of Arnak",
+    "year": 2020.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 120.0,
+    "weight": 2.9359,
+    "rating": 8.08609,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "Adventure",
+      "Card Game",
+      "Exploration",
+      "Fantasy"
+    ],
+    "mechanics": [
+      "Area Movement",
+      "Contracts",
+      "Deck, Bag, and Pool Building",
+      "Delayed Purchase",
+      "End Game Bonuses",
+      "Hand Management",
+      "Multi-Use Cards",
+      "Once-Per-Game Abilities",
+      "Open Drafting",
+      "Resource to Move",
+      "Solo / Solitaire Game",
+      "Track Movement",
+      "Turn Order: Progressive",
+      "Worker Placement"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/6GqH14TJJhza86BX5HCLEQ__small/img/J8SVmGOJXZGxNjkT3xYNQU7Haxg=/fit-in/200x150/filters:strip_icc()/pic5674958.jpg",
+    "image": "https://cf.geekdo-images.com/6GqH14TJJhza86BX5HCLEQ__original/img/CXqwimJPonWy1oyXEMgPN_ZVmUI=/0x0/filters:format(jpeg)/pic5674958.jpg"
+  },
+  "124361": {
+    "name": "Concordia",
+    "year": 2013.0,
+    "minplayers": 2.0,
+    "maxplayers": 5.0,
+    "playingtime": 100.0,
+    "weight": 2.9839,
+    "rating": 8.07228,
+    "best": [
+      "4"
+    ],
+    "categories": [
+      "Ancient",
+      "Economic",
+      "Nautical"
+    ],
+    "mechanics": [
+      "Action Retrieval",
+      "Advantage Token",
+      "Auction: Dutch",
+      "Deck, Bag, and Pool Building",
+      "End Game Bonuses",
+      "Hand Management",
+      "Hidden Victory Points",
+      "Investment",
+      "Movement Points",
+      "Network and Route Building",
+      "Open Drafting",
+      "Point to Point Movement",
+      "Set Collection",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/CzwSm8i7tkLz6cBnrILZBg__small/img/ESPSltYYSFK-aJw6jOTdQrJGpOc=/fit-in/200x150/filters:strip_icc()/pic3453267.jpg",
+    "image": "https://cf.geekdo-images.com/CzwSm8i7tkLz6cBnrILZBg__original/img/BhJ3sB3uk-eSdR1iW4EP3cu0Wi0=/0x0/filters:format(jpeg)/pic3453267.jpg"
+  },
+  "341169": {
+    "name": "Great Western Trail: Second Edition",
+    "year": 2021.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 150.0,
+    "weight": 3.7007,
+    "rating": 8.25495,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "American West",
+      "Animals",
+      "Farming"
+    ],
+    "mechanics": [
+      "Deck, Bag, and Pool Building",
+      "Hand Management",
+      "Ownership",
+      "Rondel",
+      "Set Collection",
+      "Solo / Solitaire Game",
+      "Tags",
+      "Track Movement",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/gDn7AhrDlmfCLSz9ZqoNFQ__small/img/0pt6XrFHTXpNetwMo9rdY7PdhfQ=/fit-in/200x150/filters:strip_icc()/pic5988511.jpg",
+    "image": "https://cf.geekdo-images.com/gDn7AhrDlmfCLSz9ZqoNFQ__original/img/yecB1xO32nnjBAyskVOTq9LBuLo=/0x0/filters:format(jpeg)/pic5988511.jpg"
+  },
+  "373106": {
+    "name": "Sky Team",
+    "year": 2023.0,
+    "minplayers": 2.0,
+    "maxplayers": 2.0,
+    "playingtime": 20.0,
+    "weight": 2.0429,
+    "rating": 8.10548,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Aviation / Flight",
+      "Dice"
+    ],
+    "mechanics": [
+      "Communication Limits",
+      "Cooperative Game",
+      "Dice Rolling",
+      "Scenario / Mission / Campaign Game",
+      "Turn Order: Progressive",
+      "Variable Player Powers",
+      "Variable Set-up",
+      "Worker Placement with Dice Workers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/uXMeQzNenHb3zK7Hoa6b2w__small/img/WyPClajMWU9lV5BdCXiZnqdZgmU=/fit-in/200x150/filters:strip_icc()/pic7398904.jpg",
+    "image": "https://cf.geekdo-images.com/uXMeQzNenHb3zK7Hoa6b2w__original/img/mWOQnkpyYBorh_Y1-0Y2o-ew17k=/0x0/filters:format(jpeg)/pic7398904.jpg"
+  },
+  "205637": {
+    "name": "Arkham Horror: The Card Game",
+    "year": 2016.0,
+    "minplayers": 1.0,
+    "maxplayers": 2.0,
+    "playingtime": 120.0,
+    "weight": 3.5661,
+    "rating": 8.11552,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Adventure",
+      "Card Game",
+      "Collectible Components",
+      "Exploration",
+      "Horror",
+      "Novel-based"
+    ],
+    "mechanics": [
+      "Action Points",
+      "Area Movement",
+      "Communication Limits",
+      "Cooperative Game",
+      "Deck Construction",
+      "Events",
+      "Hand Management",
+      "Map Deformation",
+      "Modular Board",
+      "Player Elimination",
+      "Push Your Luck",
+      "Role Playing",
+      "Scenario / Mission / Campaign Game",
+      "Solo / Solitaire Game",
+      "Stat Check Resolution",
+      "Variable Player Powers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/B5F5ulz0UivNgrI9Ky0euA__small/img/L8ouPl5jv2Ye9MC4R_Os2zSGigE=/fit-in/200x150/filters:strip_icc()/pic3122349.jpg",
+    "image": "https://cf.geekdo-images.com/B5F5ulz0UivNgrI9Ky0euA__original/img/guEKCewM_2e5ugltSN3dTSwdZJI=/0x0/filters:format(jpeg)/pic3122349.jpg"
+  },
+  "237182": {
+    "name": "Root",
+    "year": 2018.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 90.0,
+    "weight": 3.8436,
+    "rating": 8.06851,
+    "best": [
+      "4"
+    ],
+    "categories": [
+      "Animals",
+      "Fantasy",
+      "Negotiation",
+      "Territory Building",
+      "Wargame"
+    ],
+    "mechanics": [
+      "Action Points",
+      "Action Queue",
+      "Action Retrieval",
+      "Area Majority / Influence",
+      "Area Movement",
+      "Dice Rolling",
+      "Hand Management",
+      "Multi-Use Cards",
+      "Negotiation",
+      "Point to Point Movement",
+      "Race",
+      "Sudden Death Ending",
+      "Take That",
+      "Variable Player Powers",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/JUAUWaVUzeBgzirhZNmHHw__small/img/ACovMZzGGIsBRyEQXFnsT8282NM=/fit-in/200x150/filters:strip_icc()/pic4254509.jpg",
+    "image": "https://cf.geekdo-images.com/JUAUWaVUzeBgzirhZNmHHw__original/img/E0s2LvtFA1L5YKk-_44D4u2VD2s=/0x0/filters:format(jpeg)/pic4254509.jpg"
+  },
+  "164928": {
+    "name": "Orléans",
+    "year": 2014.0,
+    "minplayers": 2.0,
+    "maxplayers": 5.0,
+    "playingtime": 90.0,
+    "weight": 3.009,
+    "rating": 8.04529,
+    "best": [
+      "4"
+    ],
+    "categories": [
+      "Medieval",
+      "Religious",
+      "Travel"
+    ],
+    "mechanics": [
+      "Contracts",
+      "Deck, Bag, and Pool Building",
+      "End Game Bonuses",
+      "Events",
+      "Kill Steal",
+      "Point to Point Movement",
+      "Simultaneous Action Selection",
+      "Tech Trees / Tech Tracks",
+      "Turn Order: Progressive",
+      "Variable Set-up",
+      "Worker Placement, Different Worker Types"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/nagl1li6kYt9elV9jbfVQw__small/img/ykeqdM_Naz4IiqOgyB1arzteOiU=/fit-in/200x150/filters:strip_icc()/pic6228507.jpg",
+    "image": "https://cf.geekdo-images.com/nagl1li6kYt9elV9jbfVQw__original/img/Qn6vlBaTUaHNFsqohIUjd0EA4z0=/0x0/filters:format(jpeg)/pic6228507.jpg"
+  },
+  "120677": {
+    "name": "Terra Mystica",
+    "year": 2012.0,
+    "minplayers": 2.0,
+    "maxplayers": 5.0,
+    "playingtime": 150.0,
+    "weight": 3.972,
+    "rating": 8.02851,
+    "best": [
+      "4"
+    ],
+    "categories": [
+      "Civilization",
+      "Economic",
+      "Fantasy",
+      "Territory Building"
+    ],
+    "mechanics": [
+      "Chaining",
+      "End Game Bonuses",
+      "Hexagon Grid",
+      "Income",
+      "Increase Value of Unchosen Resources",
+      "Network and Route Building",
+      "Tech Trees / Tech Tracks",
+      "Turn Order: Pass Order",
+      "Variable Player Powers",
+      "Variable Set-up",
+      "Victory Points as a Resource"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/bre12I1YiXkZr7elvriz4A__small/img/GW-ip0dfeAee7KQqJ04SRZxF1lg=/fit-in/200x150/filters:strip_icc()/pic5375624.jpg",
+    "image": "https://cf.geekdo-images.com/bre12I1YiXkZr7elvriz4A__original/img/_dZS7fVfdc4DhJPbqnDpwTT4uF0=/0x0/filters:format(jpeg)/pic5375624.jpg"
+  },
+  "192135": {
+    "name": "Too Many Bones",
+    "year": 2017.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 120.0,
+    "weight": 3.8735,
+    "rating": 8.26886,
+    "best": [
+      "2"
+    ],
+    "categories": [
+      "Adventure",
+      "Dice",
+      "Fantasy",
+      "Fighting"
+    ],
+    "mechanics": [
+      "Cooperative Game",
+      "Dice Rolling",
+      "Die Icon Resolution",
+      "Grid Movement",
+      "Narrative Choice / Paragraph",
+      "Resource to Move",
+      "Role Playing",
+      "Scenario / Mission / Campaign Game",
+      "Solo / Solitaire Game",
+      "Square Grid",
+      "Stat Check Resolution",
+      "Tech Trees / Tech Tracks",
+      "Turn Order: Role Order",
+      "Variable Player Powers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/wKwRk0wYBcrtLAfgn4PCdg__small/img/mJNzYNKvYWDlaaD12V32BJ453d0=/fit-in/200x150/filters:strip_icc()/pic6624445.png",
+    "image": "https://cf.geekdo-images.com/wKwRk0wYBcrtLAfgn4PCdg__original/img/Wpp0vzsVe4HxXGUqiZ1hDvwAHZU=/0x0/filters:format(png)/pic6624445.png"
+  },
+  "266192": {
+    "name": "Wingspan",
+    "year": 2019.0,
+    "minplayers": 1.0,
+    "maxplayers": 5.0,
+    "playingtime": 70.0,
+    "weight": 2.48,
+    "rating": 7.98973,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "Animals",
+      "Card Game",
+      "Educational",
+      "Environmental"
+    ],
+    "mechanics": [
+      "Action Queue",
+      "Dice Rolling",
+      "End Game Bonuses",
+      "Hand Management",
+      "Open Drafting",
+      "Set Collection",
+      "Solo / Solitaire Game",
+      "Turn Order: Progressive"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/yLZJCVLlIx4c7eJEWUNJ7w__small/img/VNToqgS2-pOGU6MuvIkMPKn_y-s=/fit-in/200x150/filters:strip_icc()/pic4458123.jpg",
+    "image": "https://cf.geekdo-images.com/yLZJCVLlIx4c7eJEWUNJ7w__original/img/cI782Zis9cT66j2MjSHKJGnFPNw=/0x0/filters:format(jpeg)/pic4458123.jpg"
+  },
+  "251247": {
+    "name": "Barrage",
+    "year": 2019.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 180.0,
+    "weight": 4.1158,
+    "rating": 8.13152,
+    "best": [
+      "4"
+    ],
+    "categories": [
+      "Economic",
+      "Environmental",
+      "Industry / Manufacturing"
+    ],
+    "mechanics": [
+      "Contracts",
+      "End Game Bonuses",
+      "Income",
+      "Network and Route Building",
+      "Ownership",
+      "Solo / Solitaire Game",
+      "Turn Order: Stat-Based",
+      "Variable Player Powers",
+      "Variable Set-up",
+      "Worker Placement"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/jEPmWvvYpqkWrKOzqIHFsg__small/img/kMLIpeqA6UcUvQg2AdMwwQoEIfU=/fit-in/200x150/filters:strip_icc()/pic4336469.png",
+    "image": "https://cf.geekdo-images.com/jEPmWvvYpqkWrKOzqIHFsg__original/img/rkHKwkUqpQC7PAGG7n2gbrcQiUY=/0x0/filters:format(png)/pic4336469.png"
+  },
+  "96848": {
+    "name": "Mage Knight Board Game",
+    "year": 2011.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 240.0,
+    "weight": 4.3805,
+    "rating": 8.08118,
+    "best": [
+      "1",
+      "2"
+    ],
+    "categories": [
+      "Adventure",
+      "Exploration",
+      "Fantasy",
+      "Fighting"
+    ],
+    "mechanics": [
+      "Card Play Conflict Resolution",
+      "Cooperative Game",
+      "Deck, Bag, and Pool Building",
+      "Dice Rolling",
+      "Grid Movement",
+      "Hand Management",
+      "Hexagon Grid",
+      "Map Addition",
+      "Modular Board",
+      "Multi-Use Cards",
+      "Open Drafting",
+      "Role Playing",
+      "Scenario / Mission / Campaign Game",
+      "Solo / Solitaire Game",
+      "Tags",
+      "Turn Order: Claim Action",
+      "Variable Player Powers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/DUO2hz9AlLOH8p9ED-lCWg__small/img/0bWDfnjzYebauQZrHmjyHkuUttI=/fit-in/200x150/filters:strip_icc()/pic1083380.jpg",
+    "image": "https://cf.geekdo-images.com/DUO2hz9AlLOH8p9ED-lCWg__original/img/PDDH38Vf9NEB_4ODURxcJKNBfVQ=/0x0/filters:format(jpeg)/pic1083380.jpg"
+  },
+  "321608": {
+    "name": "Hegemony: Lead Your Class to Victory",
+    "year": 2023.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 180.0,
+    "weight": 4.2632,
+    "rating": 8.34292,
+    "best": [
+      "4"
+    ],
+    "categories": [
+      "Economic",
+      "Educational",
+      "Negotiation",
+      "Political"
+    ],
+    "mechanics": [
+      "Action / Event",
+      "Hand Management",
+      "Simulation",
+      "Variable Player Powers",
+      "Voting",
+      "Worker Placement, Different Worker Types"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/DCLgJlrvB-EqL6A3WgQLMQ__small/img/9yp6ANJx6cqdQqQ6hkNr3zA88vw=/fit-in/200x150/filters:strip_icc()/pic5715770.jpg",
+    "image": "https://cf.geekdo-images.com/DCLgJlrvB-EqL6A3WgQLMQ__original/img/vGpYcxjDBCOVcI0BcWOevspTQMQ=/0x0/filters:format(jpeg)/pic5715770.jpg"
+  },
+  "284378": {
+    "name": "Kanban EV",
+    "year": 2020.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 180.0,
+    "weight": 4.2925,
+    "rating": 8.3701,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "Economic",
+      "Industry / Manufacturing"
+    ],
+    "mechanics": [
+      "Action Points",
+      "Hand Management",
+      "Solo / Solitaire Game",
+      "Variable Phase Order",
+      "Worker Placement"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/L2Wn-zUqkcHgqvwvY212Ig__small/img/RQunBacBw949DkYBgzoS5YaXgJo=/fit-in/200x150/filters:strip_icc()/pic4924232.jpg",
+    "image": "https://cf.geekdo-images.com/L2Wn-zUqkcHgqvwvY212Ig__original/img/Htra4hvxjBlejtNEIUns_B3CNNc=/0x0/filters:format(jpeg)/pic4924232.jpg"
+  },
+  "521": {
+    "name": "Crokinole",
+    "year": 1876.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 30.0,
+    "weight": 1.2278,
+    "rating": 8.06874,
+    "best": [
+      "2",
+      "4"
+    ],
+    "categories": [
+      "Action / Dexterity"
+    ],
+    "mechanics": [
+      "Flicking",
+      "Team-Based Game"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/DOwZ7_Q1w68iBhARcDAxig__small/img/nkY1mEj6fItSXJHctfzFcRIcDT0=/fit-in/200x150/filters:strip_icc()/pic8549797.jpg",
+    "image": "https://cf.geekdo-images.com/DOwZ7_Q1w68iBhARcDAxig__original/img/0E7UQ_sXErRusbZVixlIiN8MIJQ=/0x0/filters:format(jpeg)/pic8549797.jpg"
+  },
+  "365717": {
+    "name": "Clank!: Catacombs",
+    "year": 2022.0,
+    "minplayers": 2.0,
+    "maxplayers": 4.0,
+    "playingtime": 90.0,
+    "weight": 2.4859,
+    "rating": 8.22694,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "Adventure",
+      "Exploration",
+      "Fantasy"
+    ],
+    "mechanics": [
+      "Deck, Bag, and Pool Building",
+      "Delayed Purchase",
+      "End Game Bonuses",
+      "Map Addition",
+      "Map Deformation",
+      "Modular Board",
+      "Movement Points",
+      "Open Drafting",
+      "Player Elimination",
+      "Point to Point Movement",
+      "Push Your Luck",
+      "Tile Placement",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/cCLn9Mvb7jRSaZzHeUXhoQ__small/img/B8BFQLR2Po3ekI_7XSG1kR9oil0=/fit-in/200x150/filters:strip_icc()/pic6937913.jpg",
+    "image": "https://cf.geekdo-images.com/cCLn9Mvb7jRSaZzHeUXhoQ__original/img/NK4hsA9nc-kdI07hR0Nc23dL_bk=/0x0/filters:format(jpeg)/pic6937913.jpg"
+  },
+  "183394": {
+    "name": "Viticulture Essential Edition",
+    "year": 2015.0,
+    "minplayers": 1.0,
+    "maxplayers": 6.0,
+    "playingtime": 90.0,
+    "weight": 2.9,
+    "rating": 7.95154,
+    "best": [
+      "3",
+      "4"
+    ],
+    "categories": [
+      "Economic",
+      "Farming"
+    ],
+    "mechanics": [
+      "Contracts",
+      "Hand Management",
+      "Race",
+      "Solo / Solitaire Game",
+      "Turn Order: Auction",
+      "Victory Points as a Resource",
+      "Worker Placement",
+      "Worker Placement, Different Worker Types"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/l_PRU2lVlX9seScRFcvFlA__small/img/pULDtVd75QZgGfvSMhr6Rs07vK8=/fit-in/200x150/filters:strip_icc()/pic6500949.jpg",
+    "image": "https://cf.geekdo-images.com/l_PRU2lVlX9seScRFcvFlA__original/img/gDL7OZFlzoOFgU0VYlREs8P5hCQ=/0x0/filters:format(jpeg)/pic6500949.jpg"
+  },
+  "390092": {
+    "name": "Ticket to Ride Legacy: Legends of the West",
+    "year": 2023.0,
+    "minplayers": 2.0,
+    "maxplayers": 5.0,
+    "playingtime": 90.0,
+    "weight": 2.5556,
+    "rating": 8.59613,
+    "best": [
+      "4",
+      "5"
+    ],
+    "categories": [
+      "American West",
+      "Trains"
+    ],
+    "mechanics": [
+      "Connections",
+      "Contracts",
+      "End Game Bonuses",
+      "Hand Management",
+      "Legacy Game",
+      "Network and Route Building",
+      "Open Drafting",
+      "Push Your Luck",
+      "Set Collection"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/2H0pJddVJA3r6btqRNLG1g__small/img/scMQ04r1admTpyvH91g9DbZEncg=/fit-in/200x150/filters:strip_icc()/pic7541330.png",
+    "image": "https://cf.geekdo-images.com/2H0pJddVJA3r6btqRNLG1g__original/img/q8N6sz7FIZkbXe_0d4RiIfM8aNU=/0x0/filters:format(png)/pic7541330.png"
+  },
+  "324856": {
+    "name": "The Crew: Mission Deep Sea",
+    "year": 2021.0,
+    "minplayers": 3.0,
+    "maxplayers": 5.0,
+    "playingtime": 20.0,
+    "weight": 2.0588,
+    "rating": 8.02966,
+    "best": [
+      "4"
+    ],
+    "categories": [
+      "Adventure",
+      "Card Game",
+      "Mythology",
+      "Nautical"
+    ],
+    "mechanics": [
+      "Communication Limits",
+      "Cooperative Game",
+      "Deduction",
+      "Scenario / Mission / Campaign Game",
+      "Trick-taking"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/VuBqZ1sMaDAVVHF_OEJP4g__small/img/EdacXlcFZ06YK0-ZKa0oKwL4VCw=/fit-in/200x150/filters:strip_icc()/pic5988903.jpg",
+    "image": "https://cf.geekdo-images.com/VuBqZ1sMaDAVVHF_OEJP4g__original/img/jGWxczXC_VWZofeAmlO_DkB0hCI=/0x0/filters:format(jpeg)/pic5988903.jpg"
+  },
+  "199792": {
+    "name": "Everdell",
+    "year": 2018.0,
+    "minplayers": 1.0,
+    "maxplayers": 4.0,
+    "playingtime": 80.0,
+    "weight": 2.8359,
+    "rating": 7.97034,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "Animals",
+      "Card Game",
+      "City Building",
+      "Fantasy"
+    ],
+    "mechanics": [
+      "Contracts",
+      "End Game Bonuses",
+      "Hand Management",
+      "Income",
+      "Open Drafting",
+      "Ownership",
+      "Set Collection",
+      "Solo / Solitaire Game",
+      "Tags",
+      "Variable Set-up",
+      "Worker Placement"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/fjE7V5LNq31yVEW_yuqI-Q__small/img/Cf_mYxR_VvdjTEPXseSurni2JNI=/fit-in/200x150/filters:strip_icc()/pic3918905.png",
+    "image": "https://cf.geekdo-images.com/fjE7V5LNq31yVEW_yuqI-Q__original/img/HQ1ti16wT9lqja5_h3gUfHUIcVI=/0x0/filters:format(png)/pic3918905.png"
+  },
+  "436217": {
+    "name": "The Lord of the Rings: Fate of the Fellowship",
+    "year": 2025.0,
+    "minplayers": 1.0,
+    "maxplayers": 5.0,
+    "playingtime": 150.0,
+    "weight": 3.1073,
+    "rating": 8.33671,
+    "best": [
+      "3"
+    ],
+    "categories": [
+      "Fantasy",
+      "Novel-based"
+    ],
+    "mechanics": [
+      "Action Points",
+      "Cooperative Game",
+      "Dice Rolling",
+      "Hand Management",
+      "Set Collection",
+      "Solo / Solitaire Game",
+      "Tags",
+      "Variable Player Powers"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/scw36iBIad7l-rGzxPGcGg__small/img/dyMBa6SBkPwpWfA4FINqbX8RNDQ=/fit-in/200x150/filters:strip_icc()/pic8662670.png",
+    "image": "https://cf.geekdo-images.com/scw36iBIad7l-rGzxPGcGg__original/img/JZKAg-ETtE7z3YbgSMPd242rCqE=/0x0/filters:format(png)/pic8662670.png"
+  },
+  "366013": {
+    "name": "Heat: Pedal to the Metal",
+    "year": 2022.0,
+    "minplayers": 1.0,
+    "maxplayers": 6.0,
+    "playingtime": 60.0,
+    "weight": 2.1992,
+    "rating": 7.9879,
+    "best": [
+      "5",
+      "6"
+    ],
+    "categories": [
+      "Racing",
+      "Sports"
+    ],
+    "mechanics": [
+      "Catch the Leader",
+      "Deck, Bag, and Pool Building",
+      "Hand Management",
+      "Programmed Movement",
+      "Push Your Luck",
+      "Race",
+      "Simulation",
+      "Simultaneous Action Selection",
+      "Solo / Solitaire Game",
+      "Track Movement",
+      "Variable Set-up"
+    ],
+    "thumbnail": "https://cf.geekdo-images.com/-vOrd4bOspibyohYExLqWg__small/img/2GbaKvYOzWIxfgbYTk2R9puiyzo=/fit-in/200x150/filters:strip_icc()/pic6940449.png",
+    "image": "https://cf.geekdo-images.com/-vOrd4bOspibyohYExLqWg__original/img/iXU8a9WaVlwrkiEiOxWN06y9y5g=/0x0/filters:format(png)/pic6940449.png"
+  }
+}

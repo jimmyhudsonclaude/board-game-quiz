@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which Board Game Are You? (For Real)</title>
+<meta name="description" content="No tricks this time. Ten questions match you to one of BoardGameGeek's top 50 games.">
+<meta property="og:title" content="Which Board Game Are You? (For Real This Time)">
+<meta property="og:description" content="No tricks this time. Ten questions match you to one of BoardGameGeek's top 50 games.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ultra&family=Pinyon+Script&family=Lora:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* Emerald-and-gold version of the shared look */
+  :root { --red: #1f6b47; --red-dark: #0f3d27; }
+  .btn { background: linear-gradient(#2d8a5e, #1f6b47 55%, #14513a); }
+  .ribbon { background: linear-gradient(#b8231c, #8f1a13); }
+  .ribbon::before, .ribbon::after { background: #6e120d; }
+  .deed-band {
+    background:
+      repeating-conic-gradient(from 0deg at 50% 120%, rgba(255,255,255,.10) 0deg 5deg, transparent 5deg 12deg),
+      linear-gradient(#2a8459, #1f6b47 60%, #134a32);
+  }
+  .deed-band .game-name {
+    font-family: Ultra, Georgia, serif; color: #fff8e6; line-height: 1.08; margin: 6px 0 8px;
+    font-size: clamp(26px, 8vw, 44px);
+    -webkit-text-stroke: 2px var(--gold); paint-order: stroke fill;
+    text-shadow: 3px 3px 0 var(--red-dark), 4px 6px 0 rgba(0,20,10,.35);
+  }
+  .deed-band .match { display: table; margin: 4px auto 0; }
+  .result-cover { margin: 2px 0 16px; }
+  .result-cover img {
+    display: inline-block; max-width: 220px; max-height: 220px; width: auto; height: auto;
+    border-radius: 6px; box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--gold-dark), 0 14px 24px -8px rgba(40,25,5,.6);
+    transform: rotate(-2deg);
+  }
+  .facts { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+  .facts span { background: #fff3d1; border: 2px solid var(--gold); border-radius: 999px; padding: 5px 12px; font-size: 14px; font-weight: 700; }
+  .why { text-align: left; margin: 0 0 18px; }
+  .why h3 { font-family: Ultra, Georgia, serif; font-weight: 400; font-size: 20px; margin: 0 0 8px; text-align: center; }
+  .why ul { margin: 0; padding: 0; list-style: none; }
+  .why li { position: relative; padding: 8px 0 8px 30px; border-bottom: 1px dashed rgba(168,111,18,.45); font-size: 17px; line-height: 1.45; }
+  .why li:last-child { border-bottom: none; }
+  .why li::before { content: "✦"; position: absolute; left: 6px; top: 8px; color: var(--gold-dark); }
+  .alts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 0 22px; }
+  .alt {
+    background: #f7ead0; border: 2px dashed var(--gold-dark); border-radius: 12px; padding: 12px 10px;
+    text-align: center; font-weight: 700; font-size: 15px; line-height: 1.25; color: var(--ink); text-decoration: none;
+  }
+  .alt img { display: block; margin: 0 auto 8px; max-width: 90px; max-height: 90px; width: auto; height: auto; border-radius: 3px; box-shadow: 0 3px 6px rgba(60,30,5,.35); }
+  .alt .rank { display: block; font-size: 11px; color: var(--red); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 2px; }
+  .section-label { font-size: 12px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--red); margin: 0 0 10px; }
+  a.btn { text-decoration: none; text-align: center; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- INTRO -->
+  <section class="screen active intro" id="intro">
+    <div class="card">
+      <div class="script">No tricks this time. We promise.</div>
+      <h1 class="logo">Which Board Game <span class="small">ARE</span>You?</h1>
+      <div class="ribbon">For Real This Time</div>
+      <p class="lede">Ten questions about how you like to play. We'll match you with one of the 50 best-rated board games on BoardGameGeek.</p>
+      <div class="badges">
+        <span>🏆 Top 50 games</span>
+        <span>🎲 Real BGG data</span>
+        <span>⏱️ 2 minutes</span>
+      </div>
+      <button class="btn" id="startBtn">Find My Game</button>
+      <p class="fine">Monopoly is not one of the possible answers. You're welcome.</p>
+    </div>
+  </section>
+
+  <!-- QUESTION -->
+  <section class="screen question" id="question">
+    <div class="card">
+      <div class="qhead">
+        <button class="back" id="backBtn">← Back</button>
+        <span id="qCount">Question 1 of 10</span>
+      </div>
+      <div class="track" id="qTrack"><div class="rails"></div><div class="done"></div><div class="train">🚂</div></div>
+      <h2 id="qText"></h2>
+      <p class="sub" id="qSub"></p>
+      <div class="answers" id="answers"></div>
+    </div>
+  </section>
+
+  <!-- ANALYZING -->
+  <section class="screen analyzing" id="analyzing">
+    <div class="card">
+      <div class="script">One moment, please</div>
+      <h2>Finding Your Game</h2>
+      <p class="status" id="status"></p>
+      <div class="track" id="aTrack"><div class="rails"></div><div class="done"></div><div class="train">🚂</div></div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen" id="result">
+    <div class="card deed">
+      <div class="deed-band">
+        <div class="small">✦ Your Official Match ✦</div>
+        <div class="script">Your board game is</div>
+        <div class="game-name" id="rName"></div>
+        <div class="match" id="rRank"></div>
+      </div>
+      <div class="deed-body">
+        <div class="result-cover"><img id="rCover" alt="" referrerpolicy="no-referrer"></div>
+        <div class="facts" id="rFacts"></div>
+        <p class="blurb" id="rBlurb"></p>
+        <div class="why">
+          <h3>Why It Fits You</h3>
+          <ul id="rWhy"></ul>
+        </div>
+        <div class="section-label">You'd also love</div>
+        <div class="alts" id="rAlts"></div>
+        <a class="btn" id="bggBtn" target="_blank" rel="noopener">See It on BoardGameGeek</a>
+        <button class="btn secondary" id="shareBtn">Share My Result</button>
+        <button class="btn secondary" id="retakeBtn">Take It Again</button>
+        <p class="fine">Rankings, game data, and box art from BoardGameGeek.<br>Top 50 as of November 24, 2026.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+<div class="toast" id="toast"></div>
+
+<script src="real-games.js"></script>
+<script>
+// ---------- THE QUESTIONS ----------
+// Each answer nudges what you're looking for. "set: { dim: [target, importance] }"
+// Dimensions run 0 to 1: heavy (complexity), long (play time), coop, conflict, luck,
+// campaign (story across nights), engine (build-up-and-pay-off), duo (2 players), crowd (5+ players).
+// "theme" picks a setting: space, fantasy, history, nature, modern.
+const QUESTIONS = [
+  {
+    q: "It's Friday night. How long should game night last?",
+    a: [
+      { e: "⚡", t: "Quick. Under 45 minutes.", set: { long: [0.05, 1.2] } },
+      { e: "☕", t: "About an hour", set: { long: [0.3, 1.2] } },
+      { e: "🌙", t: "A solid two hours", set: { long: [0.6, 1.2] } },
+      { e: "🌄", t: "All night. Clear the calendar.", set: { long: [0.95, 1.2] } },
+    ],
+  },
+  {
+    q: "A friend hands you a 40-page rulebook. Your reaction?",
+    a: [
+      { e: "🤓", t: "Finally. Let me at it.", set: { heavy: [0.95, 1.5] } },
+      { e: "👍", t: "Fine, if the game is worth it", set: { heavy: [0.6, 1.5] } },
+      { e: "🙏", t: "Can someone just teach me?", set: { heavy: [0.35, 1.5] } },
+      { e: "🏃", t: "I'm going home", set: { heavy: [0.05, 1.5] } },
+    ],
+  },
+  {
+    q: "When it's all on the line, you'd rather...",
+    a: [
+      { e: "🤝", t: "Win or lose together as a team", set: { coop: [1, 1.6], conflict: [0, 0.6] } },
+      { e: "🏆", t: "Win it all by myself", set: { coop: [0, 1.6] } },
+      { e: "🤷", t: "Honestly, either one sounds fun", set: {} },
+    ],
+  },
+  {
+    q: "How do you feel about luck?",
+    a: [
+      { e: "🎲", t: "Dice make life exciting", set: { luck: [0.85, 1] } },
+      { e: "🧂", t: "A little is fine, for spice", set: { luck: [0.45, 1] } },
+      { e: "🧠", t: "Luck is for people without a plan", set: { luck: [0.05, 1] } },
+    ],
+  },
+  {
+    q: "Pick a world to spend the evening in.",
+    a: [
+      { e: "🚀", t: "Deep space", theme: "space" },
+      { e: "🐉", t: "Swords, magic, and dragons", theme: "fantasy" },
+      { e: "🏛️", t: "History, from Rome to the railroads", theme: "history" },
+      { e: "🌿", t: "Forests, critters, and gardens", theme: "nature" },
+      { e: "🏙️", t: "The real world, today", theme: "modern" },
+    ],
+  },
+  {
+    q: "Your friend invades your territory. You...",
+    a: [
+      { e: "⚔️", t: "Plot revenge. Strike back twice as hard.", set: { conflict: [1, 1.3] } },
+      { e: "😏", t: "Shrug. It's part of the game.", set: { conflict: [0.55, 1.3] } },
+      { e: "🕊️", t: "Wish nobody attacked anybody", set: { conflict: [0.05, 1.3] } },
+    ],
+  },
+  {
+    q: "Who's usually at your table?",
+    a: [
+      { e: "👫", t: "Just me and one other person", set: { duo: [1, 1.3], crowd: [0, 0.4] } },
+      { e: "👨‍👩‍👧‍👦", t: "Three or four of us", set: { duo: [0.3, 0.8], crowd: [0.4, 0.6] } },
+      { e: "🎉", t: "The more the merrier", set: { duo: [0, 1], crowd: [1, 1.3] } },
+    ],
+  },
+  {
+    q: "Do you like a story that continues across game nights?",
+    a: [
+      { e: "📚", t: "Yes! Give me a saga.", set: { campaign: [1, 1.3] } },
+      { e: "🤔", t: "Maybe, with the right group", set: { campaign: [0.45, 0.6] } },
+      { e: "🔄", t: "No. Every game starts fresh.", set: { campaign: [0, 1.3] } },
+    ],
+  },
+  {
+    q: "Which moment feels the best?",
+    a: [
+      { e: "⚙️", t: "My engine finally pays off, big", set: { engine: [1, 1.3] } },
+      { e: "♟️", t: "Outmaneuvering someone across the table", set: { conflict: [0.85, 0.8], coop: [0, 0.6] } },
+      { e: "🛡️", t: "Beating impossible odds together", set: { coop: [1, 1.1] } },
+      { e: "😮", t: "A twist nobody saw coming", set: { luck: [0.7, 0.6], campaign: [0.7, 0.5] } },
+    ],
+  },
+  {
+    q: "Pick the vibe.",
+    sub: "Last question.",
+    a: [
+      { e: "🤫", t: "Quiet and thinky", set: { heavy: [0.75, 0.6], conflict: [0.15, 0.6], luck: [0.1, 0.6] } },
+      { e: "📣", t: "Loud and a little chaotic", set: { luck: [0.85, 0.7], heavy: [0.25, 0.6], conflict: [0.6, 0.4] } },
+      { e: "😬", t: "Tense and dramatic", set: { conflict: [0.7, 0.5], long: [0.7, 0.4], luck: [0.5, 0.3] } },
+      { e: "🧸", t: "Cozy and relaxing", set: { heavy: [0.3, 0.6], conflict: [0, 0.8] }, theme: "nature", themeWeight: 0.5 },
+    ],
+  },
+];
+
+const THEME_LABELS = { space: "deep space", fantasy: "a world of swords and magic", history: "the past", nature: "the natural world", modern: "the real world" };
+
+const ANALYZING = [
+  "Weighing your feelings about rulebooks...",
+  "Comparing you to 44 of the best games ever made...",
+  "Checking who's at your table...",
+  "Ruling out Monopoly (we promised)...",
+  "Narrowing it down...",
+  "Found your match!",
+];
+
+// ---------- LOGIC ----------
+const $ = (id) => document.getElementById(id);
+let current = 0, busy = false;
+let picks = [];   // the answer chosen for each question
+
+function show(id) {
+  document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
+  $(id).classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+function setTrack(el, pct) {
+  el.querySelector(".done").style.width = pct + "%";
+  el.querySelector(".train").style.left = pct + "%";
+}
+
+function renderQuestion() {
+  const item = QUESTIONS[current];
+  $("qCount").textContent = `Question ${current + 1} of ${QUESTIONS.length}`;
+  setTrack($("qTrack"), Math.max(4, (current / QUESTIONS.length) * 100));
+  $("qText").textContent = item.q;
+  $("qSub").textContent = item.sub || "";
+  $("qSub").style.display = item.sub ? "" : "none";
+  $("backBtn").classList.toggle("hide", current === 0);
+  const box = $("answers");
+  box.className = "answers";
+  box.innerHTML = "";
+  item.a.forEach((ans) => {
+    const b = document.createElement("button");
+    b.className = "answer";
+    const em = document.createElement("span");
+    em.className = "emoji";
+    em.textContent = ans.e;
+    const t = document.createElement("span");
+    t.className = "label";
+    t.textContent = ans.t;
+    b.append(em, t);
+    b.addEventListener("click", () => pick(b, ans));
+    box.appendChild(b);
+  });
+  busy = false;
+}
+
+function pick(btn, ans) {
+  if (busy) return;
+  busy = true;
+  btn.classList.add("picked");
+  picks[current] = ans;
+  setTimeout(() => {
+    current++;
+    if (current < QUESTIONS.length) renderQuestion();
+    else { setTrack($("qTrack"), 100); analyze(); }
+  }, 300);
+}
+
+// Build the player's profile from their answers, then score every game against it.
+function profile() {
+  const dims = {}, themes = {};
+  picks.forEach((ans) => {
+    Object.entries(ans.set || {}).forEach(([dim, [target, w]]) => {
+      dims[dim] = dims[dim] || { sum: 0, w: 0 };
+      dims[dim].sum += target * w;
+      dims[dim].w += w;
+    });
+    if (ans.theme) themes[ans.theme] = (themes[ans.theme] || 0) + (ans.themeWeight || 1.4);
+  });
+  return { dims, themes };
+}
+
+function score(game, p) {
+  let miss = 0, total = 0;
+  Object.entries(p.dims).forEach(([dim, { sum, w }]) => {
+    const diff = sum / w - game.dims[dim];
+    miss += w * diff * diff;
+    total += w;
+  });
+  Object.entries(p.themes).forEach(([theme, w]) => {
+    total += w;
+    if (!game.themes.includes(theme)) miss += w * 0.8;
+  });
+  return total ? 1 - miss / total : 0;
+}
+
+function reasons(game, p) {
+  const g = game.dims, list = [];
+  const want = (dim) => p.dims[dim] ? p.dims[dim].sum / p.dims[dim].w : null;
+  const close = (dim) => want(dim) !== null && Math.abs(want(dim) - g[dim]) <= 0.3;
+  const add = (pri, text) => list.push({ pri, text });
+
+  Object.entries(p.themes).forEach(([theme, w]) => {
+    if (w >= 1 && game.themes.includes(theme)) add(2, `It's set in ${THEME_LABELS[theme]}, right where you wanted to be.`);
+  });
+  if (close("coop")) add(1.6, g.coop >= 0.6 ? "Everyone wins or loses together, just how you like it." : "It's every player for themselves, and you're in it to win.");
+  if (close("heavy")) add(1.5, g.heavy >= 0.65 ? "It's a meaty, brain-burning strategy game, and you love a challenge." : g.heavy <= 0.35 ? "It's easy to learn, so nobody has to read a 40-page rulebook." : "It has real depth without a punishing rulebook.");
+  if (close("campaign") && g.campaign >= 0.7) add(1.5, "Its story keeps going across game nights, like you wanted.");
+  if (close("campaign") && g.campaign <= 0.1 && want("campaign") <= 0.1) add(0.8, "Every game starts fresh. No homework between sessions.");
+  if (close("duo") && g.duo >= 0.75) add(1.4, "It shines with just two players.");
+  if (close("crowd") && g.crowd >= 1) add(1.4, "It handles a big table, so bring everybody.");
+  if (close("conflict")) add(1.3, g.conflict >= 0.6 ? "There's plenty of head-to-head clashing for your competitive side." : g.conflict <= 0.25 ? "Nobody's attacking anybody. You can just build and enjoy it." : "There's some friendly competition, but nothing brutal.");
+  if (close("engine") && g.engine >= 0.7) add(1.3, "You build an engine that pays off big by the end. Very satisfying.");
+  if (close("luck")) add(1.1, g.luck >= 0.6 ? "Dice and cards keep every turn exciting." : g.luck <= 0.2 ? "There's almost no luck. Your plan wins or loses on its own." : "There's just a little luck, for spice.");
+  if (close("long")) add(1, g.long >= 0.7 ? "It fills a whole evening, and you've cleared the calendar." : g.long <= 0.25 ? "It plays in under an hour." : "It fits a normal game night.");
+
+  const seen = new Set();
+  return list.sort((a, b) => b.pri - a.pri).filter((r) => !seen.has(r.text) && seen.add(r.text)).slice(0, 3).map((r) => r.text);
+}
+
+function analyze() {
+  show("analyzing");
+  const track = $("aTrack");
+  setTrack(track, 0);
+  let i = 0;
+  $("status").textContent = ANALYZING[0];
+  const timer = setInterval(() => {
+    i++;
+    setTrack(track, Math.min(100, (i / ANALYZING.length) * 100));
+    if (i < ANALYZING.length) $("status").textContent = ANALYZING[i];
+    else { clearInterval(timer); setTimeout(showResult, 450); }
+  }, 600);
+}
+
+let winner = null;
+function showResult() {
+  const p = profile();
+  const ranked = REAL_GAMES.map((g) => ({ g, s: score(g, p) })).sort((a, b) => b.s - a.s);
+  winner = ranked[0].g;
+  const g = winner;
+
+  $("rName").textContent = g.name;
+  $("rRank").textContent = `#${g.rank} on BoardGameGeek · ${Math.round(ranked[0].s * 100)}% match`;
+  const cover = $("rCover");
+  cover.style.display = "";
+  cover.onerror = () => { cover.style.display = "none"; };
+  cover.src = g.image;
+  const players = g.min === g.max ? `${g.min} players` : `${g.min}–${g.max} players`;
+  $("rFacts").innerHTML = "";
+  [`⏱️ ${g.time} min`, `👥 ${players}`, `🧠 ${g.weight.toFixed(1)} / 5 complexity`].forEach((f) => {
+    const s = document.createElement("span"); s.textContent = f; $("rFacts").appendChild(s);
+  });
+  $("rBlurb").textContent = g.blurb;
+  $("rWhy").innerHTML = "";
+  reasons(g, p).forEach((r) => { const li = document.createElement("li"); li.textContent = r; $("rWhy").appendChild(li); });
+
+  $("rAlts").innerHTML = "";
+  ranked.slice(1, 3).forEach(({ g: a }) => {
+    const link = document.createElement("a");
+    link.className = "alt";
+    link.href = `https://boardgamegeek.com/boardgame/${a.id}`;
+    link.target = "_blank"; link.rel = "noopener";
+    const img = document.createElement("img");
+    img.src = a.thumb; img.alt = ""; img.referrerPolicy = "no-referrer";
+    img.onerror = () => img.remove();
+    const r = document.createElement("span"); r.className = "rank"; r.textContent = `#${a.rank} on BGG`;
+    link.append(img, r, document.createTextNode(a.name));
+    $("rAlts").appendChild(link);
+  });
+  $("bggBtn").href = `https://boardgamegeek.com/boardgame/${g.id}`;
+  show("result");
+}
+
+function toast(msg) {
+  const t = $("toast"); t.textContent = msg; t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2400);
+}
+async function share() {
+  const url = location.href.split("#")[0].split("?")[0];
+  const text = `I took the real Board Game Personality Test and got ${winner.name}! What's yours?`;
+  if (navigator.share) {
+    try { await navigator.share({ title: "Which Board Game Are You? (For Real)", text, url }); return; }
+    catch (e) { if (e && e.name === "AbortError") return; }
+  }
+  try { await navigator.clipboard.writeText(`${text} ${url}`); toast("Copied! Paste it to a friend."); }
+  catch (e) { prompt("Copy this and send it to a friend:", `${text} ${url}`); }
+}
+
+function start() { current = 0; picks = []; renderQuestion(); show("question"); }
+$("startBtn").addEventListener("click", start);
+$("retakeBtn").addEventListener("click", start);
+$("backBtn").addEventListener("click", () => { if (current > 0 && !busy) { current--; renderQuestion(); } });
+$("shareBtn").addEventListener("click", share);
+</script>
+</body>
+</html>
