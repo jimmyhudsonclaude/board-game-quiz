@@ -2,6 +2,10 @@
 
 A goof personality quiz. People answer 10 questions about board games (plus a few random ones like green or blue, Apple or Android) and get a very official-looking result. The result is always Monopoly, with a random "flavor" (The Top Hat, The Banker, Free Parking House Rules, and so on). Retaking it gets a smug "Still Monopoly" message.
 
+**Live link:** https://jimmyhudsonclaude.github.io/board-game-quiz/
+
+To update the live site, ask Hoid to "push the quiz changes." It goes live a minute or two later.
+
 ## How to open it
 
 Double-click `index.html`. It opens in your web browser. That's the whole app, one file.
