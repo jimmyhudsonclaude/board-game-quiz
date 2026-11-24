@@ -34,6 +34,16 @@ Or just tell Hoid what you want changed.
 
 To update it later, upload the new `index.html` the same way. It replaces the old one.
 
+## Box covers (BoardGameGeek data key)
+
+The quiz uses a free, non-commercial BoardGameGeek data key (approved for this quiz). The key lives only in your Mac's Keychain, under the name `bgg-api-token`. It is never in the quiz or in GitHub.
+
+`tools/fetch_covers.py` uses that key to look up cover images. Ask Hoid to "update the top 50" and it will grab the current rankings, fetch the covers, and push the update.
+
+If you ever need to replace the key: create a new token at boardgamegeek.com/applications, then run this in Terminal and paste the token when asked:
+
+    security add-generic-password -U -s bgg-api-token -a bgg -w
+
 ## Common problems
 
 - **A game shows a 🎲 instead of its cover.** BoardGameGeek changed or removed that image. Ask Hoid to "update the top 50."

@@ -214,6 +214,14 @@
   .answers.two .answer { flex-direction: column; text-align: center; padding: 22px 18px 18px; gap: 8px; }
   .answers.two .answer::after { inset: 6px 16px; }
   .answers.two .answer .emoji { font-size: 44px; width: auto; }
+  .answers.covers { grid-template-columns: 1fr 1fr; }
+  .answers.covers .answer { flex-direction: column; text-align: center; justify-content: flex-start; padding: 16px 16px 14px; gap: 8px; font-size: 15px; line-height: 1.2; }
+  .answers.covers .answer::after { inset: 6px 14px; }
+  .answers.covers .answer .stub { padding: 0; border: none; }
+  .answers.covers .answer .cover { width: 112px; height: 112px; object-fit: contain; background: transparent; box-shadow: none; filter: drop-shadow(0 4px 5px rgba(60,30,5,.4)); }
+  .answers.covers .answer .label { align-items: center; }
+  .answers.covers .answer .rank { font-size: 11px; }
+  .answers.covers .answer > .emoji { font-size: 64px; width: auto; height: 112px; display: flex; align-items: center; justify-content: center; }
   .swatch { width: 100%; height: 64px; border-radius: 10px; border: 3px solid #fff; box-shadow: 0 0 0 2px var(--gold-dark); }
 
   /* ---------- Analyzing ---------- */
@@ -247,7 +255,7 @@
   .deed-band .match { display: table; margin: 8px auto 0; }
   .boxshot { position: relative; display: inline-block; margin: 4px 0 18px; transform: rotate(-4deg); }
   .boxshot img {
-    display: block; width: 84px; height: 84px; object-fit: contain;
+    display: block; width: auto; height: auto; max-width: 210px; max-height: 190px;
     background: #fff; padding: 4px; border-radius: 4px;
     box-shadow: 0 0 0 2px var(--gold-dark), 0 10px 18px -6px rgba(60,25,5,.6);
     filter: grayscale(.35) sepia(.2);
@@ -361,60 +369,59 @@
 <div class="toast" id="toast"></div>
 
 <script>
-// ---------- BOARDGAMEGEEK TOP 50 (snapshot taken November 24, 2026) ----------
+// ---------- BOARDGAMEGEEK TOP 50 (rankings snapshot November 24, 2026; covers via the BGG XML API) ----------
 // To refresh: ask Hoid to "update the top 50."
-const IMG = "https://cf.geekdo-images.com/";
 const GAMES = [
-  [1, "Brass: Birmingham", "x3zxjr-Vw5iU4yDPg70Jgw__micro/img/4Od3GYCiqptga0VbmyumPbJlBsU=/fit-in/64x64/filters:strip_icc()/pic3490053.jpg"],
-  [2, "Ark Nova", "SoU8p28Sk1s8MSvoM4N8pQ__micro/img/LSAi1pmhbTbWwtBrziutDOXzfdY=/fit-in/64x64/filters:strip_icc()/pic6293412.jpg"],
-  [3, "Pandemic Legacy: Season 1", "-Qer2BBPG7qGGDu6KcVDIw__micro/img/n6-sXYD6XXZoqIxq4P6AG7VPCuA=/fit-in/64x64/filters:strip_icc()/pic2452831.png"],
-  [4, "Gloomhaven", "sZYp_3BTDGjh2unaZfZmuA__micro/img/sQyh47ClBO3d5sxPm73hMvM-JV4=/fit-in/64x64/filters:strip_icc()/pic2437871.jpg"],
-  [5, "Dune: Imperium – Uprising", "UVUkjMV_Q2paVUIUP30Vvw__micro/img/NLUsSSVMHts8-v1gJxC_LbAjSaE=/fit-in/64x64/filters:strip_icc()/pic7664424.jpg"],
-  [6, "Dune: Imperium", "PhjygpWSo-0labGrPBMyyg__micro/img/mfU7-dEFnVyXJrF-BWAO0buexao=/fit-in/64x64/filters:strip_icc()/pic5666597.jpg"],
-  [7, "Twilight Imperium", "_Ppn5lssO5OaildSE-FgFA__micro/img/2gymaKs35_2yj7eyyA6cYyVmd9c=/fit-in/64x64/filters:strip_icc()/pic3727516.jpg"],
-  [8, "War of the Ring", "ImPgGag98W6gpV1KV812aA__micro/img/NT-Av_3kdYUcwuti5ocmIQXow3g=/fit-in/64x64/filters:strip_icc()/pic1215633.jpg"],
-  [9, "Terraforming Mars", "wg9oOLcsKvDesSUdZQ4rxw__micro/img/LUkXZhd1TO80eCiXMD3-KfnzA6k=/fit-in/64x64/filters:strip_icc()/pic3536616.jpg"],
-  [10, "Star Wars: Rebellion", "7SrPNGBKg9IIsP4UQpOi8g__micro/img/nEvTiCkWpT-ymH4bstc9c335TtQ=/fit-in/64x64/filters:strip_icc()/pic4325841.jpg"],
-  [11, "Spirit Island", "kjCm4ZvPjIZxS-mYgSPy1g__micro/img/sRPer5FmBxyV527MY67P-gM7ukg=/fit-in/64x64/filters:strip_icc()/pic7013651.jpg"],
-  [12, "Gloomhaven: Jaws of the Lion", "_HhIdavYW-hid20Iq3hhmg__micro/img/OdKjWiFsNvQAfJfXXSITttiozWE=/fit-in/64x64/filters:strip_icc()/pic5055631.jpg"],
-  [13, "Gaia Project", "hGWFm3hbMlCDsfCsauOQ4g__micro/img/odWj2bEnZi9dEcQQrOtYj1e0QLE=/fit-in/64x64/filters:strip_icc()/pic5375625.png"],
-  [14, "SETI", "_BUXOVRDU9g_eRwgpR5ZZw__micro/img/mVlVFSt_j8f6NhXXXmjPPkzyruc=/fit-in/64x64/filters:strip_icc()/pic8160466.jpg"],
-  [15, "Slay the Spire: The Board Game", "PQzVclEoOQ_wr4e1V86kxA__micro/img/umu_PR9o096pmOA2laSDPJ1ACiQ=/fit-in/64x64/filters:strip_icc()/pic8157856.png"],
-  [16, "Twilight Struggle", "pNCiUUphnoeWOYfsWq0kng__micro/img/ZlfJiIATIt5MY7xWSMzFmdygaa0=/fit-in/64x64/filters:strip_icc()/pic3530661.jpg"],
-  [17, "The Castles of Burgundy", "sH2YTQ10dHj1ibfS-KKtGA__micro/img/Hf2YimV7AKXK1IrP0kh3t_m4vxE=/fit-in/64x64/filters:strip_icc()/pic8745814.jpg"],
-  [18, "LOTR: Duel for Middle-earth", "EybxJlUc9rz7F7HVFLqsdw__micro/img/F1R-bIu9E6PWoyFAe5_0jn-R9U4=/fit-in/64x64/filters:strip_icc()/pic8378939.jpg"],
-  [19, "Through the Ages", "fVwPntkJKgaEo0rIC0RwpA__micro/img/77dZJpqtydc8TTecl0ReGF7iAVw=/fit-in/64x64/filters:strip_icc()/pic2663291.jpg"],
-  [20, "Frosthaven", "cwUgf-f-qwri8UHBUnifuQ__micro/img/pVLBZRQWRR2BX7nNpyCi4TVxXws=/fit-in/64x64/filters:strip_icc()/pic5092291.png"],
-  [21, "Great Western Trail", "u1l0gH7sb_vnvDvoO_QHqA__micro/img/xeShpQfbj4L1id-ItJbfIYVzgyA=/fit-in/64x64/filters:strip_icc()/pic4887376.jpg"],
-  [22, "Brass: Lancashire", "tHVtPzu82mBpeQbbZkV6EA__micro/img/jM8d5Q5btvJmcWQN_px-A-nlueI=/fit-in/64x64/filters:strip_icc()/pic3469216.jpg"],
-  [23, "Eclipse: Second Dawn", "Oh3kHw6lweg6ru71Q16h2Q__micro/img/vhB59zFDq3Kul0xbr3api2selZs=/fit-in/64x64/filters:strip_icc()/pic5235277.jpg"],
-  [24, "7 Wonders Duel", "zdagMskTF7wJBPjX74XsRw__micro/img/nXtpcw3tYaelntFHb1aH4YrN7Wk=/fit-in/64x64/filters:strip_icc()/pic2576399.jpg"],
-  [25, "Nemesis", "4KSmlm59w0GwLIlgDnJDAQ__micro/img/sWkwLPbv89fyeXyKvWvrfD52tzw=/fit-in/64x64/filters:strip_icc()/pic8211747.png"],
-  [26, "A Feast for Odin", "s9oGMCo1fcfV4Dk3EnqLZw__micro/img/JCrcuFDrjVQ64uLbqpH-Pmg6XsU=/fit-in/64x64/filters:strip_icc()/pic3146943.png"],
-  [27, "Scythe", "7k_nOxpO9OGIjhLq2BUZdA__micro/img/ETplc22GdhlN5u0mppcDxSP8LVk=/fit-in/64x64/filters:strip_icc()/pic3163924.jpg"],
-  [28, "Clank! Legacy", "hc2NDafu5c24iLJh_IZmyg__micro/img/v2WzacDprYF837E6h9O2WuFFmpw=/fit-in/64x64/filters:strip_icc()/pic4885780.png"],
-  [29, "Lost Ruins of Arnak", "6GqH14TJJhza86BX5HCLEQ__micro/img/2FKVaukjh9a-Kg9LWQuMSvLS34s=/fit-in/64x64/filters:strip_icc()/pic5674958.jpg"],
-  [30, "Concordia", "CzwSm8i7tkLz6cBnrILZBg__micro/img/FQyxREkHBn7yTbGmBg7c44eLgaM=/fit-in/64x64/filters:strip_icc()/pic3453267.jpg"],
-  [31, "Great Western Trail (2nd Ed.)", "gDn7AhrDlmfCLSz9ZqoNFQ__micro/img/eGBh_Csj13hXnODUTB-7dmpq-M0=/fit-in/64x64/filters:strip_icc()/pic5988511.jpg"],
-  [32, "Sky Team", "uXMeQzNenHb3zK7Hoa6b2w__micro/img/WUPeTU-QmVFLHWyY3AYn2LOJzvg=/fit-in/64x64/filters:strip_icc()/pic7398904.jpg"],
-  [33, "Arkham Horror: The Card Game", "B5F5ulz0UivNgrI9Ky0euA__micro/img/DnDtwD_7oQR982carXqiVfhOQog=/fit-in/64x64/filters:strip_icc()/pic3122349.jpg"],
-  [34, "Root", "JUAUWaVUzeBgzirhZNmHHw__micro/img/tdHLiMYfi-KTy89sGBGZVeE9ts0=/fit-in/64x64/filters:strip_icc()/pic4254509.jpg"],
-  [35, "Orléans", "nagl1li6kYt9elV9jbfVQw__micro/img/hUKCvnqgFvTl0aOMd8FLkgCObT0=/fit-in/64x64/filters:strip_icc()/pic6228507.jpg"],
-  [36, "Terra Mystica", "bre12I1YiXkZr7elvriz4A__micro/img/SAwaBrDhHbGuq6dFY-ok95qFMcU=/fit-in/64x64/filters:strip_icc()/pic5375624.jpg"],
-  [37, "Too Many Bones", "wKwRk0wYBcrtLAfgn4PCdg__micro/img/Q6VXZKoVSlMjTU7Vp8tn1tkcVzw=/fit-in/64x64/filters:strip_icc()/pic6624445.png"],
-  [38, "Wingspan", "yLZJCVLlIx4c7eJEWUNJ7w__micro/img/5ZaRePVhfelfofF7T_OC1e0gUCw=/fit-in/64x64/filters:strip_icc()/pic4458123.jpg"],
-  [39, "Barrage", "jEPmWvvYpqkWrKOzqIHFsg__micro/img/Uwm0ZfmY4ZNWWxlackDXrsmS-Io=/fit-in/64x64/filters:strip_icc()/pic4336469.png"],
-  [40, "Mage Knight", "DUO2hz9AlLOH8p9ED-lCWg__micro/img/eXzdbUmCbIdMIVgiQ_QwS3YNOS4=/fit-in/64x64/filters:strip_icc()/pic1083380.jpg"],
-  [41, "Hegemony", "DCLgJlrvB-EqL6A3WgQLMQ__micro/img/j_LPta_lgRrN8Rrs9Rxt_d3Hysc=/fit-in/64x64/filters:strip_icc()/pic5715770.jpg"],
-  [42, "Kanban EV", "L2Wn-zUqkcHgqvwvY212Ig__micro/img/2pY9Wo185ehuYO7Mb0gTDpdww74=/fit-in/64x64/filters:strip_icc()/pic4924232.jpg"],
-  [43, "Crokinole", "DOwZ7_Q1w68iBhARcDAxig__micro/img/VJitj3S_EeX7ZU1GIKgCswFCVtU=/fit-in/64x64/filters:strip_icc()/pic8549797.jpg"],
-  [44, "Clank!: Catacombs", "cCLn9Mvb7jRSaZzHeUXhoQ__micro/img/BCbIa1Hc9kBFoBZYWaDOnWbzucc=/fit-in/64x64/filters:strip_icc()/pic6937913.jpg"],
-  [45, "Viticulture", "l_PRU2lVlX9seScRFcvFlA__micro/img/3EqHlTkNSnZNFHVaAeFSpzfzuIQ=/fit-in/64x64/filters:strip_icc()/pic6500949.jpg"],
-  [46, "Ticket to Ride Legacy", "2H0pJddVJA3r6btqRNLG1g__micro/img/PcnRQaKUMXYgTVNQ8WB4X1eWeNA=/fit-in/64x64/filters:strip_icc()/pic7541330.png"],
-  [47, "The Crew: Mission Deep Sea", "VuBqZ1sMaDAVVHF_OEJP4g__micro/img/p3GKOrR04nV1qkim9zq-rmFfYh8=/fit-in/64x64/filters:strip_icc()/pic5988903.jpg"],
-  [48, "Everdell", "fjE7V5LNq31yVEW_yuqI-Q__micro/img/TAgkPCJdNAIHZfn1BE1DXadBL9g=/fit-in/64x64/filters:strip_icc()/pic3918905.png"],
-  [49, "LOTR: Fate of the Fellowship", "scw36iBIad7l-rGzxPGcGg__micro/img/zTllrRmMYLuMHXuPjpXUjzFFpDw=/fit-in/64x64/filters:strip_icc()/pic8662670.png"],
-  [50, "Heat: Pedal to the Metal", "-vOrd4bOspibyohYExLqWg__micro/img/bcHg_0mMkgMaBp9Sz1gxJtHtaHw=/fit-in/64x64/filters:strip_icc()/pic6940449.png"],
+  [1, "Brass: Birmingham", "https://cf.geekdo-images.com/x3zxjr-Vw5iU4yDPg70Jgw__small/img/o18rjEemoWaVru9Y2TyPwuIaRfE=/fit-in/200x150/filters:strip_icc()/pic3490053.jpg"],
+  [2, "Ark Nova", "https://cf.geekdo-images.com/SoU8p28Sk1s8MSvoM4N8pQ__small/img/4KuHNTWSMPf8vTNDKSRMMI3oOv8=/fit-in/200x150/filters:strip_icc()/pic6293412.jpg"],
+  [3, "Pandemic Legacy: Season 1", "https://cf.geekdo-images.com/-Qer2BBPG7qGGDu6KcVDIw__small/img/NQQcjS31TO0DE246N9rpt0hd9eo=/fit-in/200x150/filters:strip_icc()/pic2452831.png"],
+  [4, "Gloomhaven", "https://cf.geekdo-images.com/sZYp_3BTDGjh2unaZfZmuA__small/img/veqFeP4d_3zNhFc3GNBkV95rBEQ=/fit-in/200x150/filters:strip_icc()/pic2437871.jpg"],
+  [5, "Dune: Imperium – Uprising", "https://cf.geekdo-images.com/UVUkjMV_Q2paVUIUP30Vvw__small/img/H6qmxJrRFjtOAPZOfDoZ480-46I=/fit-in/200x150/filters:strip_icc()/pic7664424.jpg"],
+  [6, "Dune: Imperium", "https://cf.geekdo-images.com/PhjygpWSo-0labGrPBMyyg__small/img/JGgY-nBmkyB8WRp8vcoBLlNMQ5U=/fit-in/200x150/filters:strip_icc()/pic5666597.jpg"],
+  [7, "Twilight Imperium", "https://cf.geekdo-images.com/_Ppn5lssO5OaildSE-FgFA__small/img/lfEukJE0JsoZZObaF9K9YnFp62E=/fit-in/200x150/filters:strip_icc()/pic3727516.jpg"],
+  [8, "War of the Ring", "https://cf.geekdo-images.com/ImPgGag98W6gpV1KV812aA__small/img/X-lBBdG4uO6LT0y1vXxCN4jdR4M=/fit-in/200x150/filters:strip_icc()/pic1215633.jpg"],
+  [9, "Terraforming Mars", "https://cf.geekdo-images.com/wg9oOLcsKvDesSUdZQ4rxw__small/img/BTxqxgYay5tHJfVoJ2NF5g43_gA=/fit-in/200x150/filters:strip_icc()/pic3536616.jpg"],
+  [10, "Star Wars: Rebellion", "https://cf.geekdo-images.com/7SrPNGBKg9IIsP4UQpOi8g__small/img/gAxzddRVQiRdjZHYFUZ2xc5Jlbw=/fit-in/200x150/filters:strip_icc()/pic4325841.jpg"],
+  [11, "Spirit Island", "https://cf.geekdo-images.com/kjCm4ZvPjIZxS-mYgSPy1g__small/img/aUlIih2_R7P8IYKeyNl2heLQbu8=/fit-in/200x150/filters:strip_icc()/pic7013651.jpg"],
+  [12, "Gloomhaven: Jaws of the Lion", "https://cf.geekdo-images.com/_HhIdavYW-hid20Iq3hhmg__small/img/OMkN_E5eyWrkID_cHCnQEbIixGM=/fit-in/200x150/filters:strip_icc()/pic5055631.jpg"],
+  [13, "Gaia Project", "https://cf.geekdo-images.com/hGWFm3hbMlCDsfCsauOQ4g__small/img/NNG7Ijyx4evp5gcVReis9i0koas=/fit-in/200x150/filters:strip_icc()/pic5375625.png"],
+  [14, "SETI", "https://cf.geekdo-images.com/_BUXOVRDU9g_eRwgpR5ZZw__small/img/icamIZ4nP3HHH3vczZqTr1hQgKY=/fit-in/200x150/filters:strip_icc()/pic8160466.jpg"],
+  [15, "Slay the Spire: The Board Game", "https://cf.geekdo-images.com/PQzVclEoOQ_wr4e1V86kxA__small/img/cpmsSDagE5RvQ1ERXl-fMJIaUUg=/fit-in/200x150/filters:strip_icc()/pic8157856.png"],
+  [16, "Twilight Struggle", "https://cf.geekdo-images.com/pNCiUUphnoeWOYfsWq0kng__small/img/p7alNkNy8Avm8UISmhYHCiMz5bE=/fit-in/200x150/filters:strip_icc()/pic3530661.jpg"],
+  [17, "The Castles of Burgundy", "https://cf.geekdo-images.com/sH2YTQ10dHj1ibfS-KKtGA__small/img/f5zFXdTcH9RNY0iMNBppd8D-_r0=/fit-in/200x150/filters:strip_icc()/pic8745814.jpg"],
+  [18, "LOTR: Duel for Middle-earth", "https://cf.geekdo-images.com/EybxJlUc9rz7F7HVFLqsdw__small/img/rojFW0-h-bteedVG4aJXG1x7V0o=/fit-in/200x150/filters:strip_icc()/pic8378939.jpg"],
+  [19, "Through the Ages", "https://cf.geekdo-images.com/fVwPntkJKgaEo0rIC0RwpA__small/img/31usGlzlBReEFf60bcgbvDTjwCg=/fit-in/200x150/filters:strip_icc()/pic2663291.jpg"],
+  [20, "Frosthaven", "https://cf.geekdo-images.com/cwUgf-f-qwri8UHBUnifuQ__small/img/3o2Hc_N5mmfpOt8s9kP0ap8Jti8=/fit-in/200x150/filters:strip_icc()/pic5092291.png"],
+  [21, "Great Western Trail", "https://cf.geekdo-images.com/u1l0gH7sb_vnvDvoO_QHqA__small/img/9lxFidyDb8j6D1vobx4e3UwZ-FI=/fit-in/200x150/filters:strip_icc()/pic4887376.jpg"],
+  [22, "Brass: Lancashire", "https://cf.geekdo-images.com/tHVtPzu82mBpeQbbZkV6EA__small/img/AghH1bAEhqzvyRcP3cy5G-rz0So=/fit-in/200x150/filters:strip_icc()/pic3469216.jpg"],
+  [23, "Eclipse: Second Dawn", "https://cf.geekdo-images.com/Oh3kHw6lweg6ru71Q16h2Q__small/img/e9XZdQe1ZcPpaq4Gy31OoWBB_V0=/fit-in/200x150/filters:strip_icc()/pic5235277.jpg"],
+  [24, "7 Wonders Duel", "https://cf.geekdo-images.com/zdagMskTF7wJBPjX74XsRw__small/img/gV1-ckZSIC-dCxxpq1Y7GmPITzQ=/fit-in/200x150/filters:strip_icc()/pic2576399.jpg"],
+  [25, "Nemesis", "https://cf.geekdo-images.com/4KSmlm59w0GwLIlgDnJDAQ__small/img/P20AxSqNHOEM5qT_doqeeE7JAHQ=/fit-in/200x150/filters:strip_icc()/pic8211747.png"],
+  [26, "A Feast for Odin", "https://cf.geekdo-images.com/s9oGMCo1fcfV4Dk3EnqLZw__small/img/AKxMMz2DTbBrEynhDROla8fdjJ4=/fit-in/200x150/filters:strip_icc()/pic3146943.png"],
+  [27, "Scythe", "https://cf.geekdo-images.com/7k_nOxpO9OGIjhLq2BUZdA__small/img/eQ69OEDdjYjfKg6q5Navee87skU=/fit-in/200x150/filters:strip_icc()/pic3163924.jpg"],
+  [28, "Clank! Legacy", "https://cf.geekdo-images.com/hc2NDafu5c24iLJh_IZmyg__small/img/8TA1Gn7jERN4yhtXD-xBCGk-QfM=/fit-in/200x150/filters:strip_icc()/pic4885780.png"],
+  [29, "Lost Ruins of Arnak", "https://cf.geekdo-images.com/6GqH14TJJhza86BX5HCLEQ__small/img/J8SVmGOJXZGxNjkT3xYNQU7Haxg=/fit-in/200x150/filters:strip_icc()/pic5674958.jpg"],
+  [30, "Concordia", "https://cf.geekdo-images.com/CzwSm8i7tkLz6cBnrILZBg__small/img/ESPSltYYSFK-aJw6jOTdQrJGpOc=/fit-in/200x150/filters:strip_icc()/pic3453267.jpg"],
+  [31, "Great Western Trail (2nd Ed.)", "https://cf.geekdo-images.com/gDn7AhrDlmfCLSz9ZqoNFQ__small/img/0pt6XrFHTXpNetwMo9rdY7PdhfQ=/fit-in/200x150/filters:strip_icc()/pic5988511.jpg"],
+  [32, "Sky Team", "https://cf.geekdo-images.com/uXMeQzNenHb3zK7Hoa6b2w__small/img/WyPClajMWU9lV5BdCXiZnqdZgmU=/fit-in/200x150/filters:strip_icc()/pic7398904.jpg"],
+  [33, "Arkham Horror: The Card Game", "https://cf.geekdo-images.com/B5F5ulz0UivNgrI9Ky0euA__small/img/L8ouPl5jv2Ye9MC4R_Os2zSGigE=/fit-in/200x150/filters:strip_icc()/pic3122349.jpg"],
+  [34, "Root", "https://cf.geekdo-images.com/JUAUWaVUzeBgzirhZNmHHw__small/img/ACovMZzGGIsBRyEQXFnsT8282NM=/fit-in/200x150/filters:strip_icc()/pic4254509.jpg"],
+  [35, "Orléans", "https://cf.geekdo-images.com/nagl1li6kYt9elV9jbfVQw__small/img/ykeqdM_Naz4IiqOgyB1arzteOiU=/fit-in/200x150/filters:strip_icc()/pic6228507.jpg"],
+  [36, "Terra Mystica", "https://cf.geekdo-images.com/bre12I1YiXkZr7elvriz4A__small/img/GW-ip0dfeAee7KQqJ04SRZxF1lg=/fit-in/200x150/filters:strip_icc()/pic5375624.jpg"],
+  [37, "Too Many Bones", "https://cf.geekdo-images.com/wKwRk0wYBcrtLAfgn4PCdg__small/img/mJNzYNKvYWDlaaD12V32BJ453d0=/fit-in/200x150/filters:strip_icc()/pic6624445.png"],
+  [38, "Wingspan", "https://cf.geekdo-images.com/yLZJCVLlIx4c7eJEWUNJ7w__small/img/VNToqgS2-pOGU6MuvIkMPKn_y-s=/fit-in/200x150/filters:strip_icc()/pic4458123.jpg"],
+  [39, "Barrage", "https://cf.geekdo-images.com/jEPmWvvYpqkWrKOzqIHFsg__small/img/kMLIpeqA6UcUvQg2AdMwwQoEIfU=/fit-in/200x150/filters:strip_icc()/pic4336469.png"],
+  [40, "Mage Knight", "https://cf.geekdo-images.com/DUO2hz9AlLOH8p9ED-lCWg__small/img/0bWDfnjzYebauQZrHmjyHkuUttI=/fit-in/200x150/filters:strip_icc()/pic1083380.jpg"],
+  [41, "Hegemony", "https://cf.geekdo-images.com/DCLgJlrvB-EqL6A3WgQLMQ__small/img/9yp6ANJx6cqdQqQ6hkNr3zA88vw=/fit-in/200x150/filters:strip_icc()/pic5715770.jpg"],
+  [42, "Kanban EV", "https://cf.geekdo-images.com/L2Wn-zUqkcHgqvwvY212Ig__small/img/RQunBacBw949DkYBgzoS5YaXgJo=/fit-in/200x150/filters:strip_icc()/pic4924232.jpg"],
+  [43, "Crokinole", "https://cf.geekdo-images.com/DOwZ7_Q1w68iBhARcDAxig__small/img/nkY1mEj6fItSXJHctfzFcRIcDT0=/fit-in/200x150/filters:strip_icc()/pic8549797.jpg"],
+  [44, "Clank!: Catacombs", "https://cf.geekdo-images.com/cCLn9Mvb7jRSaZzHeUXhoQ__small/img/B8BFQLR2Po3ekI_7XSG1kR9oil0=/fit-in/200x150/filters:strip_icc()/pic6937913.jpg"],
+  [45, "Viticulture", "https://cf.geekdo-images.com/l_PRU2lVlX9seScRFcvFlA__small/img/pULDtVd75QZgGfvSMhr6Rs07vK8=/fit-in/200x150/filters:strip_icc()/pic6500949.jpg"],
+  [46, "Ticket to Ride Legacy", "https://cf.geekdo-images.com/2H0pJddVJA3r6btqRNLG1g__small/img/scMQ04r1admTpyvH91g9DbZEncg=/fit-in/200x150/filters:strip_icc()/pic7541330.png"],
+  [47, "The Crew: Mission Deep Sea", "https://cf.geekdo-images.com/VuBqZ1sMaDAVVHF_OEJP4g__small/img/EdacXlcFZ06YK0-ZKa0oKwL4VCw=/fit-in/200x150/filters:strip_icc()/pic5988903.jpg"],
+  [48, "Everdell", "https://cf.geekdo-images.com/fjE7V5LNq31yVEW_yuqI-Q__small/img/Cf_mYxR_VvdjTEPXseSurni2JNI=/fit-in/200x150/filters:strip_icc()/pic3918905.png"],
+  [49, "LOTR: Fate of the Fellowship", "https://cf.geekdo-images.com/scw36iBIad7l-rGzxPGcGg__small/img/dyMBa6SBkPwpWfA4FINqbX8RNDQ=/fit-in/200x150/filters:strip_icc()/pic8662670.png"],
+  [50, "Heat: Pedal to the Metal", "https://cf.geekdo-images.com/-vOrd4bOspibyohYExLqWg__small/img/2GbaKvYOzWIxfgbYTk2R9puiyzo=/fit-in/200x150/filters:strip_icc()/pic6940449.png"],
 ];
 
 // ---------- THE QUESTIONS ----------
@@ -512,21 +519,21 @@ const QUESTIONS = [
 // ---------- THE RESULTS (always a version of Monopoly) ----------
 // Every result is a real Monopoly edition. The page always says "Sorry, bud. This game fits you perfectly." above the write-up.
 const FLAVORS = [
-  { e: "🎩", name: "The Original", img: "9nGoBZ0MRbi6rdH47sj2Qg__micro/img/-1Mja8HW6fOJdSo-hpYeFN3Bi5o=/fit-in/64x64/filters:strip_icc()/pic5786795.jpg",
+  { e: "🎩", name: "The Original", img: "https://cf.geekdo-images.com/9nGoBZ0MRbi6rdH47sj2Qg__original/img/bA8irydTCNlE38QSzM9EhcUIuNU=/0x0/filters:format(jpeg)/pic5786795.jpg",
     blurb: "Out of every board game ever made, you got the one nobody actually finishes. Four hours. One winner. Zero friends left at the table. We checked your answers twice hoping we were wrong. We were not wrong." },
-  { e: "🃏", name: "Cheaters Edition", img: "78dZB2GPUrjMXQyOnqZ65Q__micro/img/aMNw8SBI9_7Sf3JPzyCQJb6TzXc=/fit-in/64x64/filters:strip_icc()/pic4187117.jpg",
+  { e: "🃏", name: "Cheaters Edition", img: "https://cf.geekdo-images.com/78dZB2GPUrjMXQyOnqZ65Q__original/img/alBRJMlFfkJyOo4YyDpGQqO_rkE=/0x0/filters:format(jpeg)/pic4187117.jpg",
     blurb: "Hasbro had to make cheating an official rule because people like you were doing it anyway. Your answers showed real character. Unfortunately, it's the character who \"accidentally\" grabs an extra $500 from the bank." },
-  { e: "😤", name: "for Sore Losers", img: "ukuHZhIZqganHB8dvUmfdQ__micro/img/GKr8GdafmSnzx8Lhpu-i8fSExNs=/fit-in/64x64/filters:strip_icc()/pic5920776.jpg",
+  { e: "😤", name: "for Sore Losers", img: "https://cf.geekdo-images.com/ukuHZhIZqganHB8dvUmfdQ__original/img/z3U5nlNqhgWGrgdgcOhF-zTVGok=/0x0/filters:format(jpeg)/pic5920776.jpg",
     blurb: "This is a real game. Hasbro made a version of Monopoly for people who can't handle losing, and your answers matched it perfectly. We'd soften the news, but honestly, we're a little nervous about how you're going to take it." },
-  { e: "🥑", name: "for Millennials", img: "z2fkI2CXM8c3sUJuHCZsIQ__micro/img/8NQFAbhrdKngi-bI5mneWOcJhQI=/fit-in/64x64/filters:strip_icc()/pic4435596.jpg",
+  { e: "🥑", name: "for Millennials", img: "https://cf.geekdo-images.com/z2fkI2CXM8c3sUJuHCZsIQ__original/img/qYpxADVjhdrIo2FkYuUPzdEeXJs=/0x0/filters:format(jpeg)/pic4435596.jpg",
     blurb: "A real edition where you can't afford to buy property, so you collect \"experiences\" instead. Somehow this is still the board game that fits you best. We're as surprised as you are. Actually, no. We're not." },
-  { e: "🧸", name: "Junior", img: "j-RVwMSItkJHFCFD8BFNuA__micro/img/W-1oGPnzKvPMoEBveZcwNs48QII=/fit-in/64x64/filters:strip_icc()/pic3028363.jpg",
+  { e: "🧸", name: "Junior", img: "https://cf.geekdo-images.com/j-RVwMSItkJHFCFD8BFNuA__original/img/pZ9UBl40Q2V3WUquUgM17m5g8Os=/0x0/filters:format(jpeg)/pic3028363.jpg",
     blurb: "You got the kids' version. Not because you're young at heart. Because the full game was a little much for you, and the algorithm was trying to be gentle about it." },
-  { e: "🎴", name: "Deal", img: "XACkCb3JL0uvF6xOn0lRSg__micro/img/Oezm_J3Po9WND1Hxzkyp-QRNhi4=/fit-in/64x64/filters:strip_icc()/pic4595026.jpg",
+  { e: "🎴", name: "Deal", img: "https://cf.geekdo-images.com/XACkCb3JL0uvF6xOn0lRSg__original/img/BBhxJBuYU2N7oTs1oxfuVsHJ47w=/0x0/filters:format(jpeg)/pic4595026.jpg",
     blurb: "The card game version. It takes 15 minutes and still ends a friendship. You found a way to make Monopoly shorter without making it any better, which is honestly kind of impressive." },
-  { e: "💳", name: "Electronic Banking", img: "rr7KOthhnDDyx19SsYGUjw__micro/img/uNjSRqDAEQXyQWWooQ_CvViH2hM=/fit-in/64x64/filters:strip_icc()/pic268251.jpg",
+  { e: "💳", name: "Electronic Banking", img: "https://cf.geekdo-images.com/rr7KOthhnDDyx19SsYGUjw__original/img/uCgYT15SbVEvb8FjPTNnJ4B5Dd0=/0x0/filters:format(jpeg)/pic268251.jpg",
     blurb: "Everything wrong with Monopoly, now with a card reader that dies halfway through the game. You looked at perfectly good paper money and thought, \"What if this needed batteries?\"" },
-  { e: "🏙️", name: "The Mega Edition", img: "dMsrQsU9JzXzzEt_lZAVYw__micro/img/vVXjpKv77NeONT90ymvbJrxPXIc=/fit-in/64x64/filters:strip_icc()/pic151473.jpg",
+  { e: "🏙️", name: "The Mega Edition", img: "https://cf.geekdo-images.com/dMsrQsU9JzXzzEt_lZAVYw__original/img/BD-VQGHEfAK4oefewQg3NiN02qk=/0x0/filters:format(jpeg)/pic151473.jpg",
     blurb: "Regular Monopoly wasn't long enough for you. So here's the one with a bigger board, more properties, and skyscrapers. Pack a lunch. Pack several. Tell your family you love them." },
 ];
 
@@ -625,11 +632,11 @@ function renderQuestion() {
   $("backBtn").classList.toggle("hide", current === 0);
 
   const box = $("answers");
-  box.className = "answers" + (item.two ? " two" : "");
+  box.className = "answers" + (item.two ? " two" : "") + (item.games ? " covers" : "");
   box.innerHTML = "";
 
   const choices = [];
-  (gamePicks[current] || []).forEach(([rank, name, path]) => choices.push({ game: true, rank, t: name, img: IMG + path }));
+  (gamePicks[current] || []).forEach(([rank, name, path]) => choices.push({ game: true, rank, t: name, img: path }));
   (item.a || []).forEach((a) => choices.push(a));
 
   choices.forEach((ans) => {
@@ -726,7 +733,7 @@ function showResult() {
   const cover = $("fCover");
   cover.onerror = () => { cover.style.display = "none"; };
   cover.style.display = "";
-  cover.src = IMG + flavor.img;
+  cover.src = flavor.img;
   $("fName").textContent = flavor.name;
   $("fBlurb").textContent = flavor.blurb;
 
