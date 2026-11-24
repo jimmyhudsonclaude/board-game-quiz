@@ -76,10 +76,10 @@
           <p>This game fits you perfectly.</p>
         </div>
         <p class="blurb" id="fBlurb"></p>
+        <a class="real-link" id="realLink" href="real.html" hidden>Okay, fine. You've suffered enough.<br><strong>Take the real test →</strong></a>
         <p class="goad" id="goad"></p>
         <button class="btn" id="retakeBtn">Surely That's Wrong. Try Again.</button>
         <button class="btn secondary" id="shareBtn">Dare a Friend to Take It</button>
-        <a class="real-link" id="realLink" href="real.html" hidden>Okay, fine. You've suffered enough.<br><strong>Take the real test →</strong></a>
         <p class="fine">Results are final. The dice have spoken.<br>A parody, not affiliated with Hasbro or any game publisher.<br>Game rankings and box art from BoardGameGeek.</p>
       </div>
     </div>
@@ -468,7 +468,11 @@ function showResult() {
   const n = Math.min(takes - 1, RETAKE_LABELS.length - 1);
   $("retakeBtn").textContent = RETAKE_LABELS[n];
   $("goad").textContent = GOAD_LINES[Math.min(takes - 1, GOAD_LINES.length - 1)];
-  $("realLink").hidden = takes < 2;   // the real quiz unlocks on the 2nd Monopoly
+  // After the 2nd Monopoly: no more retake button, just the way out to the real quiz.
+  const unlocked = takes >= 2;
+  $("realLink").hidden = !unlocked;
+  $("retakeBtn").hidden = unlocked;
+  $("goad").hidden = unlocked;
 
   show("result");
 }

@@ -282,10 +282,11 @@
 
 /* Link from the Monopoly quiz to the real one */
 .real-link {
-  display: block; margin: 18px 0 0; padding: 14px 16px; text-align: center; text-decoration: none;
+  display: block; margin: 4px 0 14px; padding: 14px 16px; text-align: center; text-decoration: none;
   background: linear-gradient(#2d8a5e, #1f6b47); color: #fff8e6; border: 3px solid var(--gold);
   border-radius: 14px; font-size: 16px; line-height: 1.4; box-shadow: 0 5px 0 #0f3d27;
   animation: pop .5s ease;
 }
 .real-link strong { font-family: Ultra, Georgia, serif; font-weight: 400; font-size: 18px; letter-spacing: .02em; }
 .real-link[hidden] { display: none; }
+.btn[hidden], .goad[hidden] { display: none; }
