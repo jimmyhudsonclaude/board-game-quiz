@@ -237,8 +237,32 @@
   .deed-band .logo { font-size: clamp(30px, 9.6vw, 60px); margin: 6px 0 4px; color: #fff8e6; -webkit-text-stroke: 3px var(--gold); text-shadow: 3px 3px 0 var(--red-dark), 5px 7px 0 rgba(40,10,0,.4); }
   .deed-band .match { display: inline-block; margin-top: 6px; background: var(--gold); color: var(--ink); font-weight: 700; font-size: 14px; padding: 4px 14px; border-radius: 999px; }
   .deed-body { padding: 24px 24px 26px; }
-  .flavor .emoji { font-size: 56px; line-height: 1; }
-  .flavor h2 { font-size: 25px; margin: 10px 0 0; line-height: 1.15; }
+  .edition {
+    display: inline-block; margin: 2px 0 8px;
+    font-family: Ultra, Georgia, serif; font-size: clamp(18px, 5.4vw, 26px); line-height: 1.2;
+    color: var(--ink); background: linear-gradient(var(--gold-light), var(--gold));
+    border: 2px solid #fff3cf; border-radius: 10px; padding: 6px 14px;
+    box-shadow: 0 3px 0 var(--red-dark);
+  }
+  .deed-band .match { display: table; margin: 8px auto 0; }
+  .boxshot { position: relative; display: inline-block; margin: 4px 0 18px; transform: rotate(-4deg); }
+  .boxshot img {
+    display: block; width: 84px; height: 84px; object-fit: contain;
+    background: #fff; padding: 4px; border-radius: 4px;
+    box-shadow: 0 0 0 2px var(--gold-dark), 0 10px 18px -6px rgba(60,25,5,.6);
+    filter: grayscale(.35) sepia(.2);
+  }
+  .boxshot .stamp {
+    position: absolute; right: -58px; bottom: -6px; transform: rotate(-12deg);
+    white-space: nowrap; font-family: Ultra, Georgia, serif; font-size: 13px; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--red); border: 3px solid var(--red); border-radius: 6px; padding: 2px 8px;
+    background: rgba(255,249,236,.75);
+  }
+  .goad { font-size: 16px; font-style: italic; color: var(--muted); margin: 4px 0 14px; line-height: 1.45; }
+  #retakeBtn { animation: nudge 2.6s ease-in-out 1.5s infinite; }
+  @keyframes nudge { 0%, 88%, 100% { transform: none; } 91% { transform: rotate(-1.5deg) scale(1.02); } 94% { transform: rotate(1.5deg) scale(1.02); } 97% { transform: rotate(-1deg); } }
+  .sorry h2 { font-size: clamp(34px, 10vw, 46px); margin: 0; line-height: 1; color: var(--red); }
+  .sorry p { font-family: "Pinyon Script", cursive; font-size: 28px; margin: 6px 0 0; }
   .blurb { font-size: 18px; line-height: 1.6; margin: 14px 0 20px; text-align: left; }
   .divider { color: var(--gold-dark); letter-spacing: .5em; margin: 4px 0 14px; font-size: 14px; }
   .stats { text-align: left; margin-bottom: 18px; }
@@ -314,23 +338,20 @@
         <div class="small">✦ Deed of Personality ✦</div>
         <div class="script">Your board game is</div>
         <h1 class="logo">MONOPOLY</h1>
+        <div class="edition" id="fName"></div>
         <div class="match" id="matchPct">97.3% match</div>
       </div>
       <div class="deed-body">
         <div class="smug" id="smug" hidden></div>
-        <div class="flavor">
-          <div class="emoji" id="fEmoji"></div>
-          <h2 id="fName"></h2>
+        <div class="boxshot"><img id="fCover" alt="" referrerpolicy="no-referrer"><span class="stamp">Results Final</span></div>
+        <div class="sorry">
+          <h2>Sorry, bud.</h2>
+          <p>This game fits you perfectly.</p>
         </div>
         <p class="blurb" id="fBlurb"></p>
-        <div class="divider">✦ ✦ ✦</div>
-        <div class="stats" id="stats"></div>
-        <div class="runners">
-          <strong>Runners-up</strong>
-          <ol id="runners"></ol>
-        </div>
-        <button class="btn" id="shareBtn">Dare a Friend to Take It</button>
-        <button class="btn secondary" id="retakeBtn">Retake the Test</button>
+        <p class="goad" id="goad"></p>
+        <button class="btn" id="retakeBtn">Surely That's Wrong. Try Again.</button>
+        <button class="btn secondary" id="shareBtn">Dare a Friend to Take It</button>
         <p class="fine">Results are final. The dice have spoken.<br>A parody, not affiliated with Hasbro or any game publisher.<br>Game rankings and box art from BoardGameGeek.</p>
       </div>
     </div>
@@ -488,55 +509,65 @@ const QUESTIONS = [
   },
 ];
 
-// ---------- THE RESULTS (always Monopoly) ----------
+// ---------- THE RESULTS (always a version of Monopoly) ----------
+// Every result is a real Monopoly edition. The page always says "Sorry, bud. This game fits you perfectly." above the write-up.
 const FLAVORS = [
-  { e: "🎩", name: "The Top Hat",
-    blurb: "Classy. Traditional. Unshakably confident. You believe a good game night should last four hours and end with at least one person leaving the table in silence. You don't play to have fun. You play to own Boardwalk." },
-  { e: "🪡", name: "The Thimble",
-    blurb: "Officially retired, and yet somehow still here. You've been told many times that there are newer, better options out there. You nodded politely. Then you set up the board anyway." },
-  { e: "🚗", name: "The Race Car",
-    blurb: "Fast, flashy, and absolutely certain you're winning. You are not winning. You haven't been winning since the third trip around the board, two hours ago. But you look great doing it." },
-  { e: "🅿️", name: "Free Parking House Rules",
-    blurb: "You put the tax money in the middle of the board. You know that's not in the rules. You've been told. You do it anyway, because chaos is your love language and no game should ever be allowed to end." },
-  { e: "🏦", name: "The Banker",
-    blurb: "Trusted with the money by everyone at the table. Trustworthy? That's a different question. Nobody has ever caught you, but nobody has ever checked, either." },
-  { e: "🚔", name: "Go Directly to Jail",
-    blurb: "You do not pass Go. You do not collect $200. You roll doubles three times in a row and somehow call it a strategy. Deep down, you find the jail space restful." },
-  { e: "🟪", name: "Baltic Avenue",
-    blurb: "Humble. Affordable. A little purple. Nobody ever wants to land on you, mostly because it doesn't really matter when they do. You are the cozy, low-stakes friend everyone needs." },
-  { e: "🏨", name: "The Hotel on Boardwalk",
-    blurb: "You are the reason the game is still going and the reason someone is quietly crying. Ruthless. Unforgiving. Lovely to have dinner with, as long as it's not a game night." },
+  { e: "🎩", name: "The Original", img: "9nGoBZ0MRbi6rdH47sj2Qg__micro/img/-1Mja8HW6fOJdSo-hpYeFN3Bi5o=/fit-in/64x64/filters:strip_icc()/pic5786795.jpg",
+    blurb: "Out of every board game ever made, you got the one nobody actually finishes. Four hours. One winner. Zero friends left at the table. We checked your answers twice hoping we were wrong. We were not wrong." },
+  { e: "🃏", name: "Cheaters Edition", img: "78dZB2GPUrjMXQyOnqZ65Q__micro/img/aMNw8SBI9_7Sf3JPzyCQJb6TzXc=/fit-in/64x64/filters:strip_icc()/pic4187117.jpg",
+    blurb: "Hasbro had to make cheating an official rule because people like you were doing it anyway. Your answers showed real character. Unfortunately, it's the character who \"accidentally\" grabs an extra $500 from the bank." },
+  { e: "😤", name: "for Sore Losers", img: "ukuHZhIZqganHB8dvUmfdQ__micro/img/GKr8GdafmSnzx8Lhpu-i8fSExNs=/fit-in/64x64/filters:strip_icc()/pic5920776.jpg",
+    blurb: "This is a real game. Hasbro made a version of Monopoly for people who can't handle losing, and your answers matched it perfectly. We'd soften the news, but honestly, we're a little nervous about how you're going to take it." },
+  { e: "🥑", name: "for Millennials", img: "z2fkI2CXM8c3sUJuHCZsIQ__micro/img/8NQFAbhrdKngi-bI5mneWOcJhQI=/fit-in/64x64/filters:strip_icc()/pic4435596.jpg",
+    blurb: "A real edition where you can't afford to buy property, so you collect \"experiences\" instead. Somehow this is still the board game that fits you best. We're as surprised as you are. Actually, no. We're not." },
+  { e: "🧸", name: "Junior", img: "j-RVwMSItkJHFCFD8BFNuA__micro/img/W-1oGPnzKvPMoEBveZcwNs48QII=/fit-in/64x64/filters:strip_icc()/pic3028363.jpg",
+    blurb: "You got the kids' version. Not because you're young at heart. Because the full game was a little much for you, and the algorithm was trying to be gentle about it." },
+  { e: "🎴", name: "Deal", img: "XACkCb3JL0uvF6xOn0lRSg__micro/img/Oezm_J3Po9WND1Hxzkyp-QRNhi4=/fit-in/64x64/filters:strip_icc()/pic4595026.jpg",
+    blurb: "The card game version. It takes 15 minutes and still ends a friendship. You found a way to make Monopoly shorter without making it any better, which is honestly kind of impressive." },
+  { e: "💳", name: "Electronic Banking", img: "rr7KOthhnDDyx19SsYGUjw__micro/img/uNjSRqDAEQXyQWWooQ_CvViH2hM=/fit-in/64x64/filters:strip_icc()/pic268251.jpg",
+    blurb: "Everything wrong with Monopoly, now with a card reader that dies halfway through the game. You looked at perfectly good paper money and thought, \"What if this needed batteries?\"" },
+  { e: "🏙️", name: "The Mega Edition", img: "dMsrQsU9JzXzzEt_lZAVYw__micro/img/vVXjpKv77NeONT90ymvbJrxPXIc=/fit-in/64x64/filters:strip_icc()/pic151473.jpg",
+    blurb: "Regular Monopoly wasn't long enough for you. So here's the one with a bigger board, more properties, and skyscrapers. Pack a lunch. Pack several. Tell your family you love them." },
 ];
 
-const STAT_POOL = [
-  ["Willingness to read the rules", 4],
-  ["Chance of flipping the board", 87],
-  ["Friendships ended over a property trade", 64],
-  ["Patience for a 4-hour game", 100],
-  ["Belief that you're winning", 96],
-  ["Use of Free Parking house rules", 91],
-  ["Respect for modern game design", 2],
-  ["Likelihood to say 'one more lap'", 78],
-  ["Snacks consumed while waiting your turn", 93],
-];
-const STAT_COLORS = ["var(--red)", "var(--emerald)", "var(--mustard)", "var(--blue)", "var(--plum)"];
-
-const RUNNERS = [
-  "Monopoly Junior",
-  "Monopoly: Cheaters Edition",
-  "Monopoly Deal",
-  "Monopoly: Star Wars Edition",
-  "Monopoly: Your Hometown Edition",
-  "Electronic Banking Monopoly",
-  "A Monopoly box with half the money missing",
-];
-
+// Shown at the top of the result on each retake (2nd take, 3rd take, ...).
 const SMUG_LINES = [
   "Still Monopoly. The dice don't lie.",
-  "Monopoly again. Did you think it would change?",
-  "We checked twice. Still Monopoly.",
-  "Retake it as many times as you want. Monopoly is patient. Monopoly has four hours.",
-  "Monopoly. Again. At this point it's a lifestyle.",
+  "Monopoly again. Did you really think it would change?",
+  "Three times. Three Monopolies. The science is settled.",
+  "We admire the persistence. It's very Monopoly of you, actually.",
+  "Monopoly is patient. Monopoly has four hours. Monopoly can do this all day.",
+  "At this point it's not a result. It's a lifestyle.",
+];
+
+// Retake button text, changing each time.
+const RETAKE_LABELS = [
+  "Surely That's Wrong. Try Again.",
+  "Pick Different Answers This Time",
+  "Third Time's the Charm. Probably.",
+  "Okay, Really Commit This Time",
+  "One More. You Can Feel It.",
+  "Fine. Again.",
+];
+
+// The tease line above the retake button.
+const GOAD_LINES = [
+  "Only 2.7% of people get something other than Monopoly. Could be you. Probably not, but it could be.",
+  "So close. Your answers were this close to Wingspan. Maybe change one or two?",
+  "Our scientists say the third try is usually the one. Our scientists are Doug.",
+  "Have you tried picking the game you actually like? Wild idea. Worth a shot.",
+  "You've come too far to quit now. The other result is right there.",
+  "Somewhere out there is a person who got Catan. Be that person.",
+];
+
+// Analyzing messages on a retake: get their hopes up, then let them down.
+const ANALYZING_RETAKE = [
+  "Re-running the numbers...",
+  "Wait... this looks different...",
+  "Ooh. This could actually be it...",
+  "Double-checking, just to be sure...",
+  "Oh.",
+  "Oh no. Never mind...",
 ];
 
 const ANALYZING = [
@@ -544,8 +575,8 @@ const ANALYZING = [
   "Calibrating dice karma...",
   "Consulting the rulebook (skimming)...",
   "Measuring your tolerance for 4-hour games...",
-  "Counting the money in the box lid...",
-  "Finalizing results...",
+  "Hmm. That's not good...",
+  "Oh no. Oh, buddy...",
 ];
 
 // ---------- LOGIC (you shouldn't need to change below here) ----------
@@ -665,18 +696,22 @@ function analyze() {
   const track = $("aTrack");
   setTrack(track, 0);
   let i = 0;
-  $("status").textContent = ANALYZING[0];
+  const lines = takes > 0 ? ANALYZING_RETAKE : ANALYZING;
+  $("status").textContent = lines[0];
   const timer = setInterval(() => {
     i++;
-    setTrack(track, Math.min(100, (i / ANALYZING.length) * 100));
-    if (i < ANALYZING.length) {
-      $("status").textContent = ANALYZING[i];
+    setTrack(track, Math.min(100, (i / lines.length) * 100));
+    if (i < lines.length) {
+      $("status").textContent = lines[i];
     } else {
       clearInterval(timer);
       setTimeout(showResult, 450);
     }
   }, 600);
 }
+
+// "for Sore Losers" reads "Monopoly for Sore Losers"; others read "Monopoly: Junior"
+function fullName(f) { return f.name.startsWith("for ") ? `Monopoly ${f.name}` : `Monopoly: ${f.name}`; }
 
 let lastFlavor = null;
 function showResult() {
@@ -687,44 +722,25 @@ function showResult() {
   lastFlavor = flavor;
 
   const pct = (96 + Math.random() * 3.8).toFixed(1);
-  $("matchPct").textContent = `${pct}% match`;
-  $("fEmoji").textContent = flavor.e;
-  $("fName").textContent = `Monopoly: ${flavor.name}`;
+  $("matchPct").textContent = `${pct}% match. We're so sorry.`;
+  const cover = $("fCover");
+  cover.onerror = () => { cover.style.display = "none"; };
+  cover.style.display = "";
+  cover.src = IMG + flavor.img;
+  $("fName").textContent = flavor.name;
   $("fBlurb").textContent = flavor.blurb;
 
   const smug = $("smug");
   if (takes > 1) {
-    smug.textContent = SMUG_LINES[(takes - 2) % SMUG_LINES.length];
+    smug.textContent = SMUG_LINES[Math.min(takes - 2, SMUG_LINES.length - 1)];
     smug.hidden = false;
   } else {
     smug.hidden = true;
   }
 
-  const stats = $("stats");
-  stats.innerHTML = "";
-  shuffle(STAT_POOL).slice(0, 4).forEach(([label, val], idx) => {
-    const v = Math.max(1, Math.min(100, val + Math.round(Math.random() * 6 - 3)));
-    const wrap = document.createElement("div");
-    wrap.className = "stat";
-    wrap.innerHTML = `<div class="row"><span></span><span>${v}%</span></div><div class="bar"><div></div></div>`;
-    wrap.querySelector(".row span").textContent = label;
-    const fill = wrap.querySelector(".bar > div");
-    fill.style.background = STAT_COLORS[idx % STAT_COLORS.length];
-    stats.appendChild(wrap);
-    requestAnimationFrame(() => setTimeout(() => (fill.style.width = v + "%"), 80));
-  });
-
-  const runners = $("runners");
-  runners.innerHTML = "";
-  const left = 100 - parseFloat(pct);
-  const r = shuffle(RUNNERS).slice(0, 2);
-  const first = +(left * 0.7).toFixed(1);
-  const second = +(left - first).toFixed(1);
-  [[r[0], first], [r[1], second]].forEach(([name, p]) => {
-    const li = document.createElement("li");
-    li.textContent = `${name} (${p}%)`;
-    runners.appendChild(li);
-  });
+  const n = Math.min(takes - 1, RETAKE_LABELS.length - 1);
+  $("retakeBtn").textContent = RETAKE_LABELS[n];
+  $("goad").textContent = GOAD_LINES[Math.min(takes - 1, GOAD_LINES.length - 1)];
 
   show("result");
 }
@@ -737,9 +753,9 @@ function toast(msg) {
 }
 
 async function share() {
-  const name = $("fName").textContent;
+  const name = lastFlavor ? fullName(lastFlavor) : "Monopoly";
   const url = location.href.split("#")[0].split("?")[0];
-  const text = `I took the Board Game Personality Test and got ${name} 😬 Bet you can't do better.`;
+  const text = `I took the Board Game Personality Test and got ${name}. 😩 Bet you can't do better.`;
   if (navigator.share) {
     try { await navigator.share({ title: "Which Board Game Are You?", text, url }); return; }
     catch (e) { if (e && e.name === "AbortError") return; }

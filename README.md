@@ -16,11 +16,10 @@ Open `index.html` in any text editor (TextEdit works). Near the bottom are clear
 
 - **GAMES**: a snapshot of BoardGameGeek's top 50, with cover images. The first question and the desert island question pick random games from it every time. To refresh it, ask Hoid to "update the top 50."
 - **QUESTIONS**: the 10 questions and their answers
-- **FLAVORS**: the Monopoly results and their write-ups
-- **STAT_POOL**: the joke stat bars on the result card
-- **RUNNERS**: the "runners-up" (all Monopoly versions)
+- **FLAVORS**: the Monopoly editions you can "win," each with its box cover and write-up
+- **RETAKE_LABELS** and **GOAD_LINES**: the button text and tease lines that egg people into retaking it
 - **SMUG_LINES**: what it says when someone retakes the test
-- **ANALYZING**: the fake "analyzing" messages
+- **ANALYZING** and **ANALYZING_RETAKE**: the fake "analyzing" messages (the retake ones get their hopes up first)
 
 Or just tell Hoid what you want changed.
 
