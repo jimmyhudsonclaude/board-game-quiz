@@ -11,137 +11,256 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Ultra&family=Pinyon+Script&family=Lora:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --board: #efe8d4;
-    --card: #fffdf6;
-    --ink: #1b1b1b;
-    --muted: #5d584c;
-    --red: #d7262e;
-    --green: #1f8a4c;
-    --blue: #1f5fbf;
-    --yellow: #f2b822;
-    --purple: #6b3fa0;
-    --orange: #e8792b;
-    --shadow: 5px 5px 0 var(--ink);
+    --cream: #fbf3df;
+    --paper: #fff9ec;
+    --paper-picked: #ffe7a3;
+    --ink: #3a2414;
+    --muted: #7a5a3e;
+    --red: #b8231c;
+    --red-dark: #7f150f;
+    --gold: #e0a93b;
+    --gold-light: #f6d27a;
+    --gold-dark: #a86f12;
+    --green: #2e7d4f;
+    --emerald: #1f6b47;
+    --mustard: #e3a61c;
+    --blue: #2f6aa8;
+    --plum: #6e3a7a;
+    --brown: #8b5a2b;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body {
-    background: var(--board);
-    background-image:
-      radial-gradient(circle at 1px 1px, rgba(0,0,0,.07) 1px, transparent 0);
-    background-size: 18px 18px;
     color: var(--ink);
-    font-family: Inter, system-ui, -apple-system, sans-serif;
+    font-family: Lora, Georgia, serif;
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 24px 16px 40px;
+    background-color: #f4e6c4;
+    background-image:
+      radial-gradient(ellipse at 50% 18%, rgba(255,236,170,.95) 0%, rgba(255,236,170,0) 55%),
+      radial-gradient(ellipse at 50% 120%, rgba(160,95,30,.35) 0%, rgba(160,95,30,0) 60%),
+      linear-gradient(#f8ecd0, #ecd3a0);
+    background-attachment: fixed;
+    display: flex; flex-direction: column; align-items: center;
+    padding: 28px 16px 48px;
+    overflow-x: hidden;
   }
-  .wrap { width: 100%; max-width: 560px; }
-  h1, h2, .display { font-family: "Archivo Black", Impact, sans-serif; font-weight: 400; letter-spacing: .01em; }
+  /* Sunburst behind everything */
+  body::before {
+    content: ""; position: fixed; left: 50%; top: 260px;
+    width: 1600px; height: 1600px; margin-left: -800px; margin-top: -800px;
+    background: repeating-conic-gradient(from 0deg, rgba(255,255,255,.28) 0deg 6deg, rgba(255,255,255,0) 6deg 15deg);
+    -webkit-mask: radial-gradient(circle, #000 0%, rgba(0,0,0,.6) 25%, transparent 55%);
+            mask: radial-gradient(circle, #000 0%, rgba(0,0,0,.6) 25%, transparent 55%);
+    pointer-events: none; z-index: 0;
+    animation: spin 160s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .wrap { width: 100%; max-width: 560px; position: relative; z-index: 1; }
+
+  /* ---------- Logo-style lettering ---------- */
+  .logo {
+    font-family: Ultra, "Rockwell Extra Bold", Georgia, serif;
+    font-weight: 400;
+    color: var(--red);
+    -webkit-text-stroke: 3px var(--gold-light);
+    paint-order: stroke fill;
+    text-shadow:
+      0 0 0 #fff,
+      2px 2px 0 #fff, -2px -2px 0 #fff, 2px -2px 0 #fff, -2px 2px 0 #fff,
+      3px 0 0 #fff, -3px 0 0 #fff, 0 3px 0 #fff, 0 -3px 0 #fff,
+      4px 6px 0 rgba(90,40,10,.35);
+    letter-spacing: .01em;
+    line-height: 1.02;
+    margin: 0;
+  }
+  .script { font-family: "Pinyon Script", "Snell Roundhand", cursive; color: var(--ink); }
+  h2, .heading { font-family: Ultra, "Rockwell Extra Bold", Georgia, serif; font-weight: 400; color: var(--ink); }
+
+  /* ---------- Ornate card ---------- */
   .card {
-    background: var(--card);
-    border: 3px solid var(--ink);
-    border-radius: 16px;
-    box-shadow: var(--shadow);
-    padding: 24px;
+    position: relative;
+    background:
+      radial-gradient(ellipse at 50% 0%, #fffdf5 0%, rgba(255,253,245,0) 70%),
+      var(--paper);
+    border: 3px solid var(--gold);
+    border-radius: 22px;
+    box-shadow:
+      inset 0 0 0 5px var(--paper),
+      inset 0 0 0 7px var(--gold-dark),
+      0 2px 0 var(--gold-dark),
+      0 18px 40px -12px rgba(90,45,10,.55);
+    padding: 30px 24px 26px;
   }
-  .screen { display: none; animation: pop .35s ease; }
+  .card::before, .card::after {
+    content: "✦"; position: absolute; top: 12px; color: var(--gold-dark); font-size: 14px;
+  }
+  .card::before { left: 16px; }
+  .card::after { right: 16px; }
+
+  .screen { display: none; animation: pop .4s ease; }
   .screen.active { display: block; }
-  @keyframes pop { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes pop { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
 
-  /* Intro */
-  .dice-row { font-size: 40px; text-align: center; margin-bottom: 8px; }
-  .dice-row span { display: inline-block; animation: wobble 2.4s ease-in-out infinite; }
-  .dice-row span:nth-child(2) { animation-delay: .3s; }
-  .dice-row span:nth-child(3) { animation-delay: .6s; }
-  @keyframes wobble { 0%,100% { transform: rotate(0); } 50% { transform: rotate(14deg) translateY(-4px); } }
-  .intro h1 { font-size: clamp(30px, 8vw, 44px); line-height: 1.05; margin: 6px 0 12px; text-align: center; }
-  .tag {
-    display: inline-block; background: var(--yellow); border: 2px solid var(--ink);
-    border-radius: 999px; padding: 4px 12px; font-size: 12px; font-weight: 800;
-    text-transform: uppercase; letter-spacing: .06em;
+  /* ---------- Intro ---------- */
+  .intro { text-align: center; }
+  .intro .script { font-size: 26px; margin-bottom: 2px; }
+  .intro .logo { font-size: clamp(34px, 10vw, 60px); margin: 4px 0 6px; }
+  .intro .logo .small { display: block; font-size: .42em; margin: 6px 0; }
+  .ribbon {
+    display: inline-block; position: relative;
+    background: linear-gradient(var(--emerald), #164f34);
+    color: #fff7df; font-weight: 700; font-size: 13px; letter-spacing: .14em; text-transform: uppercase;
+    padding: 7px 22px; margin: 8px 0 18px;
+    border-top: 2px solid var(--gold); border-bottom: 2px solid var(--gold);
+    box-shadow: 0 4px 8px -4px rgba(0,0,0,.4);
   }
-  .center { text-align: center; }
-  .lede { font-size: 17px; line-height: 1.5; color: var(--muted); text-align: center; margin: 0 0 20px; }
-  .badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 22px; }
-  .badges span { background: #fff; border: 2px solid var(--ink); border-radius: 8px; padding: 6px 10px; font-size: 13px; font-weight: 600; }
+  .ribbon::before, .ribbon::after {
+    content: ""; position: absolute; top: 4px; width: 14px; height: 100%;
+    background: #12402a; z-index: -1;
+  }
+  .ribbon::before { left: -10px; clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 40% 50%); }
+  .ribbon::after { right: -10px; clip-path: polygon(0 0, 100% 0, 60% 50%, 100% 100%, 0 100%); }
+  .lede { font-size: 18px; line-height: 1.55; color: var(--muted); margin: 0 0 20px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 24px; }
+  .badges span {
+    background: #fff3d1; border: 2px solid var(--gold); border-radius: 999px;
+    padding: 6px 12px; font-size: 14px; font-weight: 700; color: var(--ink);
+  }
 
+  /* ---------- Buttons ---------- */
   .btn {
     display: block; width: 100%;
-    font: inherit; font-weight: 800; font-size: 18px;
-    background: var(--red); color: #fff;
-    border: 3px solid var(--ink); border-radius: 12px;
-    box-shadow: 4px 4px 0 var(--ink);
-    padding: 16px 20px; cursor: pointer;
+    font-family: Ultra, Georgia, serif; font-size: 20px; letter-spacing: .03em;
+    background: linear-gradient(#d4352b, var(--red) 55%, #9c1c15);
+    color: #fff8e6; text-shadow: 0 2px 0 var(--red-dark);
+    border: 3px solid var(--gold); border-radius: 14px;
+    box-shadow: inset 0 0 0 2px rgba(255,255,255,.25), 0 5px 0 var(--red-dark), 0 10px 18px -6px rgba(80,20,5,.6);
+    padding: 15px 20px 14px; cursor: pointer;
     transition: transform .08s, box-shadow .08s;
   }
-  .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
-  .btn.secondary { background: #fff; color: var(--ink); }
-  .btn + .btn { margin-top: 12px; }
+  .btn:active { transform: translateY(4px); box-shadow: inset 0 0 0 2px rgba(255,255,255,.25), 0 1px 0 var(--red-dark); }
+  .btn.secondary {
+    background: linear-gradient(#fff9ea, #f3e2b8); color: var(--ink); text-shadow: none;
+    box-shadow: 0 5px 0 var(--gold-dark), 0 10px 18px -8px rgba(80,40,5,.5);
+  }
+  .btn.secondary:active { box-shadow: 0 1px 0 var(--gold-dark); }
+  .btn + .btn { margin-top: 14px; }
 
-  /* Question */
-  .qhead { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
-  .back { background: none; border: none; font: inherit; color: var(--muted); cursor: pointer; padding: 4px 0; text-transform: uppercase; }
-  .back[hidden] { visibility: hidden; display: inline; }
-  .progress { height: 14px; border: 2px solid var(--ink); border-radius: 999px; background: #fff; overflow: hidden; margin-bottom: 18px; }
-  .progress > div { height: 100%; width: 0; background: var(--green); transition: width .35s ease; }
-  .question h2 { font-size: clamp(22px, 6vw, 28px); line-height: 1.15; margin: 0 0 6px; }
-  .question .sub { color: var(--muted); margin: 0 0 18px; font-size: 15px; }
+  /* ---------- Train track progress ---------- */
+  .track { position: relative; height: 34px; margin: 4px 4px 18px; }
+  .track .rails {
+    position: absolute; left: 0; right: 0; top: 18px; height: 12px;
+    background:
+      linear-gradient(var(--brown), var(--brown)) 0 0 / 100% 2px no-repeat,
+      linear-gradient(var(--brown), var(--brown)) 0 100% / 100% 2px no-repeat,
+      repeating-linear-gradient(90deg, #a77442 0 5px, transparent 5px 14px);
+    opacity: .75;
+  }
+  .track .done {
+    position: absolute; left: 0; top: 18px; height: 12px; width: 0;
+    background:
+      linear-gradient(var(--gold-dark), var(--gold-dark)) 0 0 / 100% 2px no-repeat,
+      linear-gradient(var(--gold-dark), var(--gold-dark)) 0 100% / 100% 2px no-repeat,
+      repeating-linear-gradient(90deg, var(--gold) 0 5px, transparent 5px 14px);
+    transition: width .5s ease;
+  }
+  .track .train {
+    position: absolute; top: -4px; left: 0; font-size: 30px; line-height: 1;
+    transform: translateX(-50%) scaleX(-1);
+    transition: left .5s ease;
+  }
+  .track .steam { position: absolute; top: -14px; font-size: 14px; opacity: .6; transition: left .5s ease; transform: translateX(-10%); }
+
+  /* ---------- Question ---------- */
+  .qhead { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); }
+  .back { background: none; border: none; font: inherit; color: var(--muted); cursor: pointer; padding: 4px 0; letter-spacing: .12em; text-transform: uppercase; }
+  .back.hide { visibility: hidden; }
+  .question h2 { font-size: clamp(23px, 6.4vw, 30px); line-height: 1.15; margin: 0 0 6px; }
+  .question .sub { color: var(--muted); margin: 0 0 18px; font-size: 16px; font-style: italic; }
   .answers { display: grid; gap: 12px; }
   .answers.two { grid-template-columns: 1fr 1fr; }
+
+  /* Ticket-shaped answers */
   .answer {
-    font: inherit; text-align: left; font-size: 17px; font-weight: 600;
-    background: #fff; color: var(--ink);
-    border: 3px solid var(--ink); border-radius: 12px;
-    box-shadow: 3px 3px 0 var(--ink);
-    padding: 14px 16px; cursor: pointer;
-    display: flex; align-items: center; gap: 12px;
-    transition: transform .08s, box-shadow .08s, background .15s;
+    --tk: var(--paper);
+    position: relative;
+    font: inherit; font-size: 17px; font-weight: 700; color: var(--ink); text-align: left;
+    border: none; cursor: pointer;
+    padding: 12px 22px 12px 26px; min-height: 64px;
+    display: flex; align-items: center; gap: 14px;
+    background:
+      radial-gradient(circle at 0 50%, transparent 11px, var(--tk) 12px) left / 51% 100% no-repeat,
+      radial-gradient(circle at 100% 50%, transparent 11px, var(--tk) 12px) right / 51% 100% no-repeat;
+    filter: drop-shadow(0 0 1.5px var(--gold-dark)) drop-shadow(0 4px 4px rgba(90,45,10,.28));
+    transition: transform .1s;
   }
-  .answer .emoji { font-size: 26px; flex: none; }
-  .answers.two .answer { flex-direction: column; text-align: center; padding: 20px 10px; }
-  .answers.two .answer .emoji { font-size: 40px; }
-  .answer:hover { background: #fff6dc; }
-  .answer.picked { background: var(--yellow); transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
-  .swatch { width: 100%; height: 70px; border-radius: 8px; border: 2px solid var(--ink); }
+  .answer::after {
+    content: ""; position: absolute; inset: 5px 16px; border: 1.5px dashed rgba(168,111,18,.55); border-radius: 6px; pointer-events: none;
+  }
+  .answer:hover { --tk: #fff3d6; }
+  .answer.picked { --tk: var(--paper-picked); transform: scale(.98); }
+  .answer .emoji { font-size: 28px; flex: none; width: 40px; text-align: center; }
+  .answer .stub { flex: none; padding-right: 14px; border-right: 2px dotted rgba(168,111,18,.6); }
+  .answer .cover {
+    width: 52px; height: 52px; object-fit: contain; display: block;
+    border-radius: 4px; background: #fff;
+    box-shadow: 0 2px 4px rgba(60,30,5,.35);
+  }
+  .answer .label { display: flex; flex-direction: column; gap: 2px; }
+  .answer .rank { font-size: 12px; font-weight: 700; color: var(--red); letter-spacing: .08em; text-transform: uppercase; }
+  .answers.two .answer { flex-direction: column; text-align: center; padding: 22px 18px 18px; gap: 8px; }
+  .answers.two .answer::after { inset: 6px 16px; }
+  .answers.two .answer .emoji { font-size: 44px; width: auto; }
+  .swatch { width: 100%; height: 64px; border-radius: 10px; border: 3px solid #fff; box-shadow: 0 0 0 2px var(--gold-dark); }
 
-  /* Analyzing */
+  /* ---------- Analyzing ---------- */
   .analyzing { text-align: center; }
-  .analyzing .big-die { font-size: 72px; display: inline-block; animation: roll .6s linear infinite; }
-  @keyframes roll { to { transform: rotate(360deg); } }
-  .analyzing h2 { font-size: 26px; margin: 10px 0 8px; }
-  .analyzing .status { min-height: 48px; color: var(--muted); font-size: 16px; }
-  .analyzing .progress > div { background: var(--purple); }
+  .analyzing .script { font-size: 28px; }
+  .analyzing h2 { font-size: 26px; margin: 0 0 10px; }
+  .analyzing .status { min-height: 52px; color: var(--muted); font-size: 17px; font-style: italic; }
+  .analyzing .track { margin-top: 18px; }
 
-  /* Result */
-  .deed { padding: 0; overflow: hidden; }
-  .deed-band { background: var(--red); color: #fff; text-align: center; padding: 18px 20px 16px; border-bottom: 3px solid var(--ink); }
-  .deed-band .small { font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; opacity: .9; }
-  .deed-band .match { font-size: 15px; font-weight: 600; margin-top: 4px; }
-  .deed-band h1 { font-size: clamp(38px, 11vw, 56px); margin: 6px 0 0; line-height: 1; text-shadow: 3px 3px 0 var(--ink); }
-  .deed-body { padding: 22px 22px 24px; }
-  .flavor { text-align: center; margin-bottom: 14px; }
-  .flavor .emoji { font-size: 54px; line-height: 1; }
-  .flavor h2 { font-size: 24px; margin: 8px 0 0; }
-  .blurb { font-size: 17px; line-height: 1.55; margin: 12px 0 18px; }
-  .stats { border-top: 2px dashed var(--ink); padding-top: 14px; margin-bottom: 16px; }
+  /* ---------- Result deed ---------- */
+  .deed { padding: 0; overflow: hidden; text-align: center; }
+  .deed-band {
+    background:
+      repeating-conic-gradient(from 0deg at 50% 120%, rgba(255,255,255,.10) 0deg 5deg, transparent 5deg 12deg),
+      linear-gradient(#c8302a, var(--red) 60%, #8f1a13);
+    color: #fff7df; padding: 26px 20px 22px;
+    border-bottom: 4px double var(--gold);
+  }
+  .deed-band .small { font-size: 12px; font-weight: 700; letter-spacing: .28em; text-transform: uppercase; color: var(--gold-light); }
+  .deed-band .script { color: #fff2cf; font-size: 24px; margin-top: 2px; }
+  .deed-band .logo { font-size: clamp(30px, 9.6vw, 60px); margin: 6px 0 4px; color: #fff8e6; -webkit-text-stroke: 3px var(--gold); text-shadow: 3px 3px 0 var(--red-dark), 5px 7px 0 rgba(40,10,0,.4); }
+  .deed-band .match { display: inline-block; margin-top: 6px; background: var(--gold); color: var(--ink); font-weight: 700; font-size: 14px; padding: 4px 14px; border-radius: 999px; }
+  .deed-body { padding: 24px 24px 26px; }
+  .flavor .emoji { font-size: 56px; line-height: 1; }
+  .flavor h2 { font-size: 25px; margin: 10px 0 0; line-height: 1.15; }
+  .blurb { font-size: 18px; line-height: 1.6; margin: 14px 0 20px; text-align: left; }
+  .divider { color: var(--gold-dark); letter-spacing: .5em; margin: 4px 0 14px; font-size: 14px; }
+  .stats { text-align: left; margin-bottom: 18px; }
   .stat { margin-bottom: 12px; }
-  .stat .row { display: flex; justify-content: space-between; font-weight: 600; font-size: 14px; margin-bottom: 4px; gap: 8px; }
-  .stat .bar { height: 12px; border: 2px solid var(--ink); border-radius: 999px; background: #fff; overflow: hidden; }
-  .stat .bar > div { height: 100%; width: 0; transition: width 1s ease; }
-  .runners { background: #f6f1e2; border: 2px solid var(--ink); border-radius: 10px; padding: 12px 14px; font-size: 14px; margin-bottom: 20px; }
-  .runners strong { display: block; margin-bottom: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+  .stat .row { display: flex; justify-content: space-between; font-weight: 700; font-size: 15px; margin-bottom: 5px; gap: 8px; }
+  .stat .bar { height: 12px; border: 2px solid var(--gold-dark); border-radius: 999px; background: #fff3d6; overflow: hidden; }
+  .stat .bar > div { height: 100%; width: 0; transition: width 1.1s ease; }
+  .runners {
+    background: #f7ead0; border: 2px dashed var(--gold-dark); border-radius: 12px;
+    padding: 12px 16px; font-size: 15px; margin-bottom: 22px; text-align: left;
+  }
+  .runners strong { display: block; margin-bottom: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .14em; color: var(--red); }
   .runners ol { margin: 0; padding-left: 20px; }
-  .smug { background: var(--yellow); border: 2px solid var(--ink); border-radius: 10px; padding: 10px 14px; font-weight: 800; text-align: center; margin-bottom: 16px; }
+  .smug {
+    background: linear-gradient(var(--gold-light), var(--gold)); border: 2px solid var(--gold-dark); border-radius: 12px;
+    padding: 10px 14px; font-weight: 700; margin-bottom: 18px;
+  }
   .smug[hidden] { display: none; }
-  .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(100px); background: var(--ink); color: #fff; padding: 12px 18px; border-radius: 10px; font-weight: 600; transition: transform .25s; z-index: 10; max-width: calc(100% - 32px); text-align: center; }
+
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(120px); background: var(--ink); color: #fff7df; padding: 12px 18px; border-radius: 12px; border: 2px solid var(--gold); font-weight: 700; transition: transform .25s; z-index: 10; max-width: calc(100% - 32px); text-align: center; }
   .toast.show { transform: translateX(-50%) translateY(0); }
-  .fine { text-align: center; font-size: 12px; color: var(--muted); margin-top: 18px; line-height: 1.5; }
+  .fine { text-align: center; font-size: 13px; color: var(--muted); margin-top: 18px; line-height: 1.5; font-style: italic; }
 </style>
 </head>
 <body>
@@ -150,16 +269,16 @@
   <!-- INTRO -->
   <section class="screen active intro" id="intro">
     <div class="card">
-      <div class="dice-row"><span>🎲</span><span>♟️</span><span>🎲</span></div>
-      <div class="center"><span class="tag">Official Tabletop Assessment</span></div>
-      <h1>Which Board Game Are You?</h1>
-      <p class="lede">Ten questions. Decades of tabletop psychology. One scientifically accurate result about who you really are at the game table.</p>
+      <div class="script">The Institute of Tabletop Psychology presents</div>
+      <h1 class="logo">Which Board Game <span class="small">ARE</span>You?</h1>
+      <div class="ribbon">Official Personality Assessment</div>
+      <p class="lede">Ten questions. Decades of research. One scientifically accurate answer about who you really are at the game table.</p>
       <div class="badges">
         <span>⏱️ 2 minutes</span>
         <span>🧠 Peer-reviewed*</span>
         <span>🎯 97.3% accurate</span>
       </div>
-      <button class="btn" id="startBtn">Find My Game</button>
+      <button class="btn" id="startBtn">All Aboard!</button>
       <p class="fine">*Reviewed by peers. Specifically, a guy named Doug.</p>
     </div>
   </section>
@@ -171,7 +290,7 @@
         <button class="back" id="backBtn">← Back</button>
         <span id="qCount">Question 1 of 10</span>
       </div>
-      <div class="progress"><div id="qBar"></div></div>
+      <div class="track" id="qTrack"><div class="rails"></div><div class="done"></div><div class="train">🚂</div></div>
       <h2 id="qText"></h2>
       <p class="sub" id="qSub"></p>
       <div class="answers" id="answers"></div>
@@ -181,10 +300,10 @@
   <!-- ANALYZING -->
   <section class="screen analyzing" id="analyzing">
     <div class="card">
-      <div class="big-die">🎲</div>
-      <h2>Analyzing your answers...</h2>
+      <div class="script">One moment, please</div>
+      <h2>Analyzing Your Answers</h2>
       <p class="status" id="status"></p>
-      <div class="progress"><div id="aBar"></div></div>
+      <div class="track" id="aTrack"><div class="rails"></div><div class="done"></div><div class="train">🚂</div></div>
     </div>
   </section>
 
@@ -192,9 +311,10 @@
   <section class="screen" id="result">
     <div class="card deed">
       <div class="deed-band">
-        <div class="small">Deed of Personality</div>
+        <div class="small">✦ Deed of Personality ✦</div>
+        <div class="script">Your board game is</div>
+        <h1 class="logo">MONOPOLY</h1>
         <div class="match" id="matchPct">97.3% match</div>
-        <h1>MONOPOLY</h1>
       </div>
       <div class="deed-body">
         <div class="smug" id="smug" hidden></div>
@@ -203,6 +323,7 @@
           <h2 id="fName"></h2>
         </div>
         <p class="blurb" id="fBlurb"></p>
+        <div class="divider">✦ ✦ ✦</div>
         <div class="stats" id="stats"></div>
         <div class="runners">
           <strong>Runners-up</strong>
@@ -210,7 +331,7 @@
         </div>
         <button class="btn" id="shareBtn">Dare a Friend to Take It</button>
         <button class="btn secondary" id="retakeBtn">Retake the Test</button>
-        <p class="fine">Results are final. The dice have spoken.<br>This quiz is a parody and is not affiliated with Hasbro or any game publisher.</p>
+        <p class="fine">Results are final. The dice have spoken.<br>A parody, not affiliated with Hasbro or any game publisher.<br>Game rankings and box art from BoardGameGeek.</p>
       </div>
     </div>
   </section>
@@ -219,18 +340,70 @@
 <div class="toast" id="toast"></div>
 
 <script>
+// ---------- BOARDGAMEGEEK TOP 50 (snapshot taken November 24, 2026) ----------
+// To refresh: ask Hoid to "update the top 50."
+const IMG = "https://cf.geekdo-images.com/";
+const GAMES = [
+  [1, "Brass: Birmingham", "x3zxjr-Vw5iU4yDPg70Jgw__micro/img/4Od3GYCiqptga0VbmyumPbJlBsU=/fit-in/64x64/filters:strip_icc()/pic3490053.jpg"],
+  [2, "Ark Nova", "SoU8p28Sk1s8MSvoM4N8pQ__micro/img/LSAi1pmhbTbWwtBrziutDOXzfdY=/fit-in/64x64/filters:strip_icc()/pic6293412.jpg"],
+  [3, "Pandemic Legacy: Season 1", "-Qer2BBPG7qGGDu6KcVDIw__micro/img/n6-sXYD6XXZoqIxq4P6AG7VPCuA=/fit-in/64x64/filters:strip_icc()/pic2452831.png"],
+  [4, "Gloomhaven", "sZYp_3BTDGjh2unaZfZmuA__micro/img/sQyh47ClBO3d5sxPm73hMvM-JV4=/fit-in/64x64/filters:strip_icc()/pic2437871.jpg"],
+  [5, "Dune: Imperium – Uprising", "UVUkjMV_Q2paVUIUP30Vvw__micro/img/NLUsSSVMHts8-v1gJxC_LbAjSaE=/fit-in/64x64/filters:strip_icc()/pic7664424.jpg"],
+  [6, "Dune: Imperium", "PhjygpWSo-0labGrPBMyyg__micro/img/mfU7-dEFnVyXJrF-BWAO0buexao=/fit-in/64x64/filters:strip_icc()/pic5666597.jpg"],
+  [7, "Twilight Imperium", "_Ppn5lssO5OaildSE-FgFA__micro/img/2gymaKs35_2yj7eyyA6cYyVmd9c=/fit-in/64x64/filters:strip_icc()/pic3727516.jpg"],
+  [8, "War of the Ring", "ImPgGag98W6gpV1KV812aA__micro/img/NT-Av_3kdYUcwuti5ocmIQXow3g=/fit-in/64x64/filters:strip_icc()/pic1215633.jpg"],
+  [9, "Terraforming Mars", "wg9oOLcsKvDesSUdZQ4rxw__micro/img/LUkXZhd1TO80eCiXMD3-KfnzA6k=/fit-in/64x64/filters:strip_icc()/pic3536616.jpg"],
+  [10, "Star Wars: Rebellion", "7SrPNGBKg9IIsP4UQpOi8g__micro/img/nEvTiCkWpT-ymH4bstc9c335TtQ=/fit-in/64x64/filters:strip_icc()/pic4325841.jpg"],
+  [11, "Spirit Island", "kjCm4ZvPjIZxS-mYgSPy1g__micro/img/sRPer5FmBxyV527MY67P-gM7ukg=/fit-in/64x64/filters:strip_icc()/pic7013651.jpg"],
+  [12, "Gloomhaven: Jaws of the Lion", "_HhIdavYW-hid20Iq3hhmg__micro/img/OdKjWiFsNvQAfJfXXSITttiozWE=/fit-in/64x64/filters:strip_icc()/pic5055631.jpg"],
+  [13, "Gaia Project", "hGWFm3hbMlCDsfCsauOQ4g__micro/img/odWj2bEnZi9dEcQQrOtYj1e0QLE=/fit-in/64x64/filters:strip_icc()/pic5375625.png"],
+  [14, "SETI", "_BUXOVRDU9g_eRwgpR5ZZw__micro/img/mVlVFSt_j8f6NhXXXmjPPkzyruc=/fit-in/64x64/filters:strip_icc()/pic8160466.jpg"],
+  [15, "Slay the Spire: The Board Game", "PQzVclEoOQ_wr4e1V86kxA__micro/img/umu_PR9o096pmOA2laSDPJ1ACiQ=/fit-in/64x64/filters:strip_icc()/pic8157856.png"],
+  [16, "Twilight Struggle", "pNCiUUphnoeWOYfsWq0kng__micro/img/ZlfJiIATIt5MY7xWSMzFmdygaa0=/fit-in/64x64/filters:strip_icc()/pic3530661.jpg"],
+  [17, "The Castles of Burgundy", "sH2YTQ10dHj1ibfS-KKtGA__micro/img/Hf2YimV7AKXK1IrP0kh3t_m4vxE=/fit-in/64x64/filters:strip_icc()/pic8745814.jpg"],
+  [18, "LOTR: Duel for Middle-earth", "EybxJlUc9rz7F7HVFLqsdw__micro/img/F1R-bIu9E6PWoyFAe5_0jn-R9U4=/fit-in/64x64/filters:strip_icc()/pic8378939.jpg"],
+  [19, "Through the Ages", "fVwPntkJKgaEo0rIC0RwpA__micro/img/77dZJpqtydc8TTecl0ReGF7iAVw=/fit-in/64x64/filters:strip_icc()/pic2663291.jpg"],
+  [20, "Frosthaven", "cwUgf-f-qwri8UHBUnifuQ__micro/img/pVLBZRQWRR2BX7nNpyCi4TVxXws=/fit-in/64x64/filters:strip_icc()/pic5092291.png"],
+  [21, "Great Western Trail", "u1l0gH7sb_vnvDvoO_QHqA__micro/img/xeShpQfbj4L1id-ItJbfIYVzgyA=/fit-in/64x64/filters:strip_icc()/pic4887376.jpg"],
+  [22, "Brass: Lancashire", "tHVtPzu82mBpeQbbZkV6EA__micro/img/jM8d5Q5btvJmcWQN_px-A-nlueI=/fit-in/64x64/filters:strip_icc()/pic3469216.jpg"],
+  [23, "Eclipse: Second Dawn", "Oh3kHw6lweg6ru71Q16h2Q__micro/img/vhB59zFDq3Kul0xbr3api2selZs=/fit-in/64x64/filters:strip_icc()/pic5235277.jpg"],
+  [24, "7 Wonders Duel", "zdagMskTF7wJBPjX74XsRw__micro/img/nXtpcw3tYaelntFHb1aH4YrN7Wk=/fit-in/64x64/filters:strip_icc()/pic2576399.jpg"],
+  [25, "Nemesis", "4KSmlm59w0GwLIlgDnJDAQ__micro/img/sWkwLPbv89fyeXyKvWvrfD52tzw=/fit-in/64x64/filters:strip_icc()/pic8211747.png"],
+  [26, "A Feast for Odin", "s9oGMCo1fcfV4Dk3EnqLZw__micro/img/JCrcuFDrjVQ64uLbqpH-Pmg6XsU=/fit-in/64x64/filters:strip_icc()/pic3146943.png"],
+  [27, "Scythe", "7k_nOxpO9OGIjhLq2BUZdA__micro/img/ETplc22GdhlN5u0mppcDxSP8LVk=/fit-in/64x64/filters:strip_icc()/pic3163924.jpg"],
+  [28, "Clank! Legacy", "hc2NDafu5c24iLJh_IZmyg__micro/img/v2WzacDprYF837E6h9O2WuFFmpw=/fit-in/64x64/filters:strip_icc()/pic4885780.png"],
+  [29, "Lost Ruins of Arnak", "6GqH14TJJhza86BX5HCLEQ__micro/img/2FKVaukjh9a-Kg9LWQuMSvLS34s=/fit-in/64x64/filters:strip_icc()/pic5674958.jpg"],
+  [30, "Concordia", "CzwSm8i7tkLz6cBnrILZBg__micro/img/FQyxREkHBn7yTbGmBg7c44eLgaM=/fit-in/64x64/filters:strip_icc()/pic3453267.jpg"],
+  [31, "Great Western Trail (2nd Ed.)", "gDn7AhrDlmfCLSz9ZqoNFQ__micro/img/eGBh_Csj13hXnODUTB-7dmpq-M0=/fit-in/64x64/filters:strip_icc()/pic5988511.jpg"],
+  [32, "Sky Team", "uXMeQzNenHb3zK7Hoa6b2w__micro/img/WUPeTU-QmVFLHWyY3AYn2LOJzvg=/fit-in/64x64/filters:strip_icc()/pic7398904.jpg"],
+  [33, "Arkham Horror: The Card Game", "B5F5ulz0UivNgrI9Ky0euA__micro/img/DnDtwD_7oQR982carXqiVfhOQog=/fit-in/64x64/filters:strip_icc()/pic3122349.jpg"],
+  [34, "Root", "JUAUWaVUzeBgzirhZNmHHw__micro/img/tdHLiMYfi-KTy89sGBGZVeE9ts0=/fit-in/64x64/filters:strip_icc()/pic4254509.jpg"],
+  [35, "Orléans", "nagl1li6kYt9elV9jbfVQw__micro/img/hUKCvnqgFvTl0aOMd8FLkgCObT0=/fit-in/64x64/filters:strip_icc()/pic6228507.jpg"],
+  [36, "Terra Mystica", "bre12I1YiXkZr7elvriz4A__micro/img/SAwaBrDhHbGuq6dFY-ok95qFMcU=/fit-in/64x64/filters:strip_icc()/pic5375624.jpg"],
+  [37, "Too Many Bones", "wKwRk0wYBcrtLAfgn4PCdg__micro/img/Q6VXZKoVSlMjTU7Vp8tn1tkcVzw=/fit-in/64x64/filters:strip_icc()/pic6624445.png"],
+  [38, "Wingspan", "yLZJCVLlIx4c7eJEWUNJ7w__micro/img/5ZaRePVhfelfofF7T_OC1e0gUCw=/fit-in/64x64/filters:strip_icc()/pic4458123.jpg"],
+  [39, "Barrage", "jEPmWvvYpqkWrKOzqIHFsg__micro/img/Uwm0ZfmY4ZNWWxlackDXrsmS-Io=/fit-in/64x64/filters:strip_icc()/pic4336469.png"],
+  [40, "Mage Knight", "DUO2hz9AlLOH8p9ED-lCWg__micro/img/eXzdbUmCbIdMIVgiQ_QwS3YNOS4=/fit-in/64x64/filters:strip_icc()/pic1083380.jpg"],
+  [41, "Hegemony", "DCLgJlrvB-EqL6A3WgQLMQ__micro/img/j_LPta_lgRrN8Rrs9Rxt_d3Hysc=/fit-in/64x64/filters:strip_icc()/pic5715770.jpg"],
+  [42, "Kanban EV", "L2Wn-zUqkcHgqvwvY212Ig__micro/img/2pY9Wo185ehuYO7Mb0gTDpdww74=/fit-in/64x64/filters:strip_icc()/pic4924232.jpg"],
+  [43, "Crokinole", "DOwZ7_Q1w68iBhARcDAxig__micro/img/VJitj3S_EeX7ZU1GIKgCswFCVtU=/fit-in/64x64/filters:strip_icc()/pic8549797.jpg"],
+  [44, "Clank!: Catacombs", "cCLn9Mvb7jRSaZzHeUXhoQ__micro/img/BCbIa1Hc9kBFoBZYWaDOnWbzucc=/fit-in/64x64/filters:strip_icc()/pic6937913.jpg"],
+  [45, "Viticulture", "l_PRU2lVlX9seScRFcvFlA__micro/img/3EqHlTkNSnZNFHVaAeFSpzfzuIQ=/fit-in/64x64/filters:strip_icc()/pic6500949.jpg"],
+  [46, "Ticket to Ride Legacy", "2H0pJddVJA3r6btqRNLG1g__micro/img/PcnRQaKUMXYgTVNQ8WB4X1eWeNA=/fit-in/64x64/filters:strip_icc()/pic7541330.png"],
+  [47, "The Crew: Mission Deep Sea", "VuBqZ1sMaDAVVHF_OEJP4g__micro/img/p3GKOrR04nV1qkim9zq-rmFfYh8=/fit-in/64x64/filters:strip_icc()/pic5988903.jpg"],
+  [48, "Everdell", "fjE7V5LNq31yVEW_yuqI-Q__micro/img/TAgkPCJdNAIHZfn1BE1DXadBL9g=/fit-in/64x64/filters:strip_icc()/pic3918905.png"],
+  [49, "LOTR: Fate of the Fellowship", "scw36iBIad7l-rGzxPGcGg__micro/img/zTllrRmMYLuMHXuPjpXUjzFFpDw=/fit-in/64x64/filters:strip_icc()/pic8662670.png"],
+  [50, "Heat: Pedal to the Metal", "-vOrd4bOspibyohYExLqWg__micro/img/bcHg_0mMkgMaBp9Sz1gxJtHtaHw=/fit-in/64x64/filters:strip_icc()/pic6940449.png"],
+];
+
 // ---------- THE QUESTIONS ----------
-// Change, add, or remove questions here. "two: true" shows two big side-by-side buttons.
+// "games: 4" fills the question with 4 random top-50 games.
+// "two: true" shows two big side-by-side choices.
 const QUESTIONS = [
   {
     q: "It's game night. What are you reaching for first?",
     sub: "Be honest. The shelf is watching.",
-    a: [
-      { e: "🐑", t: "Catan" },
-      { e: "🚂", t: "Ticket to Ride" },
-      { e: "🐦", t: "Wingspan" },
-      { e: "🕵️", t: "Codenames" },
-    ],
+    games: 4,
   },
   {
     q: "Green or blue?",
@@ -262,7 +435,6 @@ const QUESTIONS = [
   },
   {
     q: "How do you handle the rulebook?",
-    sub: "",
     a: [
       { e: "📖", t: "I read it twice before anyone arrives" },
       { e: "📺", t: "I watch a 12-minute YouTube video" },
@@ -291,7 +463,6 @@ const QUESTIONS = [
   },
   {
     q: "Early bird or night owl?",
-    sub: "",
     two: true,
     a: [
       { e: "🌅", t: "Early bird" },
@@ -300,7 +471,6 @@ const QUESTIONS = [
   },
   {
     q: "How do you like to play?",
-    sub: "",
     a: [
       { e: "🤝", t: "Co-op. We save the world together." },
       { e: "🧩", t: "Quiet competition. Polite, but I'm winning." },
@@ -311,49 +481,31 @@ const QUESTIONS = [
   {
     q: "Stranded on a desert island. One game box washes ashore. Which one?",
     sub: "Last question. No pressure.",
+    games: 3,
     a: [
-      { e: "🏰", t: "Carcassonne" },
-      { e: "💎", t: "Splendor" },
-      { e: "🦠", t: "Pandemic (too soon?)" },
-      { e: "📦", t: "Whatever's heaviest, so I can build a raft" },
+      { e: "🛶", t: "Whatever's heaviest, so I can build a raft" },
     ],
   },
 ];
 
 // ---------- THE RESULTS (always Monopoly) ----------
 const FLAVORS = [
-  {
-    e: "🎩", name: "The Top Hat",
-    blurb: "Classy. Traditional. Unshakably confident. You believe a good game night should last four hours and end with at least one person leaving the table in silence. You don't play to have fun. You play to own Boardwalk.",
-  },
-  {
-    e: "🪡", name: "The Thimble",
-    blurb: "Officially retired, and yet somehow still here. You've been told many times that there are newer, better options out there. You nodded politely. Then you set up the board anyway.",
-  },
-  {
-    e: "🚗", name: "The Race Car",
-    blurb: "Fast, flashy, and absolutely certain you're winning. You are not winning. You haven't been winning since the third trip around the board, two hours ago. But you look great doing it.",
-  },
-  {
-    e: "🅿️", name: "Free Parking House Rules",
-    blurb: "You put the tax money in the middle of the board. You know that's not in the rules. You've been told. You do it anyway, because chaos is your love language and no game should ever be allowed to end.",
-  },
-  {
-    e: "🏦", name: "The Banker",
-    blurb: "Trusted with the money by everyone at the table. Trustworthy? That's a different question. Nobody has ever caught you, but nobody has ever checked, either.",
-  },
-  {
-    e: "🚔", name: "Go Directly to Jail",
-    blurb: "You do not pass Go. You do not collect $200. You roll doubles three times in a row and somehow call it a strategy. Deep down, you find the jail space restful.",
-  },
-  {
-    e: "🟪", name: "Baltic Avenue",
-    blurb: "Humble. Affordable. A little purple. Nobody ever wants to land on you, mostly because it doesn't really matter when they do. You are the cozy, low-stakes friend everyone needs.",
-  },
-  {
-    e: "🏨", name: "The Hotel on Boardwalk",
-    blurb: "You are the reason the game is still going and the reason someone is quietly crying. Ruthless. Unforgiving. Lovely to have dinner with, as long as it's not a game night.",
-  },
+  { e: "🎩", name: "The Top Hat",
+    blurb: "Classy. Traditional. Unshakably confident. You believe a good game night should last four hours and end with at least one person leaving the table in silence. You don't play to have fun. You play to own Boardwalk." },
+  { e: "🪡", name: "The Thimble",
+    blurb: "Officially retired, and yet somehow still here. You've been told many times that there are newer, better options out there. You nodded politely. Then you set up the board anyway." },
+  { e: "🚗", name: "The Race Car",
+    blurb: "Fast, flashy, and absolutely certain you're winning. You are not winning. You haven't been winning since the third trip around the board, two hours ago. But you look great doing it." },
+  { e: "🅿️", name: "Free Parking House Rules",
+    blurb: "You put the tax money in the middle of the board. You know that's not in the rules. You've been told. You do it anyway, because chaos is your love language and no game should ever be allowed to end." },
+  { e: "🏦", name: "The Banker",
+    blurb: "Trusted with the money by everyone at the table. Trustworthy? That's a different question. Nobody has ever caught you, but nobody has ever checked, either." },
+  { e: "🚔", name: "Go Directly to Jail",
+    blurb: "You do not pass Go. You do not collect $200. You roll doubles three times in a row and somehow call it a strategy. Deep down, you find the jail space restful." },
+  { e: "🟪", name: "Baltic Avenue",
+    blurb: "Humble. Affordable. A little purple. Nobody ever wants to land on you, mostly because it doesn't really matter when they do. You are the cozy, low-stakes friend everyone needs." },
+  { e: "🏨", name: "The Hotel on Boardwalk",
+    blurb: "You are the reason the game is still going and the reason someone is quietly crying. Ruthless. Unforgiving. Lovely to have dinner with, as long as it's not a game night." },
 ];
 
 const STAT_POOL = [
@@ -367,7 +519,7 @@ const STAT_POOL = [
   ["Likelihood to say 'one more lap'", 78],
   ["Snacks consumed while waiting your turn", 93],
 ];
-const STAT_COLORS = ["var(--red)", "var(--green)", "var(--blue)", "var(--orange)", "var(--purple)"];
+const STAT_COLORS = ["var(--red)", "var(--emerald)", "var(--mustard)", "var(--blue)", "var(--plum)"];
 
 const RUNNERS = [
   "Monopoly Junior",
@@ -383,7 +535,7 @@ const SMUG_LINES = [
   "Still Monopoly. The dice don't lie.",
   "Monopoly again. Did you think it would change?",
   "We checked twice. Still Monopoly.",
-  "You can retake it as many times as you want. Monopoly is patient. Monopoly has four hours.",
+  "Retake it as many times as you want. Monopoly is patient. Monopoly has four hours.",
   "Monopoly. Again. At this point it's a lifestyle.",
 ];
 
@@ -401,6 +553,7 @@ const $ = (id) => document.getElementById(id);
 let current = 0;
 let busy = false;
 let takes = 0;
+let gamePicks = {};   // which random games each question shows this run
 
 function show(id) {
   document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
@@ -417,19 +570,38 @@ function shuffle(arr) {
   return a;
 }
 
+// Pick fresh random games for every question that uses them, with no repeats in one run.
+function dealGames() {
+  gamePicks = {};
+  const deck = shuffle(GAMES);
+  QUESTIONS.forEach((item, i) => {
+    if (item.games) gamePicks[i] = deck.splice(0, item.games);
+  });
+}
+
+function setTrack(el, pct) {
+  el.querySelector(".done").style.width = pct + "%";
+  el.querySelector(".train").style.left = pct + "%";
+}
+
 function renderQuestion() {
   const item = QUESTIONS[current];
   $("qCount").textContent = `Question ${current + 1} of ${QUESTIONS.length}`;
-  $("qBar").style.width = `${(current / QUESTIONS.length) * 100}%`;
+  setTrack($("qTrack"), Math.max(4, (current / QUESTIONS.length) * 100));
   $("qText").textContent = item.q;
   $("qSub").textContent = item.sub || "";
   $("qSub").style.display = item.sub ? "" : "none";
-  $("backBtn").hidden = current === 0;
+  $("backBtn").classList.toggle("hide", current === 0);
 
   const box = $("answers");
   box.className = "answers" + (item.two ? " two" : "");
   box.innerHTML = "";
-  item.a.forEach((ans) => {
+
+  const choices = [];
+  (gamePicks[current] || []).forEach(([rank, name, path]) => choices.push({ game: true, rank, t: name, img: IMG + path }));
+  (item.a || []).forEach((a) => choices.push(a));
+
+  choices.forEach((ans) => {
     const b = document.createElement("button");
     b.className = "answer";
     if (ans.swatch) {
@@ -437,15 +609,36 @@ function renderQuestion() {
       sw.className = "swatch";
       sw.style.background = ans.swatch;
       b.appendChild(sw);
+    } else if (ans.game) {
+      const stub = document.createElement("span");
+      stub.className = "stub";
+      const img = document.createElement("img");
+      img.className = "cover";
+      img.alt = "";
+      img.loading = "eager";
+      img.referrerPolicy = "no-referrer";
+      img.src = ans.img;
+      img.onerror = () => { stub.innerHTML = '<span class="emoji">🎲</span>'; };
+      stub.appendChild(img);
+      b.appendChild(stub);
     } else {
       const em = document.createElement("span");
       em.className = "emoji";
       em.textContent = ans.e;
       b.appendChild(em);
     }
+    const label = document.createElement("span");
+    label.className = "label";
+    if (ans.game) {
+      const r = document.createElement("span");
+      r.className = "rank";
+      r.textContent = `#${ans.rank} on BGG`;
+      label.appendChild(r);
+    }
     const t = document.createElement("span");
     t.textContent = ans.t;
-    b.appendChild(t);
+    label.appendChild(t);
+    b.appendChild(label);
     b.addEventListener("click", () => pick(b));
     box.appendChild(b);
   });
@@ -461,28 +654,28 @@ function pick(btn) {
     if (current < QUESTIONS.length) {
       renderQuestion();
     } else {
-      $("qBar").style.width = "100%";
+      setTrack($("qTrack"), 100);
       analyze();
     }
-  }, 280);
+  }, 300);
 }
 
 function analyze() {
   show("analyzing");
+  const track = $("aTrack");
+  setTrack(track, 0);
   let i = 0;
-  $("aBar").style.width = "0";
   $("status").textContent = ANALYZING[0];
-  const step = 550;
   const timer = setInterval(() => {
     i++;
-    $("aBar").style.width = `${Math.min(100, (i / ANALYZING.length) * 100)}%`;
+    setTrack(track, Math.min(100, (i / ANALYZING.length) * 100));
     if (i < ANALYZING.length) {
       $("status").textContent = ANALYZING[i];
     } else {
       clearInterval(timer);
-      setTimeout(showResult, 300);
+      setTimeout(showResult, 450);
     }
-  }, step);
+  }, 600);
 }
 
 let lastFlavor = null;
@@ -509,8 +702,7 @@ function showResult() {
 
   const stats = $("stats");
   stats.innerHTML = "";
-  const picks = shuffle(STAT_POOL).slice(0, 4);
-  picks.forEach(([label, val], idx) => {
+  shuffle(STAT_POOL).slice(0, 4).forEach(([label, val], idx) => {
     const v = Math.max(1, Math.min(100, val + Math.round(Math.random() * 6 - 3)));
     const wrap = document.createElement("div");
     wrap.className = "stat";
@@ -519,15 +711,15 @@ function showResult() {
     const fill = wrap.querySelector(".bar > div");
     fill.style.background = STAT_COLORS[idx % STAT_COLORS.length];
     stats.appendChild(wrap);
-    requestAnimationFrame(() => setTimeout(() => (fill.style.width = v + "%"), 60));
+    requestAnimationFrame(() => setTimeout(() => (fill.style.width = v + "%"), 80));
   });
 
   const runners = $("runners");
   runners.innerHTML = "";
-  const left = (100 - parseFloat(pct)).toFixed(1);
+  const left = 100 - parseFloat(pct);
   const r = shuffle(RUNNERS).slice(0, 2);
-  const first = (left * 0.7).toFixed(1);
-  const second = (left - first).toFixed(1);
+  const first = +(left * 0.7).toFixed(1);
+  const second = +(left - first).toFixed(1);
   [[r[0], first], [r[1], second]].forEach(([name, p]) => {
     const li = document.createElement("li");
     li.textContent = `${name} (${p}%)`;
@@ -560,9 +752,10 @@ async function share() {
   }
 }
 
-$("startBtn").addEventListener("click", () => { current = 0; renderQuestion(); show("question"); });
+function start() { current = 0; dealGames(); renderQuestion(); show("question"); }
+$("startBtn").addEventListener("click", start);
+$("retakeBtn").addEventListener("click", start);
 $("backBtn").addEventListener("click", () => { if (current > 0 && !busy) { current--; renderQuestion(); } });
-$("retakeBtn").addEventListener("click", () => { current = 0; renderQuestion(); show("question"); });
 $("shareBtn").addEventListener("click", share);
 </script>
 </body>

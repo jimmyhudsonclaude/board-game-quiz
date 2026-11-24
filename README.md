@@ -14,6 +14,7 @@ Double-click `index.html`. It opens in your web browser. That's the whole app, o
 
 Open `index.html` in any text editor (TextEdit works). Near the bottom are clearly labeled lists:
 
+- **GAMES**: a snapshot of BoardGameGeek's top 50, with cover images. The first question and the desert island question pick random games from it every time. To refresh it, ask Hoid to "update the top 50."
 - **QUESTIONS**: the 10 questions and their answers
 - **FLAVORS**: the Monopoly results and their write-ups
 - **STAT_POOL**: the joke stat bars on the result card
@@ -36,6 +37,7 @@ To update it later, upload the new `index.html` the same way. It replaces the ol
 
 ## Common problems
 
+- **A game shows a 🎲 instead of its cover.** BoardGameGeek changed or removed that image. Ask Hoid to "update the top 50."
 - **The fonts look plain.** The fancy fonts load from the internet. Without a connection, it falls back to normal fonts. Everything still works.
 - **"Dare a Friend" doesn't open a share menu on a computer.** On phones it opens the share sheet. On most computers it copies the message and link instead, and shows "Copied!"
 - **The GitHub link shows a 404.** Give it a few minutes after turning on Pages. Also make sure the file is named exactly `index.html`.
