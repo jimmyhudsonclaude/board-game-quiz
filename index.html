@@ -468,7 +468,7 @@ function showResult() {
   const n = Math.min(takes - 1, RETAKE_LABELS.length - 1);
   $("retakeBtn").textContent = RETAKE_LABELS[n];
   $("goad").textContent = GOAD_LINES[Math.min(takes - 1, GOAD_LINES.length - 1)];
-  $("realLink").hidden = takes < 3;   // the real quiz unlocks on the 3rd Monopoly
+  $("realLink").hidden = takes < 2;   // the real quiz unlocks on the 2nd Monopoly
 
   show("result");
 }

@@ -8,7 +8,7 @@ To update the live site, ask Hoid to "push the quiz changes." It goes live a min
 
 ## The real quiz
 
-There's a second, legit quiz at https://jimmyhudsonclaude.github.io/board-game-quiz/real.html ("For Real This Time"). Ten questions about how you like to play match you to one of BoardGameGeek's top 50 games, using real BGG data (complexity, play time, player counts) plus hand-picked tags. Near-duplicates are left out, so there are 44 possible results. The Monopoly quiz shows a link to it on someone's third Monopoly result.
+There's a second, legit quiz at https://jimmyhudsonclaude.github.io/board-game-quiz/real.html ("For Real This Time"). Ten questions about how you like to play match you to one of BoardGameGeek's top 50 games, using real BGG data (complexity, play time, player counts) plus hand-picked tags. Near-duplicates are left out, so there are 44 possible results. The Monopoly quiz shows a link to it on someone's second Monopoly result.
 
 - `real.html`: the quiz page. Its questions are near the bottom, labeled THE QUESTIONS.
 - `real-games.js`: the game data. It's generated, so don't edit it by hand.
