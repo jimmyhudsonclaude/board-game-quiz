@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Which Board Game Are You?</title>
+<meta name="description" content="The official tabletop personality assessment. 10 questions. One scientifically accurate answer.">
+<meta property="og:title" content="Which Board Game Are You?">
+<meta property="og:description" content="The official tabletop personality assessment. 10 questions. One scientifically accurate answer.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎲</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --board: #efe8d4;
+    --card: #fffdf6;
+    --ink: #1b1b1b;
+    --muted: #5d584c;
+    --red: #d7262e;
+    --green: #1f8a4c;
+    --blue: #1f5fbf;
+    --yellow: #f2b822;
+    --purple: #6b3fa0;
+    --orange: #e8792b;
+    --shadow: 5px 5px 0 var(--ink);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--board);
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(0,0,0,.07) 1px, transparent 0);
+    background-size: 18px 18px;
+    color: var(--ink);
+    font-family: Inter, system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px 40px;
+  }
+  .wrap { width: 100%; max-width: 560px; }
+  h1, h2, .display { font-family: "Archivo Black", Impact, sans-serif; font-weight: 400; letter-spacing: .01em; }
+  .card {
+    background: var(--card);
+    border: 3px solid var(--ink);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    padding: 24px;
+  }
+  .screen { display: none; animation: pop .35s ease; }
+  .screen.active { display: block; }
+  @keyframes pop { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  /* Intro */
+  .dice-row { font-size: 40px; text-align: center; margin-bottom: 8px; }
+  .dice-row span { display: inline-block; animation: wobble 2.4s ease-in-out infinite; }
+  .dice-row span:nth-child(2) { animation-delay: .3s; }
+  .dice-row span:nth-child(3) { animation-delay: .6s; }
+  @keyframes wobble { 0%,100% { transform: rotate(0); } 50% { transform: rotate(14deg) translateY(-4px); } }
+  .intro h1 { font-size: clamp(30px, 8vw, 44px); line-height: 1.05; margin: 6px 0 12px; text-align: center; }
+  .tag {
+    display: inline-block; background: var(--yellow); border: 2px solid var(--ink);
+    border-radius: 999px; padding: 4px 12px; font-size: 12px; font-weight: 800;
+    text-transform: uppercase; letter-spacing: .06em;
+  }
+  .center { text-align: center; }
+  .lede { font-size: 17px; line-height: 1.5; color: var(--muted); text-align: center; margin: 0 0 20px; }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 22px; }
+  .badges span { background: #fff; border: 2px solid var(--ink); border-radius: 8px; padding: 6px 10px; font-size: 13px; font-weight: 600; }
+
+  .btn {
+    display: block; width: 100%;
+    font: inherit; font-weight: 800; font-size: 18px;
+    background: var(--red); color: #fff;
+    border: 3px solid var(--ink); border-radius: 12px;
+    box-shadow: 4px 4px 0 var(--ink);
+    padding: 16px 20px; cursor: pointer;
+    transition: transform .08s, box-shadow .08s;
+  }
+  .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+  .btn.secondary { background: #fff; color: var(--ink); }
+  .btn + .btn { margin-top: 12px; }
+
+  /* Question */
+  .qhead { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+  .back { background: none; border: none; font: inherit; color: var(--muted); cursor: pointer; padding: 4px 0; text-transform: uppercase; }
+  .back[hidden] { visibility: hidden; display: inline; }
+  .progress { height: 14px; border: 2px solid var(--ink); border-radius: 999px; background: #fff; overflow: hidden; margin-bottom: 18px; }
+  .progress > div { height: 100%; width: 0; background: var(--green); transition: width .35s ease; }
+  .question h2 { font-size: clamp(22px, 6vw, 28px); line-height: 1.15; margin: 0 0 6px; }
+  .question .sub { color: var(--muted); margin: 0 0 18px; font-size: 15px; }
+  .answers { display: grid; gap: 12px; }
+  .answers.two { grid-template-columns: 1fr 1fr; }
+  .answer {
+    font: inherit; text-align: left; font-size: 17px; font-weight: 600;
+    background: #fff; color: var(--ink);
+    border: 3px solid var(--ink); border-radius: 12px;
+    box-shadow: 3px 3px 0 var(--ink);
+    padding: 14px 16px; cursor: pointer;
+    display: flex; align-items: center; gap: 12px;
+    transition: transform .08s, box-shadow .08s, background .15s;
+  }
+  .answer .emoji { font-size: 26px; flex: none; }
+  .answers.two .answer { flex-direction: column; text-align: center; padding: 20px 10px; }
+  .answers.two .answer .emoji { font-size: 40px; }
+  .answer:hover { background: #fff6dc; }
+  .answer.picked { background: var(--yellow); transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--ink); }
+  .swatch { width: 100%; height: 70px; border-radius: 8px; border: 2px solid var(--ink); }
+
+  /* Analyzing */
+  .analyzing { text-align: center; }
+  .analyzing .big-die { font-size: 72px; display: inline-block; animation: roll .6s linear infinite; }
+  @keyframes roll { to { transform: rotate(360deg); } }
+  .analyzing h2 { font-size: 26px; margin: 10px 0 8px; }
+  .analyzing .status { min-height: 48px; color: var(--muted); font-size: 16px; }
+  .analyzing .progress > div { background: var(--purple); }
+
+  /* Result */
+  .deed { padding: 0; overflow: hidden; }
+  .deed-band { background: var(--red); color: #fff; text-align: center; padding: 18px 20px 16px; border-bottom: 3px solid var(--ink); }
+  .deed-band .small { font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; opacity: .9; }
+  .deed-band .match { font-size: 15px; font-weight: 600; margin-top: 4px; }
+  .deed-band h1 { font-size: clamp(38px, 11vw, 56px); margin: 6px 0 0; line-height: 1; text-shadow: 3px 3px 0 var(--ink); }
+  .deed-body { padding: 22px 22px 24px; }
+  .flavor { text-align: center; margin-bottom: 14px; }
+  .flavor .emoji { font-size: 54px; line-height: 1; }
+  .flavor h2 { font-size: 24px; margin: 8px 0 0; }
+  .blurb { font-size: 17px; line-height: 1.55; margin: 12px 0 18px; }
+  .stats { border-top: 2px dashed var(--ink); padding-top: 14px; margin-bottom: 16px; }
+  .stat { margin-bottom: 12px; }
+  .stat .row { display: flex; justify-content: space-between; font-weight: 600; font-size: 14px; margin-bottom: 4px; gap: 8px; }
+  .stat .bar { height: 12px; border: 2px solid var(--ink); border-radius: 999px; background: #fff; overflow: hidden; }
+  .stat .bar > div { height: 100%; width: 0; transition: width 1s ease; }
+  .runners { background: #f6f1e2; border: 2px solid var(--ink); border-radius: 10px; padding: 12px 14px; font-size: 14px; margin-bottom: 20px; }
+  .runners strong { display: block; margin-bottom: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; }
+  .runners ol { margin: 0; padding-left: 20px; }
+  .smug { background: var(--yellow); border: 2px solid var(--ink); border-radius: 10px; padding: 10px 14px; font-weight: 800; text-align: center; margin-bottom: 16px; }
+  .smug[hidden] { display: none; }
+  .toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(100px); background: var(--ink); color: #fff; padding: 12px 18px; border-radius: 10px; font-weight: 600; transition: transform .25s; z-index: 10; max-width: calc(100% - 32px); text-align: center; }
+  .toast.show { transform: translateX(-50%) translateY(0); }
+  .fine { text-align: center; font-size: 12px; color: var(--muted); margin-top: 18px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- INTRO -->
+  <section class="screen active intro" id="intro">
+    <div class="card">
+      <div class="dice-row"><span>🎲</span><span>♟️</span><span>🎲</span></div>
+      <div class="center"><span class="tag">Official Tabletop Assessment</span></div>
+      <h1>Which Board Game Are You?</h1>
+      <p class="lede">Ten questions. Decades of tabletop psychology. One scientifically accurate result about who you really are at the game table.</p>
+      <div class="badges">
+        <span>⏱️ 2 minutes</span>
+        <span>🧠 Peer-reviewed*</span>
+        <span>🎯 97.3% accurate</span>
+      </div>
+      <button class="btn" id="startBtn">Find My Game</button>
+      <p class="fine">*Reviewed by peers. Specifically, a guy named Doug.</p>
+    </div>
+  </section>
+
+  <!-- QUESTION -->
+  <section class="screen question" id="question">
+    <div class="card">
+      <div class="qhead">
+        <button class="back" id="backBtn">← Back</button>
+        <span id="qCount">Question 1 of 10</span>
+      </div>
+      <div class="progress"><div id="qBar"></div></div>
+      <h2 id="qText"></h2>
+      <p class="sub" id="qSub"></p>
+      <div class="answers" id="answers"></div>
+    </div>
+  </section>
+
+  <!-- ANALYZING -->
+  <section class="screen analyzing" id="analyzing">
+    <div class="card">
+      <div class="big-die">🎲</div>
+      <h2>Analyzing your answers...</h2>
+      <p class="status" id="status"></p>
+      <div class="progress"><div id="aBar"></div></div>
+    </div>
+  </section>
+
+  <!-- RESULT -->
+  <section class="screen" id="result">
+    <div class="card deed">
+      <div class="deed-band">
+        <div class="small">Deed of Personality</div>
+        <div class="match" id="matchPct">97.3% match</div>
+        <h1>MONOPOLY</h1>
+      </div>
+      <div class="deed-body">
+        <div class="smug" id="smug" hidden></div>
+        <div class="flavor">
+          <div class="emoji" id="fEmoji"></div>
+          <h2 id="fName"></h2>
+        </div>
+        <p class="blurb" id="fBlurb"></p>
+        <div class="stats" id="stats"></div>
+        <div class="runners">
+          <strong>Runners-up</strong>
+          <ol id="runners"></ol>
+        </div>
+        <button class="btn" id="shareBtn">Dare a Friend to Take It</button>
+        <button class="btn secondary" id="retakeBtn">Retake the Test</button>
+        <p class="fine">Results are final. The dice have spoken.<br>This quiz is a parody and is not affiliated with Hasbro or any game publisher.</p>
+      </div>
+    </div>
+  </section>
+
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ---------- THE QUESTIONS ----------
+// Change, add, or remove questions here. "two: true" shows two big side-by-side buttons.
+const QUESTIONS = [
+  {
+    q: "It's game night. What are you reaching for first?",
+    sub: "Be honest. The shelf is watching.",
+    a: [
+      { e: "🐑", t: "Catan" },
+      { e: "🚂", t: "Ticket to Ride" },
+      { e: "🐦", t: "Wingspan" },
+      { e: "🕵️", t: "Codenames" },
+    ],
+  },
+  {
+    q: "Green or blue?",
+    sub: "This one matters more than you think.",
+    two: true,
+    a: [
+      { swatch: "var(--green)", t: "Green" },
+      { swatch: "var(--blue)", t: "Blue" },
+    ],
+  },
+  {
+    q: "Pick your meeple color.",
+    sub: "Choose wisely. You'll be stuck with it all night.",
+    a: [
+      { e: "🔴", t: "Red. Always red." },
+      { e: "🟡", t: "Yellow, the people's champion" },
+      { e: "🟣", t: "Purple, because nobody else wants it" },
+      { e: "🎨", t: "I bring my own hand-painted minis" },
+    ],
+  },
+  {
+    q: "Apple or Android?",
+    sub: "We won't judge. The algorithm might.",
+    two: true,
+    a: [
+      { e: "🍎", t: "Apple" },
+      { e: "🤖", t: "Android" },
+    ],
+  },
+  {
+    q: "How do you handle the rulebook?",
+    sub: "",
+    a: [
+      { e: "📖", t: "I read it twice before anyone arrives" },
+      { e: "📺", t: "I watch a 12-minute YouTube video" },
+      { e: "🤷", t: "We'll learn as we go" },
+      { e: "🏴‍☠️", t: "Rules are more like guidelines" },
+    ],
+  },
+  {
+    q: "Pineapple on pizza?",
+    sub: "There is a right answer. We know what it is.",
+    two: true,
+    a: [
+      { e: "🍍", t: "Yes, obviously" },
+      { e: "🚫", t: "Absolutely not" },
+    ],
+  },
+  {
+    q: "Your ideal game length?",
+    sub: "Setup time not included.",
+    a: [
+      { e: "⚡", t: "15 minutes, then another one" },
+      { e: "☕", t: "About 45 minutes" },
+      { e: "🌙", t: "A solid two hours" },
+      { e: "📅", t: "We'll finish it next weekend" },
+    ],
+  },
+  {
+    q: "Early bird or night owl?",
+    sub: "",
+    two: true,
+    a: [
+      { e: "🌅", t: "Early bird" },
+      { e: "🦉", t: "Night owl" },
+    ],
+  },
+  {
+    q: "How do you like to play?",
+    sub: "",
+    a: [
+      { e: "🤝", t: "Co-op. We save the world together." },
+      { e: "🧩", t: "Quiet competition. Polite, but I'm winning." },
+      { e: "🗡️", t: "Alliances, betrayal, and hurt feelings" },
+      { e: "🍿", t: "Honestly I'm just here for the snacks" },
+    ],
+  },
+  {
+    q: "Stranded on a desert island. One game box washes ashore. Which one?",
+    sub: "Last question. No pressure.",
+    a: [
+      { e: "🏰", t: "Carcassonne" },
+      { e: "💎", t: "Splendor" },
+      { e: "🦠", t: "Pandemic (too soon?)" },
+      { e: "📦", t: "Whatever's heaviest, so I can build a raft" },
+    ],
+  },
+];
+
+// ---------- THE RESULTS (always Monopoly) ----------
+const FLAVORS = [
+  {
+    e: "🎩", name: "The Top Hat",
+    blurb: "Classy. Traditional. Unshakably confident. You believe a good game night should last four hours and end with at least one person leaving the table in silence. You don't play to have fun. You play to own Boardwalk.",
+  },
+  {
+    e: "🪡", name: "The Thimble",
+    blurb: "Officially retired, and yet somehow still here. You've been told many times that there are newer, better options out there. You nodded politely. Then you set up the board anyway.",
+  },
+  {
+    e: "🚗", name: "The Race Car",
+    blurb: "Fast, flashy, and absolutely certain you're winning. You are not winning. You haven't been winning since the third trip around the board, two hours ago. But you look great doing it.",
+  },
+  {
+    e: "🅿️", name: "Free Parking House Rules",
+    blurb: "You put the tax money in the middle of the board. You know that's not in the rules. You've been told. You do it anyway, because chaos is your love language and no game should ever be allowed to end.",
+  },
+  {
+    e: "🏦", name: "The Banker",
+    blurb: "Trusted with the money by everyone at the table. Trustworthy? That's a different question. Nobody has ever caught you, but nobody has ever checked, either.",
+  },
+  {
+    e: "🚔", name: "Go Directly to Jail",
+    blurb: "You do not pass Go. You do not collect $200. You roll doubles three times in a row and somehow call it a strategy. Deep down, you find the jail space restful.",
+  },
+  {
+    e: "🟪", name: "Baltic Avenue",
+    blurb: "Humble. Affordable. A little purple. Nobody ever wants to land on you, mostly because it doesn't really matter when they do. You are the cozy, low-stakes friend everyone needs.",
+  },
+  {
+    e: "🏨", name: "The Hotel on Boardwalk",
+    blurb: "You are the reason the game is still going and the reason someone is quietly crying. Ruthless. Unforgiving. Lovely to have dinner with, as long as it's not a game night.",
+  },
+];
+
+const STAT_POOL = [
+  ["Willingness to read the rules", 4],
+  ["Chance of flipping the board", 87],
+  ["Friendships ended over a property trade", 64],
+  ["Patience for a 4-hour game", 100],
+  ["Belief that you're winning", 96],
+  ["Use of Free Parking house rules", 91],
+  ["Respect for modern game design", 2],
+  ["Likelihood to say 'one more lap'", 78],
+  ["Snacks consumed while waiting your turn", 93],
+];
+const STAT_COLORS = ["var(--red)", "var(--green)", "var(--blue)", "var(--orange)", "var(--purple)"];
+
+const RUNNERS = [
+  "Monopoly Junior",
+  "Monopoly: Cheaters Edition",
+  "Monopoly Deal",
+  "Monopoly: Star Wars Edition",
+  "Monopoly: Your Hometown Edition",
+  "Electronic Banking Monopoly",
+  "A Monopoly box with half the money missing",
+];
+
+const SMUG_LINES = [
+  "Still Monopoly. The dice don't lie.",
+  "Monopoly again. Did you think it would change?",
+  "We checked twice. Still Monopoly.",
+  "You can retake it as many times as you want. Monopoly is patient. Monopoly has four hours.",
+  "Monopoly. Again. At this point it's a lifestyle.",
+];
+
+const ANALYZING = [
+  "Cross-referencing meeple affinity...",
+  "Calibrating dice karma...",
+  "Consulting the rulebook (skimming)...",
+  "Measuring your tolerance for 4-hour games...",
+  "Counting the money in the box lid...",
+  "Finalizing results...",
+];
+
+// ---------- LOGIC (you shouldn't need to change below here) ----------
+const $ = (id) => document.getElementById(id);
+let current = 0;
+let busy = false;
+let takes = 0;
+
+function show(id) {
+  document.querySelectorAll(".screen").forEach((s) => s.classList.remove("active"));
+  $(id).classList.add("active");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function renderQuestion() {
+  const item = QUESTIONS[current];
+  $("qCount").textContent = `Question ${current + 1} of ${QUESTIONS.length}`;
+  $("qBar").style.width = `${(current / QUESTIONS.length) * 100}%`;
+  $("qText").textContent = item.q;
+  $("qSub").textContent = item.sub || "";
+  $("qSub").style.display = item.sub ? "" : "none";
+  $("backBtn").hidden = current === 0;
+
+  const box = $("answers");
+  box.className = "answers" + (item.two ? " two" : "");
+  box.innerHTML = "";
+  item.a.forEach((ans) => {
+    const b = document.createElement("button");
+    b.className = "answer";
+    if (ans.swatch) {
+      const sw = document.createElement("div");
+      sw.className = "swatch";
+      sw.style.background = ans.swatch;
+      b.appendChild(sw);
+    } else {
+      const em = document.createElement("span");
+      em.className = "emoji";
+      em.textContent = ans.e;
+      b.appendChild(em);
+    }
+    const t = document.createElement("span");
+    t.textContent = ans.t;
+    b.appendChild(t);
+    b.addEventListener("click", () => pick(b));
+    box.appendChild(b);
+  });
+  busy = false;
+}
+
+function pick(btn) {
+  if (busy) return;
+  busy = true;
+  btn.classList.add("picked");
+  setTimeout(() => {
+    current++;
+    if (current < QUESTIONS.length) {
+      renderQuestion();
+    } else {
+      $("qBar").style.width = "100%";
+      analyze();
+    }
+  }, 280);
+}
+
+function analyze() {
+  show("analyzing");
+  let i = 0;
+  $("aBar").style.width = "0";
+  $("status").textContent = ANALYZING[0];
+  const step = 550;
+  const timer = setInterval(() => {
+    i++;
+    $("aBar").style.width = `${Math.min(100, (i / ANALYZING.length) * 100)}%`;
+    if (i < ANALYZING.length) {
+      $("status").textContent = ANALYZING[i];
+    } else {
+      clearInterval(timer);
+      setTimeout(showResult, 300);
+    }
+  }, step);
+}
+
+let lastFlavor = null;
+function showResult() {
+  takes++;
+  let flavor;
+  do { flavor = FLAVORS[Math.floor(Math.random() * FLAVORS.length)]; }
+  while (FLAVORS.length > 1 && flavor === lastFlavor);
+  lastFlavor = flavor;
+
+  const pct = (96 + Math.random() * 3.8).toFixed(1);
+  $("matchPct").textContent = `${pct}% match`;
+  $("fEmoji").textContent = flavor.e;
+  $("fName").textContent = `Monopoly: ${flavor.name}`;
+  $("fBlurb").textContent = flavor.blurb;
+
+  const smug = $("smug");
+  if (takes > 1) {
+    smug.textContent = SMUG_LINES[(takes - 2) % SMUG_LINES.length];
+    smug.hidden = false;
+  } else {
+    smug.hidden = true;
+  }
+
+  const stats = $("stats");
+  stats.innerHTML = "";
+  const picks = shuffle(STAT_POOL).slice(0, 4);
+  picks.forEach(([label, val], idx) => {
+    const v = Math.max(1, Math.min(100, val + Math.round(Math.random() * 6 - 3)));
+    const wrap = document.createElement("div");
+    wrap.className = "stat";
+    wrap.innerHTML = `<div class="row"><span></span><span>${v}%</span></div><div class="bar"><div></div></div>`;
+    wrap.querySelector(".row span").textContent = label;
+    const fill = wrap.querySelector(".bar > div");
+    fill.style.background = STAT_COLORS[idx % STAT_COLORS.length];
+    stats.appendChild(wrap);
+    requestAnimationFrame(() => setTimeout(() => (fill.style.width = v + "%"), 60));
+  });
+
+  const runners = $("runners");
+  runners.innerHTML = "";
+  const left = (100 - parseFloat(pct)).toFixed(1);
+  const r = shuffle(RUNNERS).slice(0, 2);
+  const first = (left * 0.7).toFixed(1);
+  const second = (left - first).toFixed(1);
+  [[r[0], first], [r[1], second]].forEach(([name, p]) => {
+    const li = document.createElement("li");
+    li.textContent = `${name} (${p}%)`;
+    runners.appendChild(li);
+  });
+
+  show("result");
+}
+
+function toast(msg) {
+  const t = $("toast");
+  t.textContent = msg;
+  t.classList.add("show");
+  setTimeout(() => t.classList.remove("show"), 2400);
+}
+
+async function share() {
+  const name = $("fName").textContent;
+  const url = location.href.split("#")[0].split("?")[0];
+  const text = `I took the Board Game Personality Test and got ${name} 😬 Bet you can't do better.`;
+  if (navigator.share) {
+    try { await navigator.share({ title: "Which Board Game Are You?", text, url }); return; }
+    catch (e) { if (e && e.name === "AbortError") return; }
+  }
+  try {
+    await navigator.clipboard.writeText(`${text} ${url}`);
+    toast("Copied! Paste it to a friend.");
+  } catch (e) {
+    prompt("Copy this and send it to a friend:", `${text} ${url}`);
+  }
+}
+
+$("startBtn").addEventListener("click", () => { current = 0; renderQuestion(); show("question"); });
+$("backBtn").addEventListener("click", () => { if (current > 0 && !busy) { current--; renderQuestion(); } });
+$("retakeBtn").addEventListener("click", () => { current = 0; renderQuestion(); show("question"); });
+$("shareBtn").addEventListener("click", share);
+</script>
+</body>
+</html>
